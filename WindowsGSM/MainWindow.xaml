@@ -97,7 +97,7 @@
                         <mah:ToggleSwitch x:Name="MahAppSwitch_DonorConnect" Header="主题激活(已解)" Margin="20,0,0,15" Toggled="DonorConnect_IsCheckedChanged"/>
                         <DockPanel Margin="20,0,20,20">
                             <Label Content="主题选择" FontSize="13.5" Padding="0" DockPanel.Dock="Top"></Label>
-                            <ComboBox x:Name="comboBox_Themes" Margin="0,5,0,0" Height="25" DockPanel.Dock="Top" SelectionChanged="ComboBox_Themes_SelectionChanged" IsEnabled="False"></ComboBox>
+                            <ComboBox x:Name="comboBox_Themes" Margin="0,5,0,0" Height="25" DockPanel.Dock="Top" SelectionChanged="ComboBox_Themes_SelectionChanged" IsEnabled="True"></ComboBox>
                         </DockPanel>
                     </StackPanel>
                 </ScrollViewer>
@@ -480,7 +480,7 @@
                                 <DockPanel Margin="15">
                                     <DockPanel DockPanel.Dock="Top" Margin="0,0,0,10">
                                         <Label DockPanel.Dock="Left" Content="在线" FontSize="25" Padding="0"/>
-                                        <Label DockPanel.Dock="Right" Content="启动服务器数" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+                                        <Label DockPanel.Dock="Right" Content="启动服务器数量" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
                                     </DockPanel>
                                     <DockPanel DockPanel.Dock="Top">
                                         <Label DockPanel.Dock="Left" Content="0%" Padding="0" x:Name="dashboard_started_usage"/>

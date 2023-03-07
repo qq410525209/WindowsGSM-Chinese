@@ -282,7 +282,7 @@ namespace WindowsGSM
             notifyIcon = new NotifyIcon
             {
                 BalloonTipTitle = "WindowsGSM",
-                BalloonTipText = "WindowsGSM is running in the background",
+                BalloonTipText = "WindowsGSM 在后台运行",
                 Text = "WindowsGSM",
                 BalloonTipIcon = ToolTipIcon.Info,
                 Visible = true
@@ -348,7 +348,7 @@ namespace WindowsGSM
             if (showCrashHint)
             {
                 string logFile = $"CRASH_{DateTime.Now:yyyyMMdd}.log";
-                Log("System", $"WindowsGSM crashed unexpectedly, please view the crash log {logFile}");
+                Log("System", $"WindowsGSM 意外崩溃，请查看崩溃日志 {logFile}");
             }
 
             AutoStartServer();
@@ -451,7 +451,7 @@ namespace WindowsGSM
                     Directory.CreateDirectory(ServerPath.GetLogs(ServerPath.FolderName.Plugins));
                     string logFile = ServerPath.GetLogs(ServerPath.FolderName.Plugins, $"{plugin.FileName}.log");
                     File.WriteAllText(ServerPath.GetLogs(logFile), plugin.Error);
-                    Log("Plugins", $"{plugin.FileName} fail to load. Please view the log: {logFile.Replace(WGSM_PATH, string.Empty)}");
+                    Log("插件", $"{plugin.FileName} 加载失败。 请查看日志: {logFile.Replace(WGSM_PATH, string.Empty)}");
                 }
                 else
                 {
@@ -559,7 +559,7 @@ namespace WindowsGSM
             Label_PluginLoaded.Content = loadedCount.ToString();
             Label_PluginFailed.Content = (PluginsList.Count - loadedCount).ToString();
 
-            Log("Plugins", $"Installed: {PluginsList.Count}, Loaded: {loadedCount}, Failed: {PluginsList.Count - loadedCount}");
+            Log("插件", $"安装: {PluginsList.Count}, 加载: {loadedCount}, 失败: {PluginsList.Count - loadedCount}");
         }
 
         private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
@@ -572,7 +572,7 @@ namespace WindowsGSM
             // If a server is installing or import => return
             if (progressbar_InstallProgress.IsIndeterminate || progressbar_ImportProgress.IsIndeterminate)
             {
-                MessageBox.Show("WindowsGSM is currently installing/importing server!", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("WindowsGSM当前正在安装/导入服务器！", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -626,7 +626,7 @@ namespace WindowsGSM
             // If a server is installing or import => return
             if (progressbar_InstallProgress.IsIndeterminate || progressbar_ImportProgress.IsIndeterminate)
             {
-                MessageBox.Show("WindowsGSM is currently installing/importing server!", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("WindowsGSM当前正在安装/导入服务器！", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -800,14 +800,14 @@ namespace WindowsGSM
 
                 if (GetServerMetadata(serverId).AutoStart && GetServerMetadata(server.ID).ServerStatus == ServerStatus.Stopped)
                 {
-                    await GameServer_Start(server, " | Auto Start");
+                    await GameServer_Start(server, " | 自动运行");
 
                     if (GetServerMetadata(server.ID).ServerStatus == ServerStatus.Started)
                     {
                         if (GetServerMetadata(serverId).DiscordAlert && GetServerMetadata(serverId).AutoStartAlert)
                         {
                             var webhook = new DiscordWebhook(GetServerMetadata(serverId).DiscordWebhook, GetServerMetadata(serverId).DiscordMessage, g_DonorType);
-                            await webhook.Send(server.ID, server.Game, "Started | Auto Start", server.Name, server.IP, server.Port);
+                            await webhook.Send(server.ID, server.Game, "开启 | 自动运行", server.Name, server.IP, server.Port);
                         }
                     }
                 }
@@ -1137,7 +1137,7 @@ namespace WindowsGSM
                 }
                 catch
                 {
-                    System.Windows.Forms.MessageBox.Show(installPath + " is not accessible!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    System.Windows.Forms.MessageBox.Show(installPath + " 不可访问!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
@@ -1169,9 +1169,9 @@ namespace WindowsGSM
                     while (!reader.EndOfStream)
                     {
                         var nextLine = reader.ReadLine();
-                        if (nextLine.Contains("Logging in user "))
+                        if (nextLine.Contains("登录用户 "))
                         {
-                            nextLine += Environment.NewLine + "Please send the Login Token:";
+                            nextLine += Environment.NewLine + "请发送登录令牌:";
                         }
 
                         System.Windows.Application.Current.Dispatcher.Invoke(() =>
@@ -1206,7 +1206,7 @@ namespace WindowsGSM
                 }
 
                 LoadServerTable();
-                Log(newServerConfig.ServerID, "Install: Success");
+                Log(newServerConfig.ServerID, "安装: 成功");
 
                 MahAppFlyout_InstallGameServer.IsOpen = false;
                 textbox_InstallServerName.IsEnabled = true;
@@ -1229,11 +1229,11 @@ namespace WindowsGSM
 
                 if (Installer != null)
                 {
-                    textblock_InstallProgress.Text = "Fail to install [ERROR] Exit code: " + Installer.ExitCode;
+                    textblock_InstallProgress.Text = "安装失败 [错误] 退出代码: " + Installer.ExitCode;
                 }
                 else
                 {
-                    textblock_InstallProgress.Text = $"Fail to install [ERROR] {gameServer.Error}";
+                    textblock_InstallProgress.Text = $"安装失败 [错误] {gameServer.Error}";
                 }
             }
         }
@@ -1311,7 +1311,7 @@ namespace WindowsGSM
         private async void Button_Import_Click(object sender, RoutedEventArgs e)
         {
             var selectedgame = (Images.Row)comboBox_ImportGameServer.SelectedItem;
-            label_ServerDirWarn.Content = Directory.Exists(textbox_ServerDir.Text) ? string.Empty : "Server Dir is invalid";
+            label_ServerDirWarn.Content = Directory.Exists(textbox_ServerDir.Text) ? string.Empty : "服务器目录无效";
             if (string.IsNullOrWhiteSpace(textbox_ImportServerName.Text) || selectedgame == null) { return; }
 
             string servername = textbox_ImportServerName.Text;
@@ -1335,7 +1335,7 @@ namespace WindowsGSM
                 }
                 catch
                 {
-                    System.Windows.Forms.MessageBox.Show(importPath + " is not accessible!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    System.Windows.Forms.MessageBox.Show(importPath + " 不可访问!", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
@@ -1376,8 +1376,8 @@ namespace WindowsGSM
                 textbox_ServerDir.IsEnabled = true;
                 button_Browse.IsEnabled = true;
                 progressbar_ImportProgress.IsIndeterminate = false;
-                textblock_ImportProgress.Text = "[ERROR] Fail to import";
-                MessageBox.Show($"Fail to copy the directory.\n{textbox_ServerDir.Text}\nto\n{importPath}\n\nYou may install a new server and copy the old servers file to the new server.\n\nException: {importLog}", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
+                textblock_ImportProgress.Text = "[错误] 导入失败";
+                MessageBox.Show($"复制目录失败.\n{textbox_ServerDir.Text}\nto\n{importPath}\n\n您可以安装新服务器并将旧服务器文件复制到新服务器.\n\n例外: {importLog}", "错误", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -1386,7 +1386,7 @@ namespace WindowsGSM
             newServerConfig.CreateWindowsGSMConfig();
 
             LoadServerTable();
-            Log(newServerConfig.ServerID, "Import: Success");
+            Log(newServerConfig.ServerID, "导入: 成功");
 
             MahAppFlyout_ImportGameServer.IsOpen = false;
             textbox_ImportServerName.IsEnabled = true;
@@ -1562,11 +1562,11 @@ namespace WindowsGSM
                     Process p = GetServerMetadata(server.ID).Process;
                     if (p != null && !p.HasExited)
                     {
-                        Log(server.ID, "Actions: Kill");
+                        Log(server.ID, "动作: 结束");
                         p.Kill();
 
                         _serverMetadata[int.Parse(server.ID)].ServerStatus = ServerStatus.Stopped;
-                        Log(server.ID, "Server: Killed");
+                        Log(server.ID, "服务器: 结束");
                         SetServerStatus(server, "Stopped");
                         _serverMetadata[int.Parse(server.ID)].ServerConsole.Clear();
                         _serverMetadata[int.Parse(server.ID)].Process = null;
@@ -1825,8 +1825,8 @@ namespace WindowsGSM
             if (p == null)
             {
                 _serverMetadata[int.Parse(server.ID)].ServerStatus = ServerStatus.Stopped;
-                Log(server.ID, "Server: Fail to start");
-                Log(server.ID, "[ERROR] " + gameServer.Error);
+                Log(server.ID, "服务器: 启动失败");
+                Log(server.ID, "[错误] " + gameServer.Error);
                 SetServerStatus(server, "Stopped");
 
                 return null;
@@ -1846,7 +1846,7 @@ namespace WindowsGSM
                             //Debug.WriteLine("Try Setting ShowMinNoActivate Console Window");
                         }
 
-                        Debug.WriteLine("Set ShowMinNoActivate Console Window");
+                        Debug.WriteLine("设置显示最少不激活控制台窗口");
 
                         //Save MainWindow
                         _serverMetadata[int.Parse(server.ID)].MainWindow = p.MainWindowHandle;
@@ -1861,7 +1861,7 @@ namespace WindowsGSM
                 }
                 catch
                 {
-                    Debug.WriteLine("No Window require to hide");
+                    Debug.WriteLine("无需隐藏窗口");
                 }
             });
 
@@ -1871,8 +1871,8 @@ namespace WindowsGSM
                 _serverMetadata[int.Parse(server.ID)].Process = null;
 
                 _serverMetadata[int.Parse(server.ID)].ServerStatus = ServerStatus.Stopped;
-                Log(server.ID, "Server: Fail to start");
-                Log(server.ID, "[ERROR] Exit Code: " + p.ExitCode.ToString());
+                Log(server.ID, "服务器: 启动失败");
+                Log(server.ID, "[错误] 退出代码: " + p.ExitCode.ToString());
                 SetServerStatus(server, "Stopped");
 
                 return null;
@@ -1888,7 +1888,7 @@ namespace WindowsGSM
             }
             catch (Exception e)
             {
-                Log(server.ID, $"[NOTICE] Fail to set affinity. ({e.Message})");
+                Log(server.ID, $"[注意] 设置相关性失败. ({e.Message})");
             }
 
             // Save Cache
@@ -1953,18 +1953,18 @@ namespace WindowsGSM
             string localVersion = gameServer.GetLocalBuild();
             if (string.IsNullOrWhiteSpace(localVersion) && !silenceCheck)
             {
-                Log(server.ID, $"[NOTICE] {gameServer.Error}");
+                Log(server.ID, $"[注意] {gameServer.Error}");
             }
 
             string remoteVersion = await gameServer.GetRemoteBuild();
             if (string.IsNullOrWhiteSpace(remoteVersion) && !silenceCheck)
             {
-                Log(server.ID, $"[NOTICE] {gameServer.Error}");
+                Log(server.ID, $"[注意] {gameServer.Error}");
             }
 
             if (!silenceCheck)
             {
-                Log(server.ID, $"Checking: Version ({localVersion}) => ({remoteVersion})");
+                Log(server.ID, $"检查: 版本 ({localVersion}) => ({remoteVersion})");
             }
 
             if ((!string.IsNullOrWhiteSpace(localVersion) && !string.IsNullOrWhiteSpace(remoteVersion) && localVersion != remoteVersion) || forceUpdate)
@@ -1990,18 +1990,18 @@ namespace WindowsGSM
             string error = string.Empty;
             if (!string.IsNullOrWhiteSpace(server.IP) && !IsValidIPAddress(server.IP))
             {
-                error += " IP address is not valid.";
+                error += " IP 地址无效.";
             }
 
             if (!string.IsNullOrWhiteSpace(server.Port) && !IsValidPort(server.Port))
             {
-                error += " Port number is not valid.";
+                error += " 端口号无效.";
             }
 
             if (error != string.Empty)
             {
-                Log(server.ID, "Server: Fail to start");
-                Log(server.ID, "[ERROR]" + error);
+                Log(server.ID, "服务器: 启动失败");
+                Log(server.ID, "[错误]" + error);
 
                 return;
             }
@@ -2020,23 +2020,23 @@ namespace WindowsGSM
             }
 
             _serverMetadata[int.Parse(server.ID)].ServerStatus = ServerStatus.Starting;
-            Log(server.ID, "Action: Start" + notes);
+            Log(server.ID, "动作: 运行" + notes);
             SetServerStatus(server, "Starting");
 
             var gameServer = await Server_BeginStart(server);
             if (gameServer == null)
             {
                 _serverMetadata[int.Parse(server.ID)].ServerStatus = ServerStatus.Stopped;
-                Log(server.ID, "Server: Fail to start");
+                Log(server.ID, "服务器: 启动失败");
                 SetServerStatus(server, "Stopped");
                 return;
             }
 
             _serverMetadata[int.Parse(server.ID)].ServerStatus = ServerStatus.Started;
-            Log(server.ID, "Server: Started");
+            Log(server.ID, "服务器: 运行");
             if (!string.IsNullOrWhiteSpace(gameServer.Notice))
             {
-                Log(server.ID, "[Notice] " + gameServer.Notice);
+                Log(server.ID, "[注意] " + gameServer.Notice);
             }
             SetServerStatus(server, "Started", ServerCache.GetPID(server.ID).ToString());
         }
@@ -2050,15 +2050,15 @@ namespace WindowsGSM
 
             //Begin stop
             _serverMetadata[int.Parse(server.ID)].ServerStatus = ServerStatus.Stopping;
-            Log(server.ID, "Action: Stop");
+            Log(server.ID, "动作: 停止");
             SetServerStatus(server, "Stopping");
 
             bool stopGracefully = await Server_BeginStop(server, p);
 
-            Log(server.ID, "Server: Stopped");
+            Log(server.ID, "服务器: Stopped");
             if (!stopGracefully)
             {
-                Log(server.ID, "[NOTICE] Server fail to stop gracefully");
+                Log(server.ID, "[注意] 服务器无法正常停止");
             }
             _serverMetadata[int.Parse(server.ID)].ServerStatus = ServerStatus.Stopped;
             SetServerStatus(server, "Stopped");
@@ -2075,7 +2075,7 @@ namespace WindowsGSM
 
             //Begin Restart
             _serverMetadata[int.Parse(server.ID)].ServerStatus = ServerStatus.Restarting;
-            Log(server.ID, "Action: Restart");
+            Log(server.ID, "动作: 重新运行");
             SetServerStatus(server, "Restarting");
 
             await Server_BeginStop(server, p);
@@ -2091,10 +2091,10 @@ namespace WindowsGSM
             }
 
             _serverMetadata[int.Parse(server.ID)].ServerStatus = ServerStatus.Started;
-            Log(server.ID, "Server: Restarted");
+            Log(server.ID, "服务器: Restarted");
             if (!string.IsNullOrWhiteSpace(gameServer.Notice))
             {
-                Log(server.ID, "[Notice] " + gameServer.Notice);
+                Log(server.ID, "[注意] " + gameServer.Notice);
             }
             SetServerStatus(server, "Started", ServerCache.GetPID(server.ID).ToString());
         }
@@ -2108,24 +2108,24 @@ namespace WindowsGSM
 
             //Begin Update
             _serverMetadata[int.Parse(server.ID)].ServerStatus = ServerStatus.Updating;
-            Log(server.ID, "Action: Update" + notes);
+            Log(server.ID, "动作: 更新" + notes);
             SetServerStatus(server, "Updating");
 
             var (p, remoteVersion, gameServer) = await Server_BeginUpdate(server, silenceCheck: validate, forceUpdate: true, validate: validate);
 
             if (p == null && string.IsNullOrEmpty(gameServer.Error)) // Update success (non-steamcmd server)
             {
-                Log(server.ID, $"Server: Updated {(validate ? "Validate " : string.Empty)}({remoteVersion})");
+                Log(server.ID, $"服务器: Updated {(validate ? "Validate " : string.Empty)}({remoteVersion})");
             }
             else if (p != null) // p stores process of steamcmd
             {
                 await Task.Run(() => { p.WaitForExit(); });
-                Log(server.ID, $"Server: Updated {(validate ? "Validate " : string.Empty)}({remoteVersion})");
+                Log(server.ID, $"服务器: Updated {(validate ? "Validate " : string.Empty)}({remoteVersion})");
             }
             else
             {
-                Log(server.ID, "Server: Fail to update");
-                Log(server.ID, "[ERROR] " + gameServer.Error);
+                Log(server.ID, "服务器: Fail to update");
+                Log(server.ID, "[错误] " + gameServer.Error);
             }
 
             _serverMetadata[int.Parse(server.ID)].ServerStatus = ServerStatus.Stopped;
@@ -2143,7 +2143,7 @@ namespace WindowsGSM
 
             //Begin backup
             _serverMetadata[int.Parse(server.ID)].ServerStatus = ServerStatus.Backuping;
-            Log(server.ID, "Action: Backup" + notes);
+            Log(server.ID, "动作: 备份" + notes);
             SetServerStatus(server, "Backuping");
 
             //End All Running Process
@@ -2154,8 +2154,8 @@ namespace WindowsGSM
             if (!Directory.Exists(backupLocation))
             {
                 _serverMetadata[int.Parse(server.ID)].ServerStatus = ServerStatus.Stopped;
-                Log(server.ID, "Server: Fail to backup");
-                Log(server.ID, "[ERROR] Backup location not found");
+                Log(server.ID, "服务器: Fail to backup");
+                Log(server.ID, "[错误] Backup location not found");
                 SetServerStatus(server, "Stopped");
                 return false;
             }
@@ -2182,8 +2182,8 @@ namespace WindowsGSM
                 if (ex != string.Empty)
                 {
                     _serverMetadata[int.Parse(server.ID)].ServerStatus = ServerStatus.Stopped;
-                    Log(server.ID, "Server: Fail to backup");
-                    Log(server.ID, $"[ERROR] {ex}");
+                    Log(server.ID, "服务器: Fail to backup");
+                    Log(server.ID, $"[错误] {ex}");
                     SetServerStatus(server, "Stopped");
                     return false;
                 }
@@ -2208,15 +2208,15 @@ namespace WindowsGSM
             if (error != string.Empty)
             {
                 _serverMetadata[int.Parse(server.ID)].ServerStatus = ServerStatus.Stopped;
-                Log(server.ID, "Server: Fail to backup");
-                Log(server.ID, $"[ERROR] {error}");
+                Log(server.ID, "服务器: Fail to backup");
+                Log(server.ID, $"[错误] {error}");
                 SetServerStatus(server, "Stopped");
 
                 return false;
             }
 
             _serverMetadata[int.Parse(server.ID)].ServerStatus = ServerStatus.Stopped;
-            Log(server.ID, "Server: Backuped");
+            Log(server.ID, "服务器: Backuped");
             SetServerStatus(server, "Stopped");
 
             return true;
@@ -2233,13 +2233,13 @@ namespace WindowsGSM
             string backupPath = Path.Combine(backupLocation, backupFile);
             if (!File.Exists(backupPath))
             {
-                Log(server.ID, "Server: Fail to restore backup");
-                Log(server.ID, "[ERROR] Backup not found");
+                Log(server.ID, "服务器: 无法还原备份");
+                Log(server.ID, "[错误] 找不到备份");
                 return false;
             }
 
             _serverMetadata[int.Parse(server.ID)].ServerStatus = ServerStatus.Restoring;
-            Log(server.ID, "Action: Restore Backup");
+            Log(server.ID, "动作: 还原备份");
             SetServerStatus(server, "Restoring");
 
             string extractPath = ServerPath.GetServers(server.ID);
@@ -2261,8 +2261,8 @@ namespace WindowsGSM
                 if (ex != string.Empty)
                 {
                     _serverMetadata[int.Parse(server.ID)].ServerStatus = ServerStatus.Stopped;
-                    Log(server.ID, "Server: Fail to restore backup");
-                    Log(server.ID, $"[ERROR] {ex}");
+                    Log(server.ID, "服务器: 无法还原备份");
+                    Log(server.ID, $"[错误] {ex}");
                     SetServerStatus(server, "Stopped");
                     return false;
                 }
@@ -2284,14 +2284,14 @@ namespace WindowsGSM
             if (error != string.Empty)
             {
                 _serverMetadata[int.Parse(server.ID)].ServerStatus = ServerStatus.Stopped;
-                Log(server.ID, "Server: Fail to restore backup");
-                Log(server.ID, $"[ERROR] {error}");
+                Log(server.ID, "服务器: 无法还原备份");
+                Log(server.ID, $"[错误] {error}");
                 SetServerStatus(server, "Stopped");
                 return false;
             }
 
             _serverMetadata[int.Parse(server.ID)].ServerStatus = ServerStatus.Stopped;
-            Log(server.ID, "Server: Restored");
+            Log(server.ID, "服务器: Restored");
             SetServerStatus(server, "Stopped");
 
             return true;
@@ -2306,7 +2306,7 @@ namespace WindowsGSM
 
             //Begin delete
             _serverMetadata[int.Parse(server.ID)].ServerStatus = ServerStatus.Deleting;
-            Log(server.ID, "Action: Delete");
+            Log(server.ID, "动作: 删除");
             SetServerStatus(server, "Deleting");
 
             //Remove firewall rule
@@ -2341,8 +2341,8 @@ namespace WindowsGSM
                 string wgsmCfgPath = ServerPath.GetServersConfigs(server.ID, "WindowsGSM.cfg");
                 if (File.Exists(wgsmCfgPath))
                 {
-                    Log(server.ID, "Server: Fail to delete server");
-                    Log(server.ID, "[ERROR] Directory is not accessible");
+                    Log(server.ID, "服务器: 无法删除服务器");
+                    Log(server.ID, "[错误] 无法访问目录");
 
                     _serverMetadata[int.Parse(server.ID)].ServerStatus = ServerStatus.Stopped;
                     SetServerStatus(server, "Stopped");
@@ -2351,7 +2351,7 @@ namespace WindowsGSM
                 }
             }
 
-            Log(server.ID, "Server: Deleted server");
+            Log(server.ID, "服务器: Deleted server");
 
             _serverMetadata[int.Parse(server.ID)].ServerStatus = ServerStatus.Stopped;
             SetServerStatus(server, "Stopped");
@@ -2374,7 +2374,7 @@ namespace WindowsGSM
                 {
                     bool autoRestart = GetServerMetadata(serverId).AutoRestart;
                     _serverMetadata[int.Parse(server.ID)].ServerStatus = autoRestart ? ServerStatus.Restarting : ServerStatus.Stopped;
-                    Log(server.ID, "Server: Crashed");
+                    Log(server.ID, "服务器: 崩溃");
                     SetServerStatus(server, autoRestart ? "Restarting" : "Stopped");
 
                     if (GetServerMetadata(serverId).DiscordAlert && GetServerMetadata(serverId).CrashAlert)
@@ -2407,10 +2407,10 @@ namespace WindowsGSM
                         }
 
                         _serverMetadata[int.Parse(server.ID)].ServerStatus = ServerStatus.Started;
-                        Log(server.ID, "Server: Started | Auto Restart");
+                        Log(server.ID, "服务器: 运行 | 自动重启");
                         if (!string.IsNullOrWhiteSpace(gameServer.Notice))
                         {
-                            Log(server.ID, "[Notice] " + gameServer.Notice);
+                            Log(server.ID, "[注意] " + gameServer.Notice);
                         }
                         SetServerStatus(server, "Started", ServerCache.GetPID(server.ID).ToString());
 
@@ -2464,7 +2464,7 @@ namespace WindowsGSM
                         break;
                     }
 
-                    Log(server.ID, $"Checking: Version ({localVersion}) => ({remoteVersion})");
+                    Log(server.ID, $"检查: 版本 ({localVersion}) => ({remoteVersion})");
 
                     if (localVersion != remoteVersion)
                     {
@@ -2490,7 +2490,7 @@ namespace WindowsGSM
 
                         if (string.IsNullOrWhiteSpace(gameServer.Error))
                         {
-                            Log(server.ID, $"Server: Updated ({remoteVersion})");
+                            Log(server.ID, $"服务器: Updated ({remoteVersion})");
 
                             if (GetServerMetadata(serverId).DiscordAlert && GetServerMetadata(serverId).AutoUpdateAlert)
                             {
@@ -2500,8 +2500,8 @@ namespace WindowsGSM
                         }
                         else
                         {
-                            Log(server.ID, "Server: Fail to update");
-                            Log(server.ID, "[ERROR] " + gameServer.Error);
+                            Log(server.ID, "服务器: 更新失败");
+                            Log(server.ID, "[错误] " + gameServer.Error);
                         }
 
                         //Start the server
@@ -2519,11 +2519,11 @@ namespace WindowsGSM
                 }
                 else if (string.IsNullOrWhiteSpace(localVersion))
                 {
-                    Log(server.ID, $"[NOTICE] Fail to get local build.");
+                    Log(server.ID, $"[注意] 获取本地构建失败.");
                 }
                 else if (string.IsNullOrWhiteSpace(remoteVersion))
                 {
-                    Log(server.ID, $"[NOTICE] Fail to get remote build.");
+                    Log(server.ID, $"[注意] 获取远程构建失败.");
                 }
             }
         }
@@ -2576,7 +2576,7 @@ namespace WindowsGSM
 
                         //Begin Restart
                         _serverMetadata[int.Parse(server.ID)].ServerStatus = ServerStatus.Restarting;
-                        Log(server.ID, "Action: Restart");
+                        Log(server.ID, "动作: 重新运行");
                         SetServerStatus(server, "Restarting");
 
                         await Server_BeginStop(server, p);
@@ -2584,10 +2584,10 @@ namespace WindowsGSM
                         if (gameServer == null) { return; }
 
                         _serverMetadata[int.Parse(server.ID)].ServerStatus = ServerStatus.Started;
-                        Log(server.ID, "Server: Restarted | Restart Crontab");
+                        Log(server.ID, "服务器: Restarted | Restart Crontab");
                         if (!string.IsNullOrWhiteSpace(gameServer.Notice))
                         {
-                            Log(server.ID, "[Notice] " + gameServer.Notice);
+                            Log(server.ID, "[注意] " + gameServer.Notice);
                         }
                         SetServerStatus(server, "Started", ServerCache.GetPID(server.ID).ToString());
 

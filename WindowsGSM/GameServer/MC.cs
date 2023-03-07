@@ -157,10 +157,10 @@ namespace WindowsGSM.GameServer
             if (!JavaHelper.IsJREInstalled())
             {
                 //Java
-                result = MessageBox.Show("Java is not installed\n\nWould you like to install?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                result = MessageBox.Show("Java 未安装\n\n您要安装吗？", "确认", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (result != MessageBoxResult.Yes)
                 {
-                    Error = "Java is not installed";
+                    Error = "未安装 Java";
                     return null;
                 }
 

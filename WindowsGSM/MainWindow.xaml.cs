@@ -423,7 +423,7 @@ namespace WindowsGSM
                 }
             });
 
-            label_GameServerCount.Content = $"{gameName.Count + pluginLoaded} game servers supported";
+            label_GameServerCount.Content = $"{gameName.Count + pluginLoaded} 款支持游戏服务器";
 
             for (int i = 0; i < sortedList.Count; i++)
             {
@@ -1069,7 +1069,7 @@ namespace WindowsGSM
                 var gameServer = GameServer.Data.Class.Get(row.Game, pluginList: PluginsList);
                 switch_embedconsole.IsEnabled = gameServer.AllowsEmbedConsole;
                 switch_embedconsole.IsOn = gameServer.AllowsEmbedConsole ? GetServerMetadata(row.ID).EmbedConsole : false;
-                Button_AutoScroll.Content = GetServerMetadata(row.ID).AutoScroll ? "✔️ AUTO SCROLL" : "❌ AUTO SCROLL";
+                Button_AutoScroll.Content = GetServerMetadata(row.ID).AutoScroll ? "✔️ 自动滚动" : "❌ 自动滚动";
 
                 switch_autorestart.IsOn = GetServerMetadata(row.ID).AutoRestart;
                 switch_restartcrontab.IsOn = GetServerMetadata(row.ID).RestartCrontab;
@@ -1301,7 +1301,7 @@ namespace WindowsGSM
                 comboBox_ImportGameServer.IsEnabled = true;
                 progressbar_ImportProgress.IsIndeterminate = false;
                 textblock_ImportProgress.Text = string.Empty;
-                button_Import.Content = "Import";
+                button_Import.Content = "导入";
 
                 var newServerConfig = new ServerConfig(null);
                 textbox_ImportServerName.Text = $"WindowsGSM - Server #{newServerConfig.ServerID}";
@@ -1415,7 +1415,7 @@ namespace WindowsGSM
 
             if (GetServerMetadata(server.ID).ServerStatus != ServerStatus.Stopped) { return; }
 
-            MessageBoxResult result = MessageBox.Show("Do you want to delete this server?\n(There is no comeback)", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            MessageBoxResult result = MessageBox.Show("是否要删除此服务器？\n(没有备份文件)", "确认", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result != MessageBoxResult.Yes) { return; }
 
             await GameServer_Delete(server);
@@ -1642,7 +1642,7 @@ namespace WindowsGSM
 
             if (GetServerMetadata(server.ID).ServerStatus != ServerStatus.Stopped) { return; }
 
-            MessageBoxResult result = System.Windows.MessageBox.Show("Do you want to update this server?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            MessageBoxResult result = System.Windows.MessageBox.Show("您要更新此服务器吗？", "确认", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result != MessageBoxResult.Yes) { return; }
 
             await GameServer_Update(server);
@@ -1655,7 +1655,7 @@ namespace WindowsGSM
 
             if (GetServerMetadata(server.ID).ServerStatus != ServerStatus.Stopped) { return; }
 
-            MessageBoxResult result = System.Windows.MessageBox.Show("Do you want to validate this server?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            MessageBoxResult result = System.Windows.MessageBox.Show("您要验证此服务器吗？", "确认", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result != MessageBoxResult.Yes) { return; }
 
             await GameServer_Update(server, notes: " | Validate", validate: true);
@@ -1668,7 +1668,7 @@ namespace WindowsGSM
 
             if (GetServerMetadata(server.ID).ServerStatus != ServerStatus.Stopped) { return; }
 
-            MessageBoxResult result = System.Windows.MessageBox.Show("Do you want to backup on this server?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            MessageBoxResult result = System.Windows.MessageBox.Show("您想在此服务器上备份吗？", "确认", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result != MessageBoxResult.Yes) { return; }
 
             await GameServer_Backup(server);
@@ -3746,7 +3746,7 @@ namespace WindowsGSM
                 AffirmativeButtonText = "Add"
             };
 
-            string newAdminID = await this.ShowInputAsync("Add Admin ID", "Please enter the discord user ID.", settings);
+            string newAdminID = await this.ShowInputAsync("添加管理员ID", "请输入discord用户ID.", settings);
             if (newAdminID == null) { return; } //If pressed cancel
 
             var adminList = DiscordBot.Configs.GetBotAdminList();
@@ -3766,8 +3766,8 @@ namespace WindowsGSM
                 DefaultText = adminListItem.ServerIds
             };
 
-            string example = "0 - Grant All servers Permission.\n\nExamples:\n0\n1,2,3,4,5\n";
-            string newServerIds = await this.ShowInputAsync($"Edit Server IDs ({adminListItem.AdminId})", $"Please enter the server Ids where admin has access to the server.\n{example}", settings);
+            string example = "0 - 授权所有服务器.\n\n示例:\n0\n1,2,3,4,5\n";
+            string newServerIds = await this.ShowInputAsync($"编辑服务器ID ({adminListItem.AdminId})", $"请输入管理员有权访问服务器的服务器ID.\n{example}", settings);
             if (newServerIds == null) { return; } //If pressed cancel
 
             var adminList = DiscordBot.Configs.GetBotAdminList();
@@ -4031,7 +4031,7 @@ namespace WindowsGSM
             var server = (ServerTable)ServerGrid.SelectedItem;
             if (server == null) { return; }
 
-            Button_AutoScroll.Content = Button_AutoScroll.Content.ToString() == "✔️ AUTO SCROLL" ? "❌ AUTO SCROLL" : "✔️ AUTO SCROLL";
+            Button_AutoScroll.Content = Button_AutoScroll.Content.ToString() == "✔️ 自动滚动" ? "❌ 自动滚动" : "✔️ 自动滚动";
             _serverMetadata[int.Parse(server.ID)].AutoScroll = Button_AutoScroll.Content.ToString().Contains("✔️");
             ServerConfig.SetSetting(server.ID, ServerConfig.SettingName.AutoScroll, GetServerMetadata(server.ID).AutoScroll ? "1" : "0");
         }

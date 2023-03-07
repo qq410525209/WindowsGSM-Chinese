@@ -19,17 +19,17 @@
         WindowStartupLocation="CenterScreen" Activated="Window_Activated">
     <mah:MetroWindow.RightWindowCommands>
         <mah:WindowCommands>
-            <Button x:Name="button_Website" Content="Website" Click="Button_Website_Click"/>
+            <Button x:Name="button_Website" Content="网站" Click="Button_Website_Click"/>
             <Button x:Name="button_Discord" Content="Discord" Click="Button_Discord_Click"/>
-            <Button x:Name="button_Patreon" Content="Patreon" Click="Button_Patreon_Click"/>
+            <Button x:Name="button_Patreon" Content="作者" Click="Button_Patreon_Click"/>
             <!--<Button x:Name="button_Settings" Content="Settings" Click="Button_Settings_Click"/>-->
-            <Button x:Name="button_Hide" Content="Hide" Click="Button_Hide_Click"/>
+            <Button x:Name="button_Hide" Content="隐藏" Click="Button_Hide_Click"/>
         </mah:WindowCommands>
     </mah:MetroWindow.RightWindowCommands>
 
     <mah:MetroWindow.Flyouts>
         <mah:FlyoutsControl>
-            <mah:Flyout x:Name="MahAppFlyout_ViewPlugins" Header="Plugins" Position="Right" Width="600" Theme="Dark" IsModal="True">
+            <mah:Flyout x:Name="MahAppFlyout_ViewPlugins" Header="插件" Position="Right" Width="600" Theme="Dark" IsModal="True">
                 <DockPanel>
                     <StackPanel DockPanel.Dock="Top" Orientation="Vertical">
                         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
@@ -85,18 +85,18 @@
                     </ScrollViewer>
                 </DockPanel>
             </mah:Flyout>
-            <mah:Flyout x:Name="MahAppFlyout_Settings" Header="WindowsGSM Settings" Position="Right" Width="300" Theme="Dark" IsModal="True">
+            <mah:Flyout x:Name="MahAppFlyout_Settings" Header="WindowsGSM 设置" Position="Right" Width="300" Theme="Dark" IsModal="True">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <StackPanel>
-                        <mah:ToggleSwitch x:Name="MahAppSwitch_HardWareAcceleration" Header="Hardware Acceleration" Margin="20,10,0,15" Toggled="HardWareAcceleration_IsCheckedChanged"/>
-                        <mah:ToggleSwitch x:Name="MahAppSwitch_UIAnimation" Header="UI Animation" Margin="20,0,0,15" Toggled="UIAnimation_IsCheckedChanged"/>
-                        <mah:ToggleSwitch x:Name="MahAppSwitch_DarkTheme" Header="Dark Theme" Margin="20,0,0,15" Toggled="DarkTheme_IsCheckedChanged"/>
-                        <mah:ToggleSwitch x:Name="MahAppSwitch_StartOnBoot" Header="Start WindowsGSM on Login" Margin="20,0,0,15" Toggled="StartOnLogin_IsCheckedChanged"/>
-                        <mah:ToggleSwitch x:Name="MahAppSwitch_RestartOnCrash" Header="Auto Restart WindowsGSM on Crash" Margin="20,0,0,15" Toggled="RestartOnCrash_IsCheckedChanged"/>
-                        <mah:ToggleSwitch x:Name="MahAppSwitch_SendStatistics" Header="Send Statistics" Margin="20,0,0,15" Toggled="SendStatistics_IsCheckedChanged"/>
-                        <mah:ToggleSwitch x:Name="MahAppSwitch_DonorConnect" Header="Donor Connect (Patreon)" Margin="20,0,0,15" Toggled="DonorConnect_IsCheckedChanged"/>
+                        <mah:ToggleSwitch x:Name="MahAppSwitch_HardWareAcceleration" Header="硬件加速" Margin="20,10,0,15" Toggled="HardWareAcceleration_IsCheckedChanged"/>
+                        <mah:ToggleSwitch x:Name="MahAppSwitch_UIAnimation" Header="界面动画" Margin="20,0,0,15" Toggled="UIAnimation_IsCheckedChanged"/>
+                        <mah:ToggleSwitch x:Name="MahAppSwitch_DarkTheme" Header="深色主题" Margin="20,0,0,15" Toggled="DarkTheme_IsCheckedChanged"/>
+                        <mah:ToggleSwitch x:Name="MahAppSwitch_StartOnBoot" Header="开机自启" Margin="20,0,0,15" Toggled="StartOnLogin_IsCheckedChanged"/>
+                        <mah:ToggleSwitch x:Name="MahAppSwitch_RestartOnCrash" Header="崩溃自启" Margin="20,0,0,15" Toggled="RestartOnCrash_IsCheckedChanged"/>
+                        <mah:ToggleSwitch x:Name="MahAppSwitch_SendStatistics" Header="发送统计" Margin="20,0,0,15" Toggled="SendStatistics_IsCheckedChanged"/>
+                        <mah:ToggleSwitch x:Name="MahAppSwitch_DonorConnect" Header="主题激活(已解)" Margin="20,0,0,15" Toggled="DonorConnect_IsCheckedChanged"/>
                         <DockPanel Margin="20,0,20,20">
-                            <Label Content="WindowsGSM Theme (Donor Only)" FontSize="13.5" Padding="0" DockPanel.Dock="Top"></Label>
+                            <Label Content="主题选择" FontSize="13.5" Padding="0" DockPanel.Dock="Top"></Label>
                             <ComboBox x:Name="comboBox_Themes" Margin="0,5,0,0" Height="25" DockPanel.Dock="Top" SelectionChanged="ComboBox_Themes_SelectionChanged" IsEnabled="False"></ComboBox>
                         </DockPanel>
                     </StackPanel>
@@ -518,102 +518,102 @@
         <DockPanel Name="hMenu_Home" Margin="48,0,0,0" Visibility="Hidden">
             <Grid DockPanel.Dock="Top">
                 <Menu x:Name="menu" Height="30" DockPanel.Dock="Top" Margin="1,0,0,0">
-                    <MenuItem Header="Servers" Height="30">
-                        <MenuItem Header="Install GameServer" Click="Install_Click">
+                    <MenuItem Header="服务器" Height="30">
+                        <MenuItem Header="安装游戏服务器" Click="Install_Click">
                             <MenuItem.Icon>
                                 <Image Source="/WindowsGSM;component/Images/Install.ico" Width="23" Margin="3"/>
                             </MenuItem.Icon>
                         </MenuItem>
-                        <MenuItem Header="Import GameServer" Click="Import_Click"/>
+                        <MenuItem Header="导入游戏服务器" Click="Import_Click"/>
                         <Separator/>
-                        <MenuItem Header="Delete GameServer" Click="Delete_Click">
+                        <MenuItem Header="删除游戏服务器" Click="Delete_Click">
                             <MenuItem.Icon>
                                 <Image Source="/WindowsGSM;component/Images/Delete.ico" Width="23" Margin="3"/>
                             </MenuItem.Icon>
                         </MenuItem>
                     </MenuItem>
-                    <MenuItem Header="Actions" Height="30">
-                        <MenuItem Header="Start" Click="Actions_Start_Click">
+                    <MenuItem Header="控制" Height="30">
+                        <MenuItem Header="运行" Click="Actions_Start_Click">
                             <MenuItem.Icon>
                                 <Image Source="/WindowsGSM;component/Images/Start.ico" Width="23" Margin="3"/>
                             </MenuItem.Icon>
                         </MenuItem>
-                        <MenuItem Header="Stop" Click="Actions_Stop_Click">
+                        <MenuItem Header="停止" Click="Actions_Stop_Click">
                             <MenuItem.Icon>
                                 <Image Source="/WindowsGSM;component/Images/Stop.ico" Width="23" Margin="3"/>
                             </MenuItem.Icon>
                         </MenuItem>
-                        <MenuItem Header="Restart" Click="Actions_Restart_Click">
+                        <MenuItem Header="重启" Click="Actions_Restart_Click">
                             <MenuItem.Icon>
                                 <Image Source="/WindowsGSM;component/Images/Restart.ico" Width="23" Margin="3"/>
                             </MenuItem.Icon>
                         </MenuItem>
-                        <MenuItem Header="More...">
-                            <MenuItem Header="Start All Servers" Click="Actions_StartAllServers_Click">
+                        <MenuItem Header="更多">
+                            <MenuItem Header="运行全部服务器" Click="Actions_StartAllServers_Click">
                                 <MenuItem.Icon>
                                     <Image Source="/WindowsGSM;component/Images/Start.ico" Width="23" Margin="3"/>
                                 </MenuItem.Icon>
                             </MenuItem>
-                            <MenuItem Header="Start Servers with Auto Start Enabled" Click="Actions_StartServersWithAutoStartEnabled_Click">
+                            <MenuItem Header="开启自动运行服务器" Click="Actions_StartServersWithAutoStartEnabled_Click">
                                 <MenuItem.Icon>
                                     <Image Source="/WindowsGSM;component/Images/Start.ico" Width="23" Margin="3"/>
                                 </MenuItem.Icon>
                             </MenuItem>
-                            <MenuItem Header="Stop All Servers" Click="Actions_StopAllServers_Click">
+                            <MenuItem Header="停止全部服务器" Click="Actions_StopAllServers_Click">
                                 <MenuItem.Icon>
                                     <Image Source="/WindowsGSM;component/Images/Stop.ico" Width="23" Margin="3"/>
                                 </MenuItem.Icon>
                             </MenuItem>
-                            <MenuItem Header="Restart All Servers" Click="Actions_RestartAllServers_Click">
+                            <MenuItem Header="重启全部服务器" Click="Actions_RestartAllServers_Click">
                                 <MenuItem.Icon>
                                     <Image Source="/WindowsGSM;component/Images/Restart.ico" Width="23" Margin="3"/>
                                 </MenuItem.Icon>
                             </MenuItem>
                         </MenuItem>
                         <Separator/>
-                        <MenuItem Header="Toggle Console" Click="Actions_ToggleConsole_Click"/>
+                        <MenuItem Header="切换控制台" Click="Actions_ToggleConsole_Click"/>
                         <Separator/>
-                        <MenuItem Header="Update">
+                        <MenuItem Header="更新">
                             <MenuItem.Icon>
                                 <Image Source="/WindowsGSM;component/Images/Update.ico" Width="23" Margin="3"/>
                             </MenuItem.Icon>
-                            <MenuItem Header="Update" Height="30" Click="Actions_Update_Click"/>
-                            <MenuItem Header="Update Validate" Height="30" Click="Actions_UpdateValidate_Click"/>
+                            <MenuItem Header="更新" Height="30" Click="Actions_Update_Click"/>
+                            <MenuItem Header="更新验证" Height="30" Click="Actions_UpdateValidate_Click"/>
                         </MenuItem>
                         <Separator/>
-                        <MenuItem Header="Backup" Click="Actions_Backup_Click">
+                        <MenuItem Header="备份" Click="Actions_Backup_Click">
                             <MenuItem.Icon>
                                 <Image Source="/WindowsGSM;component/Images/Backup.ico" Width="23" Margin="3"/>
                             </MenuItem.Icon>
                         </MenuItem>
-                        <MenuItem Header="Restore Backup" Click="Actions_RestoreBackup_Click">
+                        <MenuItem Header="还原备份" Click="Actions_RestoreBackup_Click">
                             <MenuItem.Icon>
                                 <Image Source="/WindowsGSM;component/Images/Restore.ico" Width="23" Margin="3"/>
                             </MenuItem.Icon>
                         </MenuItem>
                     </MenuItem>
-                    <MenuItem Header="Browse" Height="30">
-                        <MenuItem Header="Server Backups">
+                    <MenuItem Header="查看" Height="30">
+                        <MenuItem Header="服务器备份">
                             <MenuItem.Icon>
                                 <Image Source="/WindowsGSM;component/Images/Zip.ico" Width="23" Margin="3"/>
                             </MenuItem.Icon>
-                            <MenuItem Header="Backup Files" Click="Browse_ServerBackups_Click"/>
-                            <MenuItem Header="Backup Configs" Click="Browse_BackupFiles_Click"/>
+                            <MenuItem Header="备份文件" Click="Browse_ServerBackups_Click"/>
+                            <MenuItem Header="备份配置" Click="Browse_BackupFiles_Click"/>
                         </MenuItem>
-                        <MenuItem Header="Server Files" Click="Browse_ServerFiles_Click">
+                        <MenuItem Header="服务器文件" Click="Browse_ServerFiles_Click">
                             <MenuItem.Icon>
                                 <Image Source="/WindowsGSM;component/Images/Files.ico" Width="23" Margin="3"/>
                             </MenuItem.Icon>
                         </MenuItem>
-                        <MenuItem Header="Server Configs" Click="Browse_ServerConfigs_Click">
+                        <MenuItem Header="服务器配置" Click="Browse_ServerConfigs_Click">
                             <MenuItem.Icon>
                                 <Image Source="/WindowsGSM;component/Images/Config.ico" Width="23" Margin="3"/>
                             </MenuItem.Icon>
                         </MenuItem>
                     </MenuItem>
-                    <MenuItem Header="Tools" Height="30">
-                        <MenuItem Header="Global Server List Check" Click="Tools_GlobalServerListCheck_Click"/>
-                        <MenuItem Header="Install Addons">
+                    <MenuItem Header="工具" Height="30">
+                        <MenuItem Header="全局服务器列表检查" Click="Tools_GlobalServerListCheck_Click"/>
+                        <MenuItem Header="安装插件">
                             <MenuItem Header="AMX Mod X + MetaMod-P" Click="Tool_InstallAMXModXMetamodP_Click">
                                 <MenuItem.Icon>
                                     <Image Source="/WindowsGSM;component/Images/Tools/AMXModX.ico" Width="23" Margin="3"/>
@@ -636,24 +636,24 @@
                             </MenuItem>
                         </MenuItem>
                     </MenuItem>
-                    <MenuItem Header="Help" Height="30">
-                        <MenuItem Header="Online Documentation" Click="Help_OnlineDocumentation_Click">
+                    <MenuItem Header="帮助" Height="30">
+                        <MenuItem Header="在线文档" Click="Help_OnlineDocumentation_Click">
                             <MenuItem.Icon>
                                 <Image Source="/WindowsGSM;component/Images/Book.ico" Width="23" Margin="3"/>
                             </MenuItem.Icon>
                         </MenuItem>
-                        <MenuItem Header="Report an issue" Click="Help_ReportIssue_Click">
+                        <MenuItem Header="报告问题" Click="Help_ReportIssue_Click">
                             <MenuItem.Icon>
                                 <Image Source="/WindowsGSM;component/Images/Issue.ico" Width="23" Margin="3"/>
                             </MenuItem.Icon>
                         </MenuItem>
-                        <MenuItem Header="Software Updates" Click="Help_SoftwareUpdates_Click">
+                        <MenuItem Header="软件更新" Click="Help_SoftwareUpdates_Click">
                             <MenuItem.Icon>
                                 <Image Source="/WindowsGSM;component/Images/Update.ico" Width="23" Margin="3"/>
                             </MenuItem.Icon>
                         </MenuItem>
                         <Separator/>
-                        <MenuItem Header="About WindowsGSM" Click="Help_AboutWindowsGSM_Click">
+                        <MenuItem Header="关于 WindowsGSM" Click="Help_AboutWindowsGSM_Click">
                             <MenuItem.Icon>
                                 <Image Source="/WindowsGSM;component/Images/WindowsGSM-Icon.ico" Width="23" Margin="3"/>
                             </MenuItem.Icon>
@@ -663,7 +663,7 @@
             </Grid>
             <Grid Height="1" Background="Black" DockPanel.Dock="Top"/>
             <Grid Height="40" VerticalAlignment="Top" DockPanel.Dock="Top" Margin="0,0,0,0">
-                <Label x:Name="label_select" Content="Select or Install or Import a server" HorizontalAlignment="Left" Margin="11,4,0,2" VerticalAlignment="Center" Height="34"/>
+                <Label x:Name="label_select" Content="选择#安装#导入服务器" HorizontalAlignment="Left" Margin="11,4,0,2" VerticalAlignment="Center" Height="34"/>
                 <DockPanel x:Name="grid_action">
                     <!--<Button x:Name="button_Crash" Cursor="Hand" Content="CRASH" HorizontalAlignment="Left" Margin="10,5,0,5" Width="112" Height="26" Background="Purple" Foreground="White" Click="Actions_Crash_Click"/>-->
                     <Button x:Name="button_Start" Cursor="Hand" Content="START" HorizontalAlignment="Left" Margin="10,5,0,5" Width="112" Height="26" Click="Actions_Start_Click" Background="LimeGreen" Foreground="White"/>
@@ -831,17 +831,17 @@
                 <!--  Items  -->
                 <mah:HamburgerMenu.ItemsSource>
                     <mah:HamburgerMenuItemCollection>
-                        <mah:HamburgerMenuImageItem Label="Home">
+                        <mah:HamburgerMenuImageItem Label="主页">
                             <mah:HamburgerMenuImageItem.Thumbnail>
                                 <BitmapImage UriSource="pack://application:,,,/WindowsGSM;component/Images/HMenu/Home.ico" />
                             </mah:HamburgerMenuImageItem.Thumbnail>
                         </mah:HamburgerMenuImageItem>
-                        <mah:HamburgerMenuImageItem Label="Dashboard">
+                        <mah:HamburgerMenuImageItem Label="仪表盘">
                             <mah:HamburgerMenuImageItem.Thumbnail>
                                 <BitmapImage UriSource="pack://application:,,,/WindowsGSM;component/Images/HMenu/Dashboard.ico" />
                             </mah:HamburgerMenuImageItem.Thumbnail>
                         </mah:HamburgerMenuImageItem>
-                        <mah:HamburgerMenuImageItem Label="Discord Bot">
+                        <mah:HamburgerMenuImageItem Label="Discord 机器人">
                             <mah:HamburgerMenuImageItem.Thumbnail>
                                 <BitmapImage UriSource="pack://application:,,,/WindowsGSM;component/Images/HMenu/Discord.ico" />
                             </mah:HamburgerMenuImageItem.Thumbnail>
@@ -851,12 +851,12 @@
 
                 <mah:HamburgerMenu.OptionsItemsSource>
                     <mah:HamburgerMenuItemCollection>
-                        <mah:HamburgerMenuImageItem Label="Plugins">
+                        <mah:HamburgerMenuImageItem Label="插件">
                             <mah:HamburgerMenuImageItem.Thumbnail>
                                 <BitmapImage UriSource="pack://application:,,,/WindowsGSM;component/Images/HMenu/ViewPlugins.ico" />
                             </mah:HamburgerMenuImageItem.Thumbnail>
                         </mah:HamburgerMenuImageItem>
-                        <mah:HamburgerMenuImageItem Label="Settings">
+                        <mah:HamburgerMenuImageItem Label="设置">
                             <mah:HamburgerMenuImageItem.Thumbnail>
                                 <BitmapImage UriSource="pack://application:,,,/WindowsGSM;component/Images/HMenu/Settings.ico" />
                             </mah:HamburgerMenuImageItem.Thumbnail>

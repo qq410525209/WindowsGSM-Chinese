@@ -1430,11 +1430,11 @@ namespace WindowsGSM
 
             var settings = new MetroDialogSettings
             {
-                AffirmativeButtonText = "Save",
+                AffirmativeButtonText = "保存",
                 DefaultText = webhookUrl
             };
 
-            webhookUrl = await this.ShowInputAsync("Discord Webhook URL", "Please enter the discord webhook url.", settings);
+            webhookUrl = await this.ShowInputAsync("Discord Webhook 地址", "请输入discord webhook地址.", settings);
             if (webhookUrl == null) { return; } //If pressed cancel
 
             _serverMetadata[int.Parse(server.ID)].DiscordWebhook = webhookUrl;
@@ -1450,7 +1450,7 @@ namespace WindowsGSM
 
             var settings = new MetroDialogSettings
             {
-                AffirmativeButtonText = "Save",
+                AffirmativeButtonText = "保存",
                 DefaultText = message
             };
 
@@ -3000,11 +3000,11 @@ namespace WindowsGSM
 
             var settings = new MetroDialogSettings
             {
-                AffirmativeButtonText = "Activate",
+                AffirmativeButtonText = "激活",
                 DefaultText = authKey
             };
 
-            authKey = await this.ShowInputAsync("Donor Connect (Patreon)", "Please enter the activation key.", settings);
+            authKey = await this.ShowInputAsync("捐助者连接 (作者)", "请输入激活码.", settings);
 
             //If pressed cancel or key is null or whitespace
             if (string.IsNullOrWhiteSpace(authKey))
@@ -3014,7 +3014,7 @@ namespace WindowsGSM
                 return;
             }
 
-            ProgressDialogController controller = await this.ShowProgressAsync("Authenticating...", "Please wait...");
+            ProgressDialogController controller = await this.ShowProgressAsync("认证中...", "请稍等...");
             controller.SetIndeterminate();
             (bool success, string name) = await AuthenticateDonor(authKey);
             await controller.CloseAsync();
@@ -3089,6 +3089,10 @@ namespace WindowsGSM
         #endregion
 
         #region Menu - Help
+        private void Help_OnlineDocumentation_Click1(object sender, RoutedEventArgs e)
+        {
+            Process.Start("https://www.aopk.cn");
+        }
         private void Help_OnlineDocumentation_Click(object sender, RoutedEventArgs e)
         {
             Process.Start("https://docs.windowsgsm.com");
@@ -3108,23 +3112,23 @@ namespace WindowsGSM
 
             if (string.IsNullOrEmpty(latestVersion))
             {
-                await this.ShowMessageAsync("Software Updates", "Fail to get latest version, please try again later.");
+                await this.ShowMessageAsync("软件更新", "Fail to get latest version, please try again later.");
                 return;
             }
 
             if (latestVersion == WGSM_VERSION)
             {
-                await this.ShowMessageAsync("Software Updates", "WindowsGSM is up to date.");
+                await this.ShowMessageAsync("软件更新", "WindowsGSM 是最新的.");
                 return;
             }
 
             var settings = new MetroDialogSettings
             {
-                AffirmativeButtonText = "Update",
+                AffirmativeButtonText = "更新",
                 DefaultButtonFocus = MessageDialogResult.Affirmative
             };
 
-            var result = await this.ShowMessageAsync("Software Updates", $"Version {latestVersion} is available, would you like to update now?\n\nWarning: All servers will be shutdown!", MessageDialogStyle.AffirmativeAndNegative, settings);
+            var result = await this.ShowMessageAsync("软件更新", $"版本 {latestVersion} 可用，你想现在更新吗？\n\n警告：所有服务器都将关闭！", MessageDialogStyle.AffirmativeAndNegative, settings);
 
             if (result.ToString().Equals("Affirmative"))
             {
@@ -3136,7 +3140,7 @@ namespace WindowsGSM
                 if (!File.Exists(filePath))
                 {
                     //Download WindowsGSM-Updater.exe
-                    controller = await this.ShowProgressAsync("Downloading WindowsGSM-Updater...", "Please wait...");
+                    controller = await this.ShowProgressAsync("下载中 WindowsGSM-Updater...", "请稍等...");
                     controller.SetIndeterminate();
                     bool success = await DownloadWindowsGSMUpdater();
                     await controller.CloseAsync();
@@ -3174,7 +3178,7 @@ namespace WindowsGSM
                 }
                 else
                 {
-                    await this.ShowMessageAsync("Software Updates", $"Fail to download WindowsGSM-Updater.exe");
+                    await this.ShowMessageAsync("软件更新", $"无法下载 WindowsGSM-Updater.exe");
                 }
             }
         }
@@ -3220,12 +3224,12 @@ namespace WindowsGSM
         {
             var settings = new MetroDialogSettings
             {
-                AffirmativeButtonText = "Patreon",
+                AffirmativeButtonText = "作者",
                 NegativeButtonText = "Ok",
                 DefaultButtonFocus = MessageDialogResult.Negative
             };
 
-            var result = await this.ShowMessageAsync("About WindowsGSM", $"Product:\t\tWindowsGSM\nVersion:\t\t{WGSM_VERSION.Substring(1)}\nCreator:\t\tTatLead\n\nIf you like WindowsGSM, consider becoming a Patron!", MessageDialogStyle.AffirmativeAndNegative, settings);
+            var result = await this.ShowMessageAsync("关于 WindowsGSM", $"产品:\t\tWindowsGSM\n版本:\t\t{WGSM_VERSION.Substring(1)}\n创作者:\t\tTatLead\n\n如果您喜欢 WindowsGSM，请考虑成为赞助人！", MessageDialogStyle.AffirmativeAndNegative, settings);
 
             if (result == MessageDialogResult.Affirmative)
             {
@@ -3242,25 +3246,25 @@ namespace WindowsGSM
 
             if (row.Game == GameServer.MCPE.FullName || row.Game == GameServer.MC.FullName)
             {
-                Log(row.ID, $"This feature is not applicable on {row.Game}");
+                Log(row.ID, $"此功能不适用于 {row.Game}");
                 return;
             }
 
             string publicIP = GetPublicIP();
             if (publicIP == null)
             {
-                Log(row.ID, "Fail to check. Reason: Fail to get the public ip.");
+                Log(row.ID, "检查失败。 原因：获取公网ip失败.");
                 return;
             }
 
-            string messageText = $"Server Name: {row.Name}\nPublic IP: {publicIP}\nQuery Port: {row.QueryPort}";
+            string messageText = $"服务器名称: {row.Name}\n公开IP: {publicIP}\n查询端口: {row.QueryPort}";
             if (GlobalServerList.IsServerOnSteamServerList(publicIP, row.QueryPort))
             {
-                MessageBox.Show(messageText + "\n\nResult: Online\n\nYour server is on the global server list!", "Global Server List Check", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(messageText + "\n\n结果：在线\n\n您的服务器在全球服务器列表中！", "全局服务器列表检查", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
-                MessageBox.Show(messageText + "\n\nResult: Offline\n\nYour server is not on the global server list.", "Global Server List Check", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(messageText + "\n\n结果：离线\n\n您的服务器不在全球服务器列表中.", "全局服务器列表检查", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -3582,11 +3586,11 @@ namespace WindowsGSM
 
             var settings = new MetroDialogSettings
             {
-                AffirmativeButtonText = "Save",
+                AffirmativeButtonText = "保存",
                 DefaultText = crontabFormat
             };
 
-            crontabFormat = await this.ShowInputAsync("Crontab Format", "Please enter the crontab expressions", settings);
+            crontabFormat = await this.ShowInputAsync("定时任务格式", "请输入 crontab 表达式", settings);
             if (crontabFormat == null) { return; } //If pressed cancel
 
             _serverMetadata[int.Parse(server.ID)].CrontabFormat = crontabFormat;
@@ -3743,7 +3747,7 @@ namespace WindowsGSM
         {
             var settings = new MetroDialogSettings
             {
-                AffirmativeButtonText = "Add"
+                AffirmativeButtonText = "添加"
             };
 
             string newAdminID = await this.ShowInputAsync("添加管理员ID", "请输入discord用户ID.", settings);
@@ -3762,7 +3766,7 @@ namespace WindowsGSM
 
             var settings = new MetroDialogSettings
             {
-                AffirmativeButtonText = "Save",
+                AffirmativeButtonText = "保存",
                 DefaultText = adminListItem.ServerIds
             };
 

@@ -637,6 +637,11 @@
                         </MenuItem>
                     </MenuItem>
                     <MenuItem Header="帮助" Height="30">
+                        <MenuItem Header="GAME模组中文网" Click="Help_OnlineDocumentation_Click1">
+                            <MenuItem.Icon>
+                                <Image Source="/WindowsGSM;component/Images/aopk.png" Width="23" Margin="3"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
                         <MenuItem Header="在线文档" Click="Help_OnlineDocumentation_Click">
                             <MenuItem.Icon>
                                 <Image Source="/WindowsGSM;component/Images/Book.ico" Width="23" Margin="3"/>
@@ -697,7 +702,7 @@
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="ID" IsReadOnly="True" Binding="{Binding Path=ID}" Width="35" MinWidth="35" MaxWidth="35"/>
                         <DataGridTextColumn Header="PID" IsReadOnly="True" Binding="{Binding Path=PID}" Width="65" MinWidth="55" MaxWidth="95"/>
-                        <DataGridTemplateColumn Header="MOD" IsReadOnly="True" Width="53" MinWidth="53" MaxWidth="53">
+                        <DataGridTemplateColumn Header="游戏" IsReadOnly="True" Width="53" MinWidth="53" MaxWidth="53">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Image Source="{Binding Icon}" Width="18"/>

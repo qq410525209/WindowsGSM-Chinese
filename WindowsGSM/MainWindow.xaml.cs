@@ -1148,7 +1148,7 @@ namespace WindowsGSM
             textbox_InstallServerName.IsEnabled = false;
             comboBox_InstallGameServer.IsEnabled = false;
             progressbar_InstallProgress.IsIndeterminate = true;
-            textblock_InstallProgress.Text = "Installing";
+            textblock_InstallProgress.Text = "安装";
             button_Install.IsEnabled = false;
             textbox_InstallLog.Text = string.Empty;
 
@@ -3289,7 +3289,7 @@ namespace WindowsGSM
             var result = await this.ShowMessageAsync("Tools - Install AMX Mod X & MetaMod-P", $"Are you sure to install? (ID: {server.ID})", MessageDialogStyle.AffirmativeAndNegative);
             if (result == MessageDialogResult.Affirmative)
             {
-                ProgressDialogController controller = await this.ShowProgressAsync("Installing...", "Please wait...");
+                ProgressDialogController controller = await this.ShowProgressAsync("安装...", "Please wait...");
                 controller.SetIndeterminate();
                 bool installed = await InstallAddons.AMXModXAndMetaModP(server);
                 await controller.CloseAsync();
@@ -3320,7 +3320,7 @@ namespace WindowsGSM
             var result = await this.ShowMessageAsync("Tools - Install SourceMod & MetaMod", $"Are you sure to install? (ID: {server.ID})", MessageDialogStyle.AffirmativeAndNegative);
             if (result == MessageDialogResult.Affirmative)
             {
-                var controller = await this.ShowProgressAsync("Installing...", "Please wait...");
+                var controller = await this.ShowProgressAsync("安装...", "Please wait...");
                 controller.SetIndeterminate();
                 bool installed = await InstallAddons.SourceModAndMetaMod(server);
                 await controller.CloseAsync();
@@ -3351,7 +3351,7 @@ namespace WindowsGSM
             var result = await this.ShowMessageAsync("Tools - Install DayZSAL Mod Server", $"Are you sure to install? (ID: {server.ID})", MessageDialogStyle.AffirmativeAndNegative);
             if (result == MessageDialogResult.Affirmative)
             {
-                ProgressDialogController controller = await this.ShowProgressAsync("Installing...", "Please wait...");
+                ProgressDialogController controller = await this.ShowProgressAsync("安装...", "Please wait...");
                 controller.SetIndeterminate();
                 bool installed = await InstallAddons.DayZSALModServer(server);
                 await controller.CloseAsync();
@@ -3384,7 +3384,7 @@ namespace WindowsGSM
             var result = await this.ShowMessageAsync(messageTitle, $"Are you sure to install? (ID: {server.ID})", MessageDialogStyle.AffirmativeAndNegative);
             if (result == MessageDialogResult.Affirmative)
             {
-                ProgressDialogController controller = await this.ShowProgressAsync("Installing...", "Please wait...");
+                ProgressDialogController controller = await this.ShowProgressAsync("安装...", "Please wait...");
                 controller.SetIndeterminate();
                 bool installed = await InstallAddons.OxideMod(server);
                 await controller.CloseAsync();

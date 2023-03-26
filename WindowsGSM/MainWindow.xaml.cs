@@ -579,7 +579,7 @@ namespace WindowsGSM
             string pluginsDir = ServerPath.FolderName.Plugins;
 
             System.Windows.Forms.OpenFileDialog ofd = new System.Windows.Forms.OpenFileDialog();
-            ofd.Filter = "zip files (*.zip)|*.zip";
+            ofd.Filter = "zip 文件 (*.zip)|*.zip";
             ofd.InitialDirectory = pluginsDir;
 
             DialogResult dr = ofd.ShowDialog();
@@ -626,7 +626,7 @@ namespace WindowsGSM
             // If a server is installing or import => return
             if (progressbar_InstallProgress.IsIndeterminate || progressbar_ImportProgress.IsIndeterminate)
             {
-                MessageBox.Show("WindowsGSM当前正在安装/导入服务器！", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("WindowsGSM当前正在安装/导入服务器！", "错误", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -1137,7 +1137,7 @@ namespace WindowsGSM
                 }
                 catch
                 {
-                    System.Windows.Forms.MessageBox.Show(installPath + " 不可访问!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    System.Windows.Forms.MessageBox.Show(installPath + " 不可访问!", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
@@ -1224,7 +1224,7 @@ namespace WindowsGSM
                 textbox_InstallServerName.IsEnabled = true;
                 comboBox_InstallGameServer.IsEnabled = true;
                 progressbar_InstallProgress.IsIndeterminate = false;
-                textblock_InstallProgress.Text = "Install";
+                textblock_InstallProgress.Text = "安装";
                 button_Install.IsEnabled = true;
 
                 if (Installer != null)
@@ -1346,7 +1346,7 @@ namespace WindowsGSM
             textbox_ServerDir.IsEnabled = false;
             button_Browse.IsEnabled = false;
             progressbar_ImportProgress.IsIndeterminate = true;
-            textblock_ImportProgress.Text = "Importing";
+            textblock_ImportProgress.Text = "导入";
 
             string sourcePath = textbox_ServerDir.Text;
             string importLog = await Task.Run(() =>
@@ -1454,7 +1454,7 @@ namespace WindowsGSM
                 DefaultText = message
             };
 
-            message = await this.ShowInputAsync("Discord Custom Message", "Please enter the custom message.\n\nExample ping message <@discorduserid>:\n<@348921660361146380>", settings);
+            message = await this.ShowInputAsync("Discord自定义消息", "请输入自定义消息.\n\nping消息示例 <@discorduserid>:\n<@348921660361146380>", settings);
             if (message == null) { return; } //If pressed cancel
 
             _serverMetadata[int.Parse(server.ID)].DiscordMessage = message;
@@ -1470,7 +1470,7 @@ namespace WindowsGSM
             if (!GetServerMetadata(serverId).DiscordAlert) { return; }
 
             var webhook = new DiscordWebhook(GetServerMetadata(serverId).DiscordWebhook, GetServerMetadata(serverId).DiscordMessage, g_DonorType);
-            await webhook.Send(server.ID, server.Game, "Webhook Test Alert", server.Name, server.IP, server.Port);
+            await webhook.Send(server.ID, server.Game, "Webhook测试警报", server.Name, server.IP, server.Port);
         }
 
         private void Button_ServerCommand_Click(object sender, RoutedEventArgs e)
@@ -2011,12 +2011,12 @@ namespace WindowsGSM
 
             if (GetServerMetadata(server.ID).BackupOnStart)
             {
-                await GameServer_Backup(server, " | Backup on Start");
+                await GameServer_Backup(server, " | 运行时备份");
             }
 
             if (GetServerMetadata(server.ID).UpdateOnStart)
             {
-                await GameServer_Update(server, " | Update on Start");
+                await GameServer_Update(server, " | 运行时更新");
             }
 
             _serverMetadata[int.Parse(server.ID)].ServerStatus = ServerStatus.Starting;
@@ -2124,7 +2124,7 @@ namespace WindowsGSM
             }
             else
             {
-                Log(server.ID, "服务器: Fail to update");
+                Log(server.ID, "服务器: 无法更新");
                 Log(server.ID, "[错误] " + gameServer.Error);
             }
 
@@ -3276,26 +3276,26 @@ namespace WindowsGSM
             bool? existed = InstallAddons.IsAMXModXAndMetaModPExists(server);
             if (existed == null)
             {
-                await this.ShowMessageAsync("Tools - Install AMX Mod X & MetaMod-P", $"Doesn't support on {server.Game} (ID: {server.ID})");
+                await this.ShowMessageAsync("工具 - Install AMX Mod X & MetaMod-P", $"不支持开启 {server.Game} (ID: {server.ID})");
                 return;
             }
 
             if (existed == true)
             {
-                await this.ShowMessageAsync("Tools - Install AMX Mod X & MetaMod-P", $"Already Installed (ID: {server.ID})");
+                await this.ShowMessageAsync("工具 - Install AMX Mod X & MetaMod-P", $"已经安装 (ID: {server.ID})");
                 return;
             }
 
-            var result = await this.ShowMessageAsync("Tools - Install AMX Mod X & MetaMod-P", $"Are you sure to install? (ID: {server.ID})", MessageDialogStyle.AffirmativeAndNegative);
+            var result = await this.ShowMessageAsync("工具 - Install AMX Mod X & MetaMod-P", $"您确定要安装吗? (ID: {server.ID})", MessageDialogStyle.AffirmativeAndNegative);
             if (result == MessageDialogResult.Affirmative)
             {
-                ProgressDialogController controller = await this.ShowProgressAsync("安装...", "Please wait...");
+                ProgressDialogController controller = await this.ShowProgressAsync("安装...", "请稍候...");
                 controller.SetIndeterminate();
                 bool installed = await InstallAddons.AMXModXAndMetaModP(server);
                 await controller.CloseAsync();
 
-                string message = installed ? $"Installed successfully" : $"Fail to install";
-                await this.ShowMessageAsync("Tools - Install AMX Mod X & MetaMod-P", $"{message} (ID: {server.ID})");
+                string message = installed ? $"安装成功" : $"安装失败";
+                await this.ShowMessageAsync("工具 - Install AMX Mod X & MetaMod-P", $"{message} (ID: {server.ID})");
             }
         }
 
@@ -3307,26 +3307,26 @@ namespace WindowsGSM
             bool? existed = InstallAddons.IsSourceModAndMetaModExists(server);
             if (existed == null)
             {
-                await this.ShowMessageAsync("Tools - Install SourceMod & MetaMod", $"Doesn't support on {server.Game} (ID: {server.ID})");
+                await this.ShowMessageAsync("工具 - Install SourceMod & MetaMod", $"不支持开启 {server.Game} (ID: {server.ID})");
                 return;
             }
 
             if (existed == true)
             {
-                await this.ShowMessageAsync("Tools - Install SourceMod & MetaMod", $"Already Installed (ID: {server.ID})");
+                await this.ShowMessageAsync("工具 - Install SourceMod & MetaMod", $"已经安装 (ID: {server.ID})");
                 return;
             }
 
-            var result = await this.ShowMessageAsync("Tools - Install SourceMod & MetaMod", $"Are you sure to install? (ID: {server.ID})", MessageDialogStyle.AffirmativeAndNegative);
+            var result = await this.ShowMessageAsync("工具 - Install SourceMod & MetaMod", $"您确定要安装吗? (ID: {server.ID})", MessageDialogStyle.AffirmativeAndNegative);
             if (result == MessageDialogResult.Affirmative)
             {
-                var controller = await this.ShowProgressAsync("安装...", "Please wait...");
+                var controller = await this.ShowProgressAsync("安装...", "请稍候...");
                 controller.SetIndeterminate();
                 bool installed = await InstallAddons.SourceModAndMetaMod(server);
                 await controller.CloseAsync();
 
-                var message = installed ? $"Installed successfully" : $"Fail to install";
-                await this.ShowMessageAsync("Tools - Install SourceMod & MetaMod", $"{message} (ID: {server.ID})");
+                var message = installed ? $"安装成功" : $"安装失败";
+                await this.ShowMessageAsync("工具 - Install SourceMod & MetaMod", $"{message} (ID: {server.ID})");
             }
         }
 
@@ -3338,26 +3338,26 @@ namespace WindowsGSM
             bool? existed = InstallAddons.IsDayZSALModServerExists(server);
             if (existed == null)
             {
-                await this.ShowMessageAsync("Tools - Install DayZSAL Mod Server", $"Doesn't support on {server.Game} (ID: {server.ID})");
+                await this.ShowMessageAsync("工具 - Install DayZSAL Mod Server", $"不支持开启 {server.Game} (ID: {server.ID})");
                 return;
             }
 
             if (existed == true)
             {
-                await this.ShowMessageAsync("Tools - Install DayZSAL Mod Server", $"Already Installed (ID: {server.ID})");
+                await this.ShowMessageAsync("工具 - Install DayZSAL Mod Server", $"已经安装 (ID: {server.ID})");
                 return;
             }
 
-            var result = await this.ShowMessageAsync("Tools - Install DayZSAL Mod Server", $"Are you sure to install? (ID: {server.ID})", MessageDialogStyle.AffirmativeAndNegative);
+            var result = await this.ShowMessageAsync("工具 - Install DayZSAL Mod Server", $"您确定要安装吗? (ID: {server.ID})", MessageDialogStyle.AffirmativeAndNegative);
             if (result == MessageDialogResult.Affirmative)
             {
-                ProgressDialogController controller = await this.ShowProgressAsync("安装...", "Please wait...");
+                ProgressDialogController controller = await this.ShowProgressAsync("安装...", "请稍候...");
                 controller.SetIndeterminate();
                 bool installed = await InstallAddons.DayZSALModServer(server);
                 await controller.CloseAsync();
 
-                string message = installed ? $"Installed successfully" : $"Fail to install";
-                await this.ShowMessageAsync("Tools - Install DayZSAL Mod Server", $"{message} (ID: {server.ID})");
+                string message = installed ? $"安装成功" : $"安装失败";
+                await this.ShowMessageAsync("工具 - Install DayZSAL Mod Server", $"{message} (ID: {server.ID})");
             }
         }
 
@@ -3366,30 +3366,30 @@ namespace WindowsGSM
             var server = (ServerTable)ServerGrid.SelectedItem;
             if (server == null) { return; }
 
-            string messageTitle = "Tools - Install OxideMod";
+            string messageTitle = "工具 - Install OxideMod";
 
             bool? existed = InstallAddons.IsOxideModExists(server);
             if (existed == null)
             {
-                await this.ShowMessageAsync(messageTitle, $"Doesn't support on {server.Game} (ID: {server.ID})");
+                await this.ShowMessageAsync(messageTitle, $"不支持开启 {server.Game} (ID: {server.ID})");
                 return;
             }
 
             if (existed == true)
             {
-                await this.ShowMessageAsync(messageTitle, $"Already Installed (ID: {server.ID})");
+                await this.ShowMessageAsync(messageTitle, $"已经安装 (ID: {server.ID})");
                 return;
             }
 
-            var result = await this.ShowMessageAsync(messageTitle, $"Are you sure to install? (ID: {server.ID})", MessageDialogStyle.AffirmativeAndNegative);
+            var result = await this.ShowMessageAsync(messageTitle, $"您确定要安装吗? (ID: {server.ID})", MessageDialogStyle.AffirmativeAndNegative);
             if (result == MessageDialogResult.Affirmative)
             {
-                ProgressDialogController controller = await this.ShowProgressAsync("安装...", "Please wait...");
+                ProgressDialogController controller = await this.ShowProgressAsync("安装...", "请稍候...");
                 controller.SetIndeterminate();
                 bool installed = await InstallAddons.OxideMod(server);
                 await controller.CloseAsync();
 
-                string message = installed ? $"Installed successfully" : $"Fail to install";
+                string message = installed ? $"安装成功" : $"安装失败";
                 await this.ShowMessageAsync(messageTitle, $"{message} (ID: {server.ID})");
             }
         }

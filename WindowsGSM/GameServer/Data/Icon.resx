@@ -117,10 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="7 Days to Die Dedicated Server" xml:space="preserve">
+  <data name="七日杀专用服务器" xml:space="preserve">
     <value>Images/Games/7dtd.png</value>
   </data>
-  <data name="ARK: Survival Evolved Dedicated Server" xml:space="preserve">
+  <data name="ARK: 方舟生存计划专用服务器" xml:space="preserve">
     <value>Images/Games/arkse.png</value>
   </data>
   <data name="Avorion Dedicated Server" xml:space="preserve">

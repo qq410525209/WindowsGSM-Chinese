@@ -32,7 +32,7 @@ namespace WindowsGSM.GameServer
         public string Error;
         public string Notice;
 
-        public const string FullName = "7 Days to Die Dedicated Server";
+        public const string FullName = "七日杀专用服务器";
         public string StartPath = "7DaysToDieServer.exe";
         public bool AllowsEmbedConsole = true;
         public int PortIncrements = 1;
@@ -180,7 +180,7 @@ namespace WindowsGSM.GameServer
             string exeFile = "7DaysToDieServer.exe";
             string exePath = Path.Combine(path, exeFile);
 
-            Error = $"Invalid Path! Fail to find {exeFile}";
+            Error = $"路径无效！ 找不到 {exeFile}";
             return File.Exists(exePath);
         }
 

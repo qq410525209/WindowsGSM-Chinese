@@ -91,7 +91,7 @@ namespace WindowsGSM.Functions
 
         private static string GetColor(string serverStatus)
         {
-            if (serverStatus.Contains("Started"))
+            if (serverStatus.Contains("启动"))
             {
                 return "65280"; //Green
             }
@@ -113,7 +113,7 @@ namespace WindowsGSM.Functions
 
         private static string GetStatusWithEmoji(string serverStatus)
         {
-            if (serverStatus.Contains("Started"))
+            if (serverStatus.Contains("启动"))
             {
                 return ":green_circle: " + serverStatus;
             }
@@ -136,7 +136,7 @@ namespace WindowsGSM.Functions
         private static string GetThumbnail(string serverStatus)
         {
             string url = "https://github.com/WindowsGSM/Discord-Alert-Icons/raw/master/";
-            if (serverStatus.Contains("Started"))
+            if (serverStatus.Contains("启动"))
             {
                 return $"{url}Started.png";
             }

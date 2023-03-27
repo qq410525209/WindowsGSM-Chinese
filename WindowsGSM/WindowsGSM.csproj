@@ -481,6 +481,7 @@
     <EmbeddedResource Include="GameServer\Data\Icon.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Icon.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

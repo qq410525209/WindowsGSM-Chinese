@@ -105,7 +105,7 @@
             <mah:Flyout x:Name="MahAppFlyout_DiscordAlert" Header="Discord通知设置" Position="Bottom" Theme="Dark">
                 <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                     <StackPanel Orientation="Horizontal">
-                        <mah:ToggleSwitch x:Name="MahAppSwitch_AutoStartAlert" Header="自动运行通知" Margin="20,20,0,20" Toggled="Switch_AutoStartAlert_Click"/>
+                        <mah:ToggleSwitch x:Name="MahAppSwitch_AutoStartAlert" Header="自动启动通知" Margin="20,20,0,20" Toggled="Switch_AutoStartAlert_Click"/>
                         <mah:ToggleSwitch x:Name="MahAppSwitch_AutoRestartAlert" Header="自动重启通知" Margin="0,20,0,20" Toggled="Switch_AutoRestartAlert_Click"/>
                         <mah:ToggleSwitch x:Name="MahAppSwitch_AutoUpdateAlert" Header="自动更新通知" Margin="0,20,0,20" Toggled="Switch_AutoUpdateAlert_Click"/>
                         <mah:ToggleSwitch x:Name="MahAppSwitch_RestartCrontabAlert" Header="定时重启通知" Margin="0,20,0,20" Toggled="Switch_RestartCrontabAlert_Click"/>
@@ -168,7 +168,7 @@
                                 </StackPanel>
                             </StackPanel>
                             <StackPanel Margin="0,0,0,10">
-                                <Label Content="服务器运行地图"></Label>
+                                <Label Content="服务器启动地图"></Label>
                                 <TextBox x:Name="textbox_EC_ServerMap" Height="23" Width="500" FontFamily="Consolas" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
                             </StackPanel>
                             <StackPanel Margin="0,0,0,10">
@@ -176,7 +176,7 @@
                                 <TextBox x:Name="textbox_EC_ServerGSLT" Height="23" Width="500" FontFamily="Consolas" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
                             </StackPanel>
                             <StackPanel>
-                                <Label Content="服务器运行参数"></Label>
+                                <Label Content="服务器启动参数"></Label>
                             </StackPanel>
                         </StackPanel>
                         <TextBox x:Name="textbox_EC_ServerParam" Width="500" TextWrapping="Wrap" FontFamily="Consolas" Text="" DockPanel.Dock="Top"/>
@@ -192,7 +192,7 @@
                             <Label x:Name="label_ManageAddonsName" FontFamily="Consolas"></Label>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
-                            <Label Content="运行: " FontFamily="Consolas"></Label>
+                            <Label Content="启动: " FontFamily="Consolas"></Label>
                             <Label x:Name="label_ManageAddonsGame" FontFamily="Consolas"></Label>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
@@ -331,7 +331,7 @@
                             </DockPanel>
                             <DockPanel DockPanel.Dock="Top" Margin="5,10,0,0">
                                 <mah:ToggleSwitch DockPanel.Dock="Left" VerticalAlignment="Center" x:Name="switch_DiscordBot" Header="开启" Style="{StaticResource MahApps.Styles.ToggleSwitch}" Width="140" Toggled="Switch_DiscordBot_Toggled"/>
-                                <mah:ToggleSwitch DockPanel.Dock="Left" VerticalAlignment="Center" x:Name="MahAppSwitch_DiscordBotAutoStart" Header="自动运行" Style="{StaticResource MahApps.Styles.ToggleSwitch}" Width="140" Toggled="Switch_DiscordBotAutoStart_Click"/>
+                                <mah:ToggleSwitch DockPanel.Dock="Left" VerticalAlignment="Center" x:Name="MahAppSwitch_DiscordBotAutoStart" Header="自动启动" Style="{StaticResource MahApps.Styles.ToggleSwitch}" Width="140" Toggled="Switch_DiscordBotAutoStart_Click"/>
                                 <DockPanel DockPanel.Dock="Top" Margin="10,0,0,0">
                                     <DockPanel DockPanel.Dock="Top">
                                         <Label DockPanel.Dock="Left" Content="机器人前缀"/>
@@ -533,7 +533,7 @@
                         </MenuItem>
                     </MenuItem>
                     <MenuItem Header="控制" Height="30">
-                        <MenuItem Header="运行" Click="Actions_Start_Click">
+                        <MenuItem Header="启动" Click="Actions_Start_Click">
                             <MenuItem.Icon>
                                 <Image Source="/WindowsGSM;component/Images/Start.ico" Width="23" Margin="3"/>
                             </MenuItem.Icon>
@@ -549,12 +549,12 @@
                             </MenuItem.Icon>
                         </MenuItem>
                         <MenuItem Header="更多">
-                            <MenuItem Header="运行全部服务器" Click="Actions_StartAllServers_Click">
+                            <MenuItem Header="启动全部服务器" Click="Actions_StartAllServers_Click">
                                 <MenuItem.Icon>
                                     <Image Source="/WindowsGSM;component/Images/Start.ico" Width="23" Margin="3"/>
                                 </MenuItem.Icon>
                             </MenuItem>
-                            <MenuItem Header="开启自动运行服务器" Click="Actions_StartServersWithAutoStartEnabled_Click">
+                            <MenuItem Header="开启自动启动服务器" Click="Actions_StartServersWithAutoStartEnabled_Click">
                                 <MenuItem.Icon>
                                     <Image Source="/WindowsGSM;component/Images/Start.ico" Width="23" Margin="3"/>
                                 </MenuItem.Icon>
@@ -671,7 +671,7 @@
                 <Label x:Name="label_select" Content="选择#安装#导入服务器" HorizontalAlignment="Left" Margin="11,4,0,2" VerticalAlignment="Center" Height="34"/>
                 <DockPanel x:Name="grid_action">
                     <!--<Button x:Name="button_Crash" Cursor="Hand" Content="CRASH" HorizontalAlignment="Left" Margin="10,5,0,5" Width="112" Height="26" Background="Purple" Foreground="White" Click="Actions_Crash_Click"/>-->
-                    <Button x:Name="button_Start" Cursor="Hand" Content="运行" HorizontalAlignment="Left" Margin="10,5,0,5" Width="112" Height="26" Click="Actions_Start_Click" Background="LimeGreen" Foreground="White"/>
+                    <Button x:Name="button_Start" Cursor="Hand" Content="启动" HorizontalAlignment="Left" Margin="10,5,0,5" Width="112" Height="26" Click="Actions_Start_Click" Background="LimeGreen" Foreground="White"/>
                     <Button x:Name="button_Stop" Cursor="Hand" Content="停止" HorizontalAlignment="Left" Margin="5,5,0,5" Width="112" Height="26" Click="Actions_Stop_Click" Background="Orange" Foreground="White"/>
                     <Button x:Name="button_Restart" Cursor="Hand" Content="重启" HorizontalAlignment="Left" Margin="5,5,0,5" Width="112" Height="26" Click="Actions_Restart_Click" Background="DeepSkyBlue" Foreground="White"/>
                     <Button x:Name="button_Kill" Cursor="Hand" Content="结束" HorizontalAlignment="Left" Margin="5,5,0,5" Width="112" Height="26" Click="Actions_Kill_Click" Background="OrangeRed" Foreground="White"/>
@@ -716,7 +716,7 @@
                         <DataGridTextColumn Header="查询端口" IsReadOnly="True" Binding="{Binding Path=QueryPort}" Width="4*" MinWidth="93"/>
                         <DataGridTextColumn Header="地图" IsReadOnly="True" Binding="{Binding Path=Defaultmap}" Width="7*" MinWidth="50"/>
                         <DataGridTextColumn Header="玩家" IsReadOnly="True" Binding="{Binding Path=Maxplayers}" Width="3*" MinWidth="70"/>
-                        <DataGridTextColumn Header="运行时间" IsReadOnly="True" Binding="{Binding Path=Uptime}" Width="4*" MinWidth="80"/>
+                        <DataGridTextColumn Header="启动时间" IsReadOnly="True" Binding="{Binding Path=Uptime}" Width="4*" MinWidth="80"/>
                         <!--<DataGridTextColumn Header="内存使用" IsReadOnly="True" Binding="{Binding Path=RamUsage}" Width="4*"/>-->
                     </DataGrid.Columns>
                 </DataGrid>
@@ -749,7 +749,7 @@
                         <TextBox x:Name="textBox_restartcrontab" Height="23" Margin="192,40,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" IsReadOnly="true" HorizontalAlignment="Left" Width="95"/>
                         <TextBox x:Name="textBox_nextcrontab" Height="11" Margin="292,40,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" IsReadOnly="true" HorizontalAlignment="Left" Width="175" FontFamily="Consolas"/>
 
-                        <Label Content="自动运行" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Margin="5,127,0,0"/>
+                        <Label Content="自动启动" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Margin="5,127,0,0"/>
                         <mah:ToggleSwitch x:Name="switch_autostart" Margin="100,125,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Toggled="Button_AutoStart_Click" Width="44" Height="30"/>
 
                         <Label x:Name="label_embedconsole" Content="嵌入控制台" HorizontalAlignment="Left" Margin="5,99,0,0" VerticalAlignment="Top"/>
@@ -761,10 +761,10 @@
                         <Label Content="自动更新" HorizontalAlignment="Left" Margin="338,127,0,0" VerticalAlignment="Top"/>
                         <mah:ToggleSwitch x:Name="switch_autoupdate" Margin="422,125,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Toggled="Button_AutoUpdate_Click" Width="44" Height="30"/>
 
-                        <Label Content="运行时更新" HorizontalAlignment="Left" Margin="159,99,0,0" VerticalAlignment="Top"/>
+                        <Label Content="启动时更新" HorizontalAlignment="Left" Margin="159,99,0,0" VerticalAlignment="Top"/>
                         <mah:ToggleSwitch x:Name="switch_updateonstart" Margin="258,97,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Toggled="Button_UpdateOnStart_Click" Width="44" Height="30"/>
 
-                        <Label Content="运行是备份" HorizontalAlignment="Left" Margin="323,99,0,0" VerticalAlignment="Top"/>
+                        <Label Content="启动时备份" HorizontalAlignment="Left" Margin="323,99,0,0" VerticalAlignment="Top"/>
                         <mah:ToggleSwitch x:Name="switch_backuponstart" Margin="422,97,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Toggled="Button_BackupOnStart_Click" Width="44" Height="30"/>
 
                         <Label x:Name="label_discordalert" Content="Discord消息" HorizontalAlignment="Left" Margin="5,70,0,0" VerticalAlignment="Top"/>

@@ -12,7 +12,7 @@ namespace WindowsGSM.GameServer
         public string Error;
         public string Notice;
 
-        public const string FullName = "ARK: Survival Evolved Dedicated Server";
+        public const string FullName = "ARK: 方舟生存计划专用服务器";
         public string StartPath = @"ShooterGame\Binaries\Win64\ShooterGameServer.exe";
         public bool AllowsEmbedConsole = false;
         public int PortIncrements = 2;
@@ -102,7 +102,7 @@ namespace WindowsGSM.GameServer
         public bool IsImportValid(string path)
         {
             string exePath = Path.Combine(path, "PackageInfo.bin");
-            Error = $"Invalid Path! Fail to find {Path.GetFileName(exePath)}";
+            Error = $"路径无效！ 找不到 {Path.GetFileName(exePath)}";
             return File.Exists(exePath);
         }
 

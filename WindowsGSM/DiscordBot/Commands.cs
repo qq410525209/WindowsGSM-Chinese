@@ -212,18 +212,18 @@ namespace WindowsGSM.DiscordBot
                         if (serverStatus == MainWindow.ServerStatus.Started)
                         {
                             bool started = await WindowsGSM.RestartServerById(args[1], message.Author.Id.ToString(), message.Author.Username);
-                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) {(started ? "Restarted" : "Fail to Restart")}.");
+                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) {(started ? "重新启动" : "无法重新启动")}.");
                         }
                         else
                         {
-                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) currently in {serverStatus.ToString()} state, not able to restart.");
+                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) 目前处于 {serverStatus.ToString()} 状态, 无法重新启动.");
                         }
 
                         await SendServerEmbed(message, Color.Blue, args[1], WindowsGSM.GetServerStatus(args[1]).ToString(), WindowsGSM.GetServerName(args[1]));
                     }
                     else
                     {
-                        await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) does not exists.");
+                        await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) 不存在.");
                     }
                 });
             }
@@ -248,16 +248,16 @@ namespace WindowsGSM.DiscordBot
                         {
                             string sendCommand = command.Substring(args[1].Length + 6);
                             bool sent = await WindowsGSM.SendCommandById(args[1], sendCommand, message.Author.Id.ToString(), message.Author.Username);
-                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) {(sent ? "Command sent" : "Fail to send command")}. | `{sendCommand}`");
+                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) {(sent ? "Command sent" : "命令发送失败")}. | `{sendCommand}`");
                         }
                         else
                         {
-                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) currently in {serverStatus.ToString()} state, not able to send command.");
+                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) 目前处于 {serverStatus.ToString()} 状态,无法发送命令.");
                         }
                     }
                     else
                     {
-                        await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) does not exists.");
+                        await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) 不存在.");
                     }
                 });
             }
@@ -282,20 +282,20 @@ namespace WindowsGSM.DiscordBot
                         {
                             await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) Backup started - this may take some time.");
                             bool backuped = await WindowsGSM.BackupServerById(args[1], message.Author.Id.ToString(), message.Author.Username);
-                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) {(backuped ? "Backup Complete" : "Fail to Backup")}.");
+                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) {(backuped ? "备份完成" : "备份失败")}.");
                         }
                         else if (serverStatus == MainWindow.ServerStatus.Backuping)
                         {
-                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) already Backuping.");
+                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) 已经备份.");
                         }
                         else
                         {
-                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) currently in {serverStatus.ToString()} state, not able to backup.");
+                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) 目前处于 {serverStatus.ToString()} 状态, 无法备份.");
                         }
                     }
                     else
                     {
-                        await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) does not exists.");
+                        await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) 不存在.");
                     }
                 });
             }
@@ -318,22 +318,22 @@ namespace WindowsGSM.DiscordBot
                         MainWindow.ServerStatus serverStatus = WindowsGSM.GetServerStatus(args[1]);
                         if (serverStatus == MainWindow.ServerStatus.Stopped)
                         {
-                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) Update started - this may take some time.");
+                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) 更新开始 - 这需要一些时间.");
                             bool updated = await WindowsGSM.UpdateServerById(args[1], message.Author.Id.ToString(), message.Author.Username);
-                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) {(updated ? "Updated" : "Fail to Update")}.");
+                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) {(updated ? "Updated" : "更新失败")}.");
                         }
                         else if (serverStatus == MainWindow.ServerStatus.Updating)
                         {
-                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) already Updating.");
+                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) 已经更新.");
                         }
                         else
                         {
-                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) currently in {serverStatus} state, not able to update.");
+                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) 目前处于 {serverStatus} 状态, 无法更新.");
                         }
                     }
                     else
                     {
-                        await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) does not exists.");
+                        await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) 不存在.");
                     }
                 });
             }

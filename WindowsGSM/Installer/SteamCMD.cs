@@ -191,14 +191,14 @@ namespace WindowsGSM.Installer
                 //If steamcmd.exe not exists, download steamcmd.exe
                 if (!await Download())
                 {
-                    Error = $"下载失败 {_exeFile}";
+                    Error = $"Fail to download {_exeFile}";
                     return null;
                 }
             }
 
             if (_param == null)
             {
-                Error = "未设置 Steam 帐户";
+                Error = "Steam account is not set";
                 return null;
             }
 
@@ -249,13 +249,13 @@ namespace WindowsGSM.Installer
             string param = GetParameter(ServerPath.GetServersServerFiles(serverId), appId, validate, loginAnonymous, modName, custom);
             if (param == null)
             {
-                return (null, "未设置 Steam 帐户");
+                return (null, "Steam account not set up");
             }
 
             string exePath = Path.Combine(_installPath, _exeFile);
             if (!File.Exists(exePath) && !await Download())
             {
-                return (null, "无法下载steamcmd");
+                return (null, "Unable to download steamcmd");
             }
 
             // Fix the SteamCMD issue
@@ -312,7 +312,7 @@ namespace WindowsGSM.Installer
 
             if (p.ExitCode != 0)
             {
-                Error = $"退出代码: {p.ExitCode.ToString()}";
+                Error = $"Exit code: {p.ExitCode.ToString()}";
                 return false;
             }
 
@@ -359,7 +359,7 @@ namespace WindowsGSM.Installer
 
             if (!File.Exists(manifestPath))
             {
-                Error = $"{manifestFile} 不见了.";
+                Error = $"{manifestFile} is missing.";
                 return string.Empty;
             }
 
@@ -370,7 +370,7 @@ namespace WindowsGSM.Installer
             }
             catch (Exception e)
             {
-                Error = $"获取本地构建失败 {e.Message}";
+                Error = $"Fail to get local build {e.Message}";
                 return string.Empty;
             }
 
@@ -379,7 +379,7 @@ namespace WindowsGSM.Installer
 
             if (matches.Count != 1 || matches[0].Groups.Count != 2)
             {
-                Error = $"获取本地构建失败";
+                Error = $"Fail to get local build";
                 return string.Empty;
             }
 
@@ -394,7 +394,7 @@ namespace WindowsGSM.Installer
                 //If steamcmd.exe not exists, download steamcmd.exe
                 if (!await Download())
                 {
-                    Error = "无法下载steamcmd.exe";
+                    Error = "Fail to download steamcmd.exe";
                     return string.Empty;
                 }
             }
@@ -414,12 +414,12 @@ namespace WindowsGSM.Installer
                     if (File.Exists(vdfPath))
                     {
                         File.Delete(vdfPath);
-                        Debug.WriteLine($"删除appinfo.vdf ({vdfPath})");
+                        Debug.WriteLine($"Deleted appinfo.vdf ({vdfPath})");
                     }
                 }
                 catch
                 {
-                    Debug.WriteLine($"要删除文件appinfo.vdf ({vdfPath})");
+                    Debug.WriteLine($"File to delete appinfo.vdf ({vdfPath})");
                 }
             });
 
@@ -460,12 +460,12 @@ namespace WindowsGSM.Installer
 
                 using (TextWriter textwriter = new StreamWriter(_userDataPath))
                 {
-                    textwriter.WriteLine("// 出于安全和兼容性原因，WindowsGSM 建议您创建一个新的 Steam 帐户.");
-                    textwriter.WriteLine("// 更多信息: (https://docs.windowsgsm.com/installer/steamcmd)");
+                    textwriter.WriteLine("// For security and compatibility reasons, WindowsGSM suggests you to create a new steam account.");
+                    textwriter.WriteLine("// More info: (https://docs.windowsgsm.com/installer/steamcmd)");
                     textwriter.WriteLine("// ");
-                    textwriter.WriteLine("// 用户名和密码 - 没有Steam验证            (支持 + 支持自动更新) (推荐)");
-                    textwriter.WriteLine("// 用户名和密码 - 通过电子邮件的 Steam 令牌 (支持 + 支持自动更新)");
-                    textwriter.WriteLine("// 用户名和密码 - 通过智能手机的 Steam 令牌 (支持 + 不支持自动更新)");
+                    textwriter.WriteLine("// Username and password - No Steam Guard             (Supported + Auto update supported) (Recommended)");
+                    textwriter.WriteLine("// Username and password - Steam Guard via Email      (Supported + Auto update supported)");
+                    textwriter.WriteLine("// Username and password - Steam Guard via Smartphone (Supported + Auto update NOT supported)");
                     textwriter.WriteLine("// ");
                     textwriter.WriteLine("steamUser=\"\"");
                     textwriter.WriteLine("steamPass=\"\"");

@@ -614,22 +614,27 @@
                     <MenuItem Header="工具" Height="30">
                         <MenuItem Header="全局服务器列表检查" Click="Tools_GlobalServerListCheck_Click"/>
                         <MenuItem Header="安装插件">
+                            <MenuItem Header="BepInEx模组框架" Click="Tools_InstallBepInExMod_Click">
+                                <MenuItem.Icon>
+                                    <Image Source="/WindowsGSM;component/Images/Tools/BepInEx.ico" Width="23" Margin="3"/>
+                                </MenuItem.Icon>
+                            </MenuItem>
                             <MenuItem Header="AMX Mod X + MetaMod-P" Click="Tool_InstallAMXModXMetamodP_Click">
                                 <MenuItem.Icon>
                                     <Image Source="/WindowsGSM;component/Images/Tools/AMXModX.ico" Width="23" Margin="3"/>
                                 </MenuItem.Icon>
                             </MenuItem>
-                            <MenuItem Header="SourceMod + MetaMod" Click="Tools_InstallSourcemodMetamod_Click">
+                            <MenuItem Header="Source模组 + MetaMod" Click="Tools_InstallSourcemodMetamod_Click">
                                 <MenuItem.Icon>
                                     <Image Source="/WindowsGSM;component/Images/Tools/SourceMod.ico" Width="23" Margin="3"/>
                                 </MenuItem.Icon>
                             </MenuItem>
-                            <MenuItem Header="DayZSAL Mod Server" Click="Tools_InstallDayZSALModServer_Click">
+                            <MenuItem Header="DayZSAL 模组服务器" Click="Tools_InstallDayZSALModServer_Click">
                                 <MenuItem.Icon>
                                     <Image Source="/WindowsGSM;component/Images/Tools/DayZSAL.ico" Width="23" Margin="3"/>
                                 </MenuItem.Icon>
                             </MenuItem>
-                            <MenuItem Header="OxideMod" Click="Tools_InstallOxideMod_Click">
+                            <MenuItem Header="Oxide模组" Click="Tools_InstallOxideMod_Click">
                                 <MenuItem.Icon>
                                     <Image Source="/WindowsGSM;component/Images/Tools/OxideMod.ico" Width="23" Margin="3"/>
                                 </MenuItem.Icon>

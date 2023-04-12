@@ -198,7 +198,7 @@
   <data name="我的世界: Java版服务器" xml:space="preserve">
     <value>Images/Games/mc.png</value>
   </data>
-  <data name="我的世界: Pocket Edition Server (PocketMine-MP)" xml:space="preserve">
+  <data name="我的世界: 携带版服务器 (PocketMine-MP)" xml:space="preserve">
     <value>Images/Games/mcpe.png</value>
   </data>
   <data name="雷霆一击 专用服务器" xml:space="preserve">

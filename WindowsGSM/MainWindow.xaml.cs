@@ -3267,6 +3267,41 @@ namespace WindowsGSM
                 MessageBox.Show(messageText + "\n\n结果：离线\n\n您的服务器不在全球服务器列表中.", "全局服务器列表检查", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+        private async void Tools_InstallBepInExMod_Click(object sender, RoutedEventArgs e)
+        {
+            var server = (ServerTable)ServerGrid.SelectedItem;
+            if (server == null) { return; }
+
+            string messageTitle = "工具 - 安装 BepInEx";
+
+            bool? existed = InstallAddons.IsBepInExModExists(server);
+            if (existed == null)
+            {
+                await this.ShowMessageAsync(messageTitle, $"不支持开启 {server.Game} (ID: {server.ID})");
+                return;
+            }
+
+            if (existed == true)
+            {
+                await this.ShowMessageAsync(messageTitle, $"已经安装 (ID: {server.ID})");
+                return;
+            }
+
+            var result = await this.ShowMessageAsync(messageTitle, $"您确定要安装吗? (ID: {server.ID})", MessageDialogStyle.AffirmativeAndNegative);
+            if (result == MessageDialogResult.Affirmative)
+            {
+                ProgressDialogController controller = await this.ShowProgressAsync("安装...", "请稍候...");
+                controller.SetIndeterminate();
+                bool installed = await InstallAddons.BepInExMod(server);
+                await controller.CloseAsync();
+
+                string message = installed ? $"安装成功" : $"安装失败";
+                await this.ShowMessageAsync(messageTitle, $"{message} (ID: {server.ID})");
+            }
+        }
+
+
+
 
         private async void Tool_InstallAMXModXMetamodP_Click(object sender, RoutedEventArgs e)
         {

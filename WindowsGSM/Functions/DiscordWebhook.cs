@@ -33,7 +33,7 @@ namespace WindowsGSM.Functions
             string avatarUrl = GetAvatarUrl();
             string json = @"
             {
-                ""username"": ""WindowsGSM"",
+                ""username"": ""游戏服务管理器"",
                 ""avatar_url"": """ + avatarUrl  + @""",
                 ""content"": """ + HttpUtility.JavaScriptStringEncode(_customMessage) + @""",
                 ""embeds"": [
@@ -195,7 +195,7 @@ namespace WindowsGSM.Functions
             {
                 JObject jObject = new JObject
                 {
-                    { "username", "WindowsGSM - Error Feed" },
+                    { "username", "游戏服务管理器 - Error Feed" },
                     { "avatar_url", "https://github.com/WindowsGSM/WindowsGSM/raw/master/WindowsGSM/Images/WindowsGSM.png" },
                     { "content",  $"```php\n{errorLog}```" }
                 };

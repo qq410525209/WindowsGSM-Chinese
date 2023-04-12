@@ -147,7 +147,7 @@ namespace WindowsGSM
             DiscordWebhook.SendErrorLog();
 
             InitializeComponent();
-            Title = $"WindowsGSM {WGSM_VERSION}";
+            Title = $"游戏服务管理器-简体中文 {WGSM_VERSION}";
 
             //Close SplashScreen
             splashScreen.Close(new TimeSpan(0, 0, 1));
@@ -281,9 +281,9 @@ namespace WindowsGSM
 
             notifyIcon = new NotifyIcon
             {
-                BalloonTipTitle = "WindowsGSM",
-                BalloonTipText = "WindowsGSM 在后台启动",
-                Text = "WindowsGSM",
+                BalloonTipTitle = "游戏服务管理器",
+                BalloonTipText = "游戏服务管理器在后台启动",
+                Text = "游戏服务管理器",
                 BalloonTipIcon = ToolTipIcon.Info,
                 Visible = true
             };
@@ -348,7 +348,7 @@ namespace WindowsGSM
             if (showCrashHint)
             {
                 string logFile = $"CRASH_{DateTime.Now:yyyyMMdd}.log";
-                Log("System", $"WindowsGSM 意外崩溃，请查看崩溃日志 {logFile}");
+                Log("System", $"游戏服务管理器意外崩溃，请查看崩溃日志 {logFile}");
             }
 
             AutoStartServer();
@@ -572,7 +572,7 @@ namespace WindowsGSM
             // If a server is installing or import => return
             if (progressbar_InstallProgress.IsIndeterminate || progressbar_ImportProgress.IsIndeterminate)
             {
-                MessageBox.Show("WindowsGSM当前正在安装/导入服务器！", "错误", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("游戏服务管理器当前正在安装/导入服务器！", "错误", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -626,7 +626,7 @@ namespace WindowsGSM
             // If a server is installing or import => return
             if (progressbar_InstallProgress.IsIndeterminate || progressbar_ImportProgress.IsIndeterminate)
             {
-                MessageBox.Show("WindowsGSM当前正在安装/导入服务器！", "错误", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("游戏服务管理器当前正在安装/导入服务器！", "错误", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -2869,17 +2869,17 @@ namespace WindowsGSM
         #region Top Bar Button
         private void Button_Website_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://windowsgsm.com/");
+            Process.Start("https://www.aopk.cn/");
         }
 
         private void Button_Discord_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://discord.gg/bGc7t2R");
+            Process.Start("https://jq.qq.com/?_wv=1027&k=pGLX3k5N");
         }
 
         private void Button_Patreon_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://www.patreon.com/WindowsGSM/");
+            Process.Start("https://www.aopk.cn/author/1");
         }
 
         private void Button_Settings_Click(object sender, RoutedEventArgs e)

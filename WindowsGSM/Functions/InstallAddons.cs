@@ -68,29 +68,6 @@ namespace WindowsGSM.Functions
             }
         }
 
-        //private static async Task<string> GetBepInExModLatestVersion()
-        //{
-        //    try
-        //    {
-        //        // 访问 BepInEx的最新版本
-        //        var webRequest = WebRequest.Create("https://valheim.thunderstore.io/api/experimental/package/denikson/BepInExPack_Valheim/") as HttpWebRequest;
-        //        webRequest.Method = "GET";
-        //        webRequest.UserAgent = "Anything";
-        //        webRequest.ServicePoint.Expect100Continue = false;
-        //        var response = await webRequest.GetResponseAsync();
-
-        //        // 将服务器响应读取为字符串，并获取版本号
-        //        using (var responseReader = new StreamReader(response.GetResponseStream()))
-        //        {
-        //            return JObject.Parse(responseReader.ReadToEnd())["version_number"].ToString();
-        //        }
-        //    }
-        //    catch
-        //    {
-        //        return null; // 获取失败，返回 null
-        //    }
-        //}
-
         private static async Task<string> GetBepInExModLatestVersion()
         {
             try

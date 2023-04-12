@@ -32,7 +32,7 @@ namespace WindowsGSM.GameServer
         public string Error;
         public string Notice;
 
-        public const string FullName = "七日杀专用服务器";
+        public const string FullName = "七日杀 专用服务器";
         public string StartPath = "7DaysToDieServer.exe";
         public bool AllowsEmbedConsole = true;
         public int PortIncrements = 1;

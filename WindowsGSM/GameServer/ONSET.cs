@@ -11,7 +11,7 @@ namespace WindowsGSM.GameServer
         public string Error;
         public string Notice;
 
-        public const string FullName = "Onset Dedicated Server";
+        public const string FullName = "Onset 专用服务器";
         public string StartPath = "OnsetServer.exe";
         public bool AllowsEmbedConsole = true;
         public int PortIncrements = 3;

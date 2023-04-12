@@ -1,65 +1,74 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Diagnostics;
 using System.IO;
+using System;
+using WindowsGSM.Functions;
+using Discord;
+using System.Net.Sockets;
+using System.Windows.Documents;
 
 namespace WindowsGSM.GameServer
 {
-    /// <summary>
-    /// 
-    /// Note:
-    /// The server format is similar to MORDHAU server
-    /// 
-    /// </summary>
-    class OLOW : Engine.UnrealEngine
+    internal class VM
     {
-        private readonly Functions.ServerConfig _serverData;
+  
+        // 存储服务器配置数据的对象
+        private readonly ServerConfig _serverData;
 
+        // 错误消息和通知消息
         public string Error;
         public string Notice;
 
-        public const string FullName = "西部狂徒 专用服务器";
-        public string StartPath = @"Outlaws\Binaries\Win64\OutlawsServer-Win64-Shipping.exe";
+        // 服务器全名、启动路径、是否允许嵌入控制台、端口号增量、查询方法等服务器信息
+        public const string FullName = "英灵神殿 专用服务器";
+        public string StartPath = @"valheim_server.exe";
         public bool AllowsEmbedConsole = true;
         public int PortIncrements = 2;
         public dynamic QueryMethod = new Query.A2S();
 
-        public string Port = "27374";
-        public string QueryPort = "27015";
-        public string Defaultmap = "/Game/Maps/MainMap/MainMap";
-        public string Maxplayers = "24";
-        public string Additional = "-Type=PVP -ServerPassword=\"\" -AdminPassword=\"\"";
+        // 默认配置项：端口号、查询端口、默认地图、最大玩家数、额外参数及应用 ID
+        public string Port = "2456";
+        public string QueryPort = "2457";
+        public string Defaultmap = "Dedicated";
+        public string Maxplayers = "10";
+        public string Additional = "-password Secret -Public 1"; // 额外的服务器启动参数
+        public string AppId = "896660";
 
-        public string AppId = "915070";
-
-        public OLOW(Functions.ServerConfig serverData)
+        // 构造函数，需要传入服务器配置数据对象
+        public VM(Functions.ServerConfig serverData)
         {
             _serverData = serverData;
         }
 
+        // - 在安装后为游戏服务器创建一个默认的 cfg
         public async void CreateServerCFG()
         {
-            //No server config
+            // 不需要 cfg 文件
         }
 
+        // 启动服务器进程
+        // - Start server function, return its Process to WindowsGSM
         public async Task<Process> Start()
         {
+
             string shipExePath = Functions.ServerPath.GetServersServerFiles(_serverData.ServerID, StartPath);
             if (!File.Exists(shipExePath))
             {
-                Error = $"{Path.GetFileName(shipExePath)} not found ({shipExePath})";
+                Error = $"{Path.GetFileName(shipExePath)} 未找到 ({shipExePath})";
                 return null;
             }
 
-            string param = string.IsNullOrWhiteSpace(_serverData.ServerMap) ? string.Empty : $"{_serverData.ServerMap}";
+
+
+            // Prepare start parameter
+
+
+            string param = $"-batchmode -nographics {_serverData.ServerParam}" + (!AllowsEmbedConsole ? " -log" : string.Empty);
+            param += string.IsNullOrWhiteSpace(_serverData.ServerName) ? string.Empty : $" -name=\"{_serverData.ServerName}\"";
             param += string.IsNullOrWhiteSpace(_serverData.ServerPort) ? string.Empty : $" -port={_serverData.ServerPort}";
-            param += string.IsNullOrWhiteSpace(_serverData.ServerName) ? string.Empty : $" -servername=\"{_serverData.ServerName}\"";
-            param += string.IsNullOrWhiteSpace(_serverData.ServerMaxPlayer) ? string.Empty : $" -PlayerCount={_serverData.ServerMaxPlayer}";
-            param += string.IsNullOrWhiteSpace(_serverData.ServerQueryPort) ? string.Empty : $" -queryport={_serverData.ServerQueryPort}";
-            param += $" {_serverData.ServerParam}" + (!AllowsEmbedConsole ? " -log" : string.Empty);
+            param += string.IsNullOrWhiteSpace(_serverData.ServerMap) ? string.Empty : $" -world={_serverData.ServerMap}";
+
+            
 
             Process p;
             if (!AllowsEmbedConsole)
@@ -67,7 +76,8 @@ namespace WindowsGSM.GameServer
                 p = new Process
                 {
                     StartInfo =
-                    {
+                    { 
+                        WorkingDirectory = ServerPath.GetServersServerFiles(_serverData.ServerID),
                         FileName = shipExePath,
                         Arguments = param,
                         WindowStyle = ProcessWindowStyle.Minimized,
@@ -83,6 +93,7 @@ namespace WindowsGSM.GameServer
                 {
                     StartInfo =
                     {
+                        WorkingDirectory = ServerPath.GetServersServerFiles(_serverData.ServerID),
                         FileName = shipExePath,
                         Arguments = param,
                         WindowStyle = ProcessWindowStyle.Hidden,
@@ -104,48 +115,59 @@ namespace WindowsGSM.GameServer
             return p;
         }
 
+
+        // - Stop server function
         public async Task Stop(Process p)
         {
             await Task.Run(() =>
             {
-                p.Kill();
+                Functions.ServerConsole.SetMainWindow(p.MainWindowHandle);
+                Functions.ServerConsole.SendWaitToMainWindow("^c");
             });
+            await Task.Delay(20000);
         }
 
+        // 安装游戏服务端
         public async Task<Process> Install()
         {
             var steamCMD = new Installer.SteamCMD();
+            // 使用 SteamCMD 安装 ARK 服务端
             Process p = await steamCMD.Install(_serverData.ServerID, string.Empty, AppId);
             Error = steamCMD.Error;
 
             return p;
         }
 
+        // 升级游戏服务端
         public async Task<Process> Update(bool validate = false, string custom = null)
         {
+            // 使用 SteamCMD 更新 ARK 服务端
             var (p, error) = await Installer.SteamCMD.UpdateEx(_serverData.ServerID, AppId, validate, custom: custom);
             Error = error;
             return p;
         }
 
+        // 在服务器文件夹中检查游戏服务端是否已正确安装
         public bool IsInstallValid()
         {
-            return File.Exists(Functions.ServerPath.GetServersServerFiles(_serverData.ServerID, StartPath));
+            return File.Exists(Functions.ServerPath.GetServersServerFiles(_serverData.ServerID, "valheim_server.exe"));
         }
 
         public bool IsImportValid(string path)
         {
-            string exePath = Path.Combine(path, StartPath);
-            Error = $"Invalid Path! Fail to find {Path.GetFileName(exePath)}";
+            string exePath = Path.Combine(path, "valheim_server.exe");
+            Error = $"无效路径！找不到 {Path.GetFileName(exePath)}";
             return File.Exists(exePath);
         }
 
+        // 获取本地游戏服务端的版本号
         public string GetLocalBuild()
         {
             var steamCMD = new Installer.SteamCMD();
             return steamCMD.GetLocalBuild(_serverData.ServerID, AppId);
         }
 
+        // 获取官方游戏服务端的版本号
         public async Task<string> GetRemoteBuild()
         {
             var steamCMD = new Installer.SteamCMD();

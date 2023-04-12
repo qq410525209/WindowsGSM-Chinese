@@ -11,7 +11,7 @@ namespace WindowsGSM.GameServer
         public string Error;
         public string Notice;
 
-        public const string FullName = "Insurgency: Sandstorm Dedicated Server";
+        public const string FullName = "叛乱:沙漠风暴 专用服务器";
         public string StartPath = @"Insurgency\Binaries\Win64\InsurgencyServer-Win64-Shipping.exe";
         public bool AllowsEmbedConsole = true;
         public int PortIncrements = 2;

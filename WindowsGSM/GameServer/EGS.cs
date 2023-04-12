@@ -13,7 +13,7 @@ namespace WindowsGSM.GameServer
         public string Error;
         public string Notice;
 
-        public const string FullName = "Empyrion - Galactic Survival Dedicated Server";
+        public const string FullName = "帝国霸业-银河生存 专用服务器";
         public string StartPath = "EmpyrionLauncher.exe";
         public bool AllowsEmbedConsole = false;
         public int PortIncrements = 5;

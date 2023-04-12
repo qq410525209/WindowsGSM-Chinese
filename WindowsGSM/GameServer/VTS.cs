@@ -16,7 +16,7 @@ namespace WindowsGSM.GameServer
         public string Error;
         public string Notice;
 
-        public const string FullName = "Vintage Story Dedicated Server";
+        public const string FullName = "复古物语 专用服务器";
         public string StartPath = "VintageStoryServer.exe";
         public bool AllowsEmbedConsole = true;
         public int PortIncrements = 1;

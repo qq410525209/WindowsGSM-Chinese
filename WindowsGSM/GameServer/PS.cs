@@ -12,7 +12,7 @@ namespace WindowsGSM.GameServer
         public string Error;
         public string Notice;
 
-        public const string FullName = "Post Scriptum Dedicated Server";
+        public const string FullName = "战争附言 专用服务器";
         public string StartPath = @"PostScriptum\Binaries\Win64\PostScriptumServer.exe";
         public bool AllowsEmbedConsole = true;
         public int PortIncrements = 2;

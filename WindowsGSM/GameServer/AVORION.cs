@@ -11,7 +11,7 @@ namespace WindowsGSM.GameServer
         public string Error;
         public string Notice;
 
-        public const string FullName = "Avorion Dedicated Server";
+        public const string FullName = "猎户座 专用服务器";
         public string StartPath = @"bin\AvorionServer.exe";
         public bool AllowsEmbedConsole = true;
         public int PortIncrements = 1;

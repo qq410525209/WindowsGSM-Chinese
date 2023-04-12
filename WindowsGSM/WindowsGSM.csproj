@@ -427,6 +427,7 @@
     <Compile Include="GameServer\TF.cs" />
     <Compile Include="GameServer\TFC.cs" />
     <Compile Include="GameServer\UNT.cs" />
+    <Compile Include="GameServer\VM.cs" />
     <Compile Include="GameServer\VTS.cs" />
     <Compile Include="GameServer\ZPS.cs" />
     <Compile Include="Functions\GlobalServerList.cs" />
@@ -824,6 +825,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\aopk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Games\vm.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" />

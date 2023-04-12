@@ -17,7 +17,7 @@ namespace WindowsGSM.GameServer
         public string Error;
         public string Notice;
 
-        public const string FullName = "Minecraft: Java Edition Server";
+        public const string FullName = "我的世界: 基岩版服务器";
         public string StartPath = string.Empty;
         public bool AllowsEmbedConsole = true;
         public int PortIncrements = 1;

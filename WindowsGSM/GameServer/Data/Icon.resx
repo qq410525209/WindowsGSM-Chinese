@@ -117,142 +117,145 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="七日杀专用服务器" xml:space="preserve">
+  <data name="七日杀 专用服务器" xml:space="preserve">
     <value>Images/Games/7dtd.png</value>
   </data>
-  <data name="ARK: 方舟生存计划专用服务器" xml:space="preserve">
+	<data name="英灵神殿 专用服务器" xml:space="preserve">
+    <value>Images/Games/vm.png</value>
+  </data>
+  <data name="方舟:生存计划 专用服务器" xml:space="preserve">
     <value>Images/Games/arkse.png</value>
   </data>
-  <data name="Avorion Dedicated Server" xml:space="preserve">
+  <data name="猎户座 专用服务器" xml:space="preserve">
     <value>Images/Games/avorion.png</value>
   </data>
-  <data name="Barotrauma Dedicated Server" xml:space="preserve">
+  <data name="潜渊症 专用服务器" xml:space="preserve">
     <value>Images/Games/bt.png</value>
   </data>
-  <data name="BlackWake Dedicated Server" xml:space="preserve">
+  <data name="黑色艉流 专用服务器" xml:space="preserve">
     <value>Images/Games/bw.png</value>
   </data>
-  <data name="Conan Exiles Dedicated Server" xml:space="preserve">
+  <data name="流放者柯南 专用服务器" xml:space="preserve">
     <value>Images/Games/ce.png</value>
   </data>
-  <data name="Counter-Strike: 1.6 Dedicated Server" xml:space="preserve">
+  <data name="反恐精英:1.6 专用服务器" xml:space="preserve">
     <value>Images/Games/cs.png</value>
   </data>
-  <data name="Counter-Strike: Condition Zero Dedicated Server" xml:space="preserve">
+  <data name="反恐精英-零点行动 专用服务器" xml:space="preserve">
     <value>Images/Games/cscz.png</value>
   </data>
-  <data name="Counter-Strike: Global Offensive Dedicated Server" xml:space="preserve">
+  <data name="反恐精英:全球攻势 专用服务器" xml:space="preserve">
     <value>Images/Games/csgo.png</value>
   </data>
-  <data name="Counter-Strike: Source Dedicated Server" xml:space="preserve">
+  <data name="反恐精英:起源 专用服务器" xml:space="preserve">
     <value>Images/Games/css.png</value>
   </data>
-  <data name="Day of Defeat Dedicated Server" xml:space="preserve">
+  <data name="胜利之日 专用服务器" xml:space="preserve">
     <value>Images/Games/dod.png</value>
   </data>
-  <data name="Day of Defeat: Source Dedicated Server" xml:space="preserve">
+  <data name="胜利之日:起源 专用服务器" xml:space="preserve">
     <value>Images/Games/dods.png</value>
   </data>
-  <data name="DayZ Dedicated Server" xml:space="preserve">
+  <data name="僵尸末日 专用服务器" xml:space="preserve">
     <value>Images/Games/dayz.png</value>
   </data>
-  <data name="Deathmatch Classic Dedicated Server" xml:space="preserve">
+  <data name="死亡竞赛经典版 专用服务器" xml:space="preserve">
     <value>Images/Games/dmc.png</value>
   </data>
-  <data name="Eco Dedicated Server" xml:space="preserve">
+  <data name="Eco 专用服务器" xml:space="preserve">
     <value>Images/Games/eco.png</value>
   </data>
-  <data name="Empyrion - Galactic Survival Dedicated Server" xml:space="preserve">
+  <data name="帝国霸业-银河生存 专用服务器" xml:space="preserve">
     <value>Images/Games/egs.png</value>
   </data>
-  <data name="Garry's Mod Dedicated Server" xml:space="preserve">
+  <data name="盖瑞模组 专用服务器" xml:space="preserve">
     <value>Images/Games/gmod.png</value>
   </data>
-  <data name="Grand Theft Auto V Dedicated Server (FiveM)" xml:space="preserve">
+  <data name="侠盗猎车手V 专用服务器" xml:space="preserve">
     <value>Images/Games/gta5.png</value>
   </data>
-  <data name="Half-Life 2: Deathmatch Dedicated Server" xml:space="preserve">
+  <data name="半条命2:死亡竞赛 专用服务器" xml:space="preserve">
     <value>Images/Games/hl2dm.png</value>
   </data>
-  <data name="Half-Life: Opposing Force Dedicated Server" xml:space="preserve">
+  <data name="半条命:针锋相对 专用服务器" xml:space="preserve">
     <value>Images/Games/hlof.png</value>
   </data>
-  <data name="Heat Dedicated Server" xml:space="preserve">
+  <data name="热能标记 专用服务器" xml:space="preserve">
     <value>Images/Games/heat.png</value>
   </data>
-  <data name="Insurgency Dedicated Server" xml:space="preserve">
+  <data name="叛乱 专用服务器" xml:space="preserve">
     <value>Images/Games/ins.png</value>
   </data>
-  <data name="Insurgency: Sandstorm Dedicated Server" xml:space="preserve">
+  <data name="叛乱:沙漠风暴 专用服务器" xml:space="preserve">
     <value>Images/Games/inss.png</value>
   </data>
-  <data name="Left 4 Dead 2 Dedicated Server" xml:space="preserve">
+  <data name="求生之路2 专用服务器" xml:space="preserve">
     <value>Images/Games/l4d2.png</value>
   </data>
-  <data name="Minecraft: Bedrock Edition Server" xml:space="preserve">
+  <data name="我的世界: 基岩版服务器" xml:space="preserve">
     <value>Images/Games/mcbe.png</value>
   </data>
-  <data name="Minecraft: Java Edition Server" xml:space="preserve">
+  <data name="我的世界: Java版服务器" xml:space="preserve">
     <value>Images/Games/mc.png</value>
   </data>
-  <data name="Minecraft: Pocket Edition Server (PocketMine-MP)" xml:space="preserve">
+  <data name="我的世界: Pocket Edition Server (PocketMine-MP)" xml:space="preserve">
     <value>Images/Games/mcpe.png</value>
   </data>
-  <data name="Mordhau Dedicated Server" xml:space="preserve">
+  <data name="雷霆一击 专用服务器" xml:space="preserve">
     <value>Images/Games/mordhau.png</value>
   </data>
-  <data name="No More Room in Hell Dedicated Server" xml:space="preserve">
+  <data name="地狱已满 专用服务器" xml:space="preserve">
     <value>Images/Games/nmrih.png</value>
   </data>
-  <data name="Onset Dedicated Server" xml:space="preserve">
+  <data name="Onset 专用服务器" xml:space="preserve">
     <value>Images/Games/onset.png</value>
   </data>
-  <data name="Outlaws of the Old West Dedicated Server" xml:space="preserve">
+  <data name="西部狂徒 专用服务器" xml:space="preserve">
     <value>Images/Games/olow.png</value>
   </data>
-  <data name="Post Scriptum Dedicated Server" xml:space="preserve">
+  <data name="战争附言 专用服务器" xml:space="preserve">
     <value>Images/Games/ps.png</value>
   </data>
-  <data name="Reign Of Kings Dedicated Server" xml:space="preserve">
+  <data name="君临天下 专用服务器" xml:space="preserve">
     <value>Images/Games/rok.png</value>
   </data>
-  <data name="Ricochet Dedicated Server" xml:space="preserve">
+  <data name="跳跃袭击 专用服务器" xml:space="preserve">
     <value>Images/Games/rcc.png</value>
   </data>
-  <data name="Risk of Rain 2 Dedicated Server" xml:space="preserve">
+  <data name="雨中冒险2 专用服务器" xml:space="preserve">
     <value>Images/Games/ror2.png</value>
   </data>
-  <data name="Rust Dedicated Server" xml:space="preserve">
+  <data name="腐蚀 专用服务器" xml:space="preserve">
     <value>Images/Games/rust.png</value>
   </data>
-  <data name="Source SDK Base 2013 Dedicated Server" xml:space="preserve">
+  <data name="Source SDK Base 2013 专用服务器" xml:space="preserve">
     <value>Images/Games/hl2dm.png</value>
   </data>
-  <data name="Space Engineers Dedicated Server" xml:space="preserve">
+  <data name="太空工程师 专用服务器" xml:space="preserve">
     <value>Images/Games/se.png</value>
   </data>
-  <data name="Squad Dedicated Server" xml:space="preserve">
+  <data name="战术小队 专用服务器" xml:space="preserve">
     <value>Images/Games/sq.png</value>
   </data>
-  <data name="Stormworks Dedicated Server" xml:space="preserve">
+  <data name="风暴工程 专用服务器" xml:space="preserve">
     <value>Images/Games/sw.png</value>
   </data>
-  <data name="Team Fortress 2 Dedicated Server" xml:space="preserve">
+  <data name="军团要塞2 专用服务器" xml:space="preserve">
     <value>Images/Games/tf2.png</value>
   </data>
-  <data name="Team Fortress Classic Dedicated Server" xml:space="preserve">
+  <data name="军团要塞:经典 专用服务器" xml:space="preserve">
     <value>Images/Games/tfc.png</value>
   </data>
-  <data name="The Forest Dedicated Server" xml:space="preserve">
+  <data name="森林 专用服务器" xml:space="preserve">
     <value>Images/Games/tf.png</value>
   </data>
-  <data name="Unturned Dedicated Server" xml:space="preserve">
+  <data name="未转变者 专用服务器" xml:space="preserve">
     <value>Images/Games/unt.png</value>
   </data>
-  <data name="Vintage Story Dedicated Server" xml:space="preserve">
+  <data name="复古物语 专用服务器" xml:space="preserve">
     <value>Images/Games/vts.png</value>
   </data>
-  <data name="Zombie Panic Source Dedicated Server" xml:space="preserve">
+  <data name="僵尸恐慌 专用服务器" xml:space="preserve">
     <value>Images/Games/zps.png</value>
   </data>
 </root>

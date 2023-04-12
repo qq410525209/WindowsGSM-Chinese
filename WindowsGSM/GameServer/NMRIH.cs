@@ -2,7 +2,7 @@
 {
     class NMRIH : Engine.Source
     {
-        public const string FullName = "No More Room in Hell Dedicated Server";
+        public const string FullName = "地狱已满 专用服务器";
         public override string Defaultmap { get { return "nmo_broadway"; } }
         public override string Game { get { return "nmrih"; } }
         public override string AppId { get { return "317670"; } }

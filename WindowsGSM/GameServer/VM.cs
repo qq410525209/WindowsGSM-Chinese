@@ -30,8 +30,9 @@ namespace WindowsGSM.GameServer
         public string Port = "2456";
         public string QueryPort = "2457";
         public string Defaultmap = "Dedicated";
-        public string Maxplayers = "10";
-        public string Additional = "-password Secret -Public 1"; // 额外的服务器启动参数
+        public string Password = "123456";
+        public string Maxplayers = "64";
+        public string Additional = $"-saveinterval 1800 -backupshort 7200 -backuplong 43200 -instanceid \"1\" -Public 1"; // 额外的服务器启动参数
         public string AppId = "896660";
 
         // 构造函数，需要传入服务器配置数据对象
@@ -62,13 +63,10 @@ namespace WindowsGSM.GameServer
 
             // Prepare start parameter
 
+            string param = $"-nographics -batchmode -name \"{_serverData.ServerName}\" -port {_serverData.ServerPort} -world \"{_serverData.ServerMap}\" -password \"{_serverData.ServerPWD}\" -savedir {ServerPath.GetServersServerFiles(_serverData.ServerID) + "\\Saved"} {_serverData.ServerParam}" + (!AllowsEmbedConsole ? " -log" : string.Empty);
 
-            string param = $"-batchmode -nographics {_serverData.ServerParam}" + (!AllowsEmbedConsole ? " -log" : string.Empty);
-            param += string.IsNullOrWhiteSpace(_serverData.ServerName) ? string.Empty : $" -name=\"{_serverData.ServerName}\"";
-            param += string.IsNullOrWhiteSpace(_serverData.ServerPort) ? string.Empty : $" -port={_serverData.ServerPort}";
-            param += string.IsNullOrWhiteSpace(_serverData.ServerMap) ? string.Empty : $" -world={_serverData.ServerMap}";
 
-            
+
 
             Process p;
             if (!AllowsEmbedConsole)
@@ -131,7 +129,7 @@ namespace WindowsGSM.GameServer
         public async Task<Process> Install()
         {
             var steamCMD = new Installer.SteamCMD();
-            // 使用 SteamCMD 安装 ARK 服务端
+            // 使用 SteamCMD 安装服务端
             Process p = await steamCMD.Install(_serverData.ServerID, string.Empty, AppId);
             Error = steamCMD.Error;
 
@@ -141,7 +139,7 @@ namespace WindowsGSM.GameServer
         // 升级游戏服务端
         public async Task<Process> Update(bool validate = false, string custom = null)
         {
-            // 使用 SteamCMD 更新 ARK 服务端
+            // 使用 SteamCMD 更新服务端
             var (p, error) = await Installer.SteamCMD.UpdateEx(_serverData.ServerID, AppId, validate, custom: custom);
             Error = error;
             return p;

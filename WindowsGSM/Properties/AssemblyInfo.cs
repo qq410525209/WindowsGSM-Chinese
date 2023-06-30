@@ -10,7 +10,7 @@ using System.Windows;
 [assembly: AssemblyTitle("游戏服务管理器")]
 [assembly: AssemblyDescription("一个运行在 Windows 平台上的游戏服务器管理器")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("GAME模组中文网https://www.aopk.cn")]
+[assembly: AssemblyCompany("资源工坊https://www.aopk.cn")]
 [assembly: AssemblyProduct("WindowsGSM")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]

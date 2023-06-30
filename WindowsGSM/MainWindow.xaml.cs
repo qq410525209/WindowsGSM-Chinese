@@ -121,7 +121,7 @@ namespace WindowsGSM
         }
 
         public static readonly string WGSM_VERSION = "v" + string.Concat(System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString().Reverse().Skip(2).Reverse());
-        public static readonly int MAX_SERVER = 50;
+        public static readonly int MAX_SERVER = 100;
         public static readonly string WGSM_PATH = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName);
         public static readonly string DEFAULT_THEME = "Cyan";
 
@@ -735,6 +735,7 @@ namespace WindowsGSM
                         Port = serverConfig.ServerPort,
                         QueryPort = serverConfig.ServerQueryPort,
                         Defaultmap = serverConfig.ServerMap,
+                        Password = serverConfig.ServerPWD,
                         Maxplayers = (GetServerMetadata(i).ServerStatus != ServerStatus.Started) ? serverConfig.ServerMaxPlayer : livePlayerData[i]
                     };
 
@@ -1112,7 +1113,7 @@ namespace WindowsGSM
                 ComboBox_InstallGameServer_SelectionChanged(sender, null);
 
                 var newServerConfig = new ServerConfig(null);
-                textbox_InstallServerName.Text = $"GAME模组中文网 - Server #{newServerConfig.ServerID}";
+                textbox_InstallServerName.Text = $"资源工坊-服务器{newServerConfig.ServerID}";
             }
         }
 
@@ -1304,7 +1305,7 @@ namespace WindowsGSM
                 button_Import.Content = "导入";
 
                 var newServerConfig = new ServerConfig(null);
-                textbox_ImportServerName.Text = $"GAME模组中文网- Server #{newServerConfig.ServerID}";
+                textbox_ImportServerName.Text = $"资源工坊-服务器{newServerConfig.ServerID}";
             }
         }
 
@@ -2351,7 +2352,7 @@ namespace WindowsGSM
                 }
             }
 
-            Log(server.ID, "服务器: Deleted server");
+            Log(server.ID, "服务器: 已删除服务器");
 
             _serverMetadata[int.Parse(server.ID)].ServerStatus = ServerStatus.Stopped;
             SetServerStatus(server, "停止");
@@ -3224,7 +3225,7 @@ namespace WindowsGSM
         {
             var settings = new MetroDialogSettings
             {
-                AffirmativeButtonText = "GAME模组中文网",
+                AffirmativeButtonText = "资源工坊",
                 NegativeButtonText = "关闭",
                 DefaultButtonFocus = MessageDialogResult.Negative
             };
@@ -3516,6 +3517,7 @@ namespace WindowsGSM
             numericUpDown_EC_ServerPort.Value = int.TryParse(serverConfig.ServerPort, out var port) ? port : int.Parse(gameServer.Port);
             numericUpDown_EC_ServerQueryPort.Value = int.TryParse(serverConfig.ServerQueryPort, out var queryPort) ? queryPort : int.Parse(gameServer.QueryPort);
             textbox_EC_ServerMap.Text = serverConfig.ServerMap;
+            textbox_EC_ServerPWD.Text = serverConfig.ServerPWD;
             textbox_EC_ServerGSLT.Text = serverConfig.ServerGSLT;
             textbox_EC_ServerParam.Text = serverConfig.ServerParam;
             return true;
@@ -3533,6 +3535,7 @@ namespace WindowsGSM
             ServerConfig.SetSetting(server.ID, ServerConfig.SettingName.ServerPort, numericUpDown_EC_ServerPort.Value.ToString());
             ServerConfig.SetSetting(server.ID, ServerConfig.SettingName.ServerQueryPort, numericUpDown_EC_ServerQueryPort.Value.ToString());
             ServerConfig.SetSetting(server.ID, ServerConfig.SettingName.ServerMap, textbox_EC_ServerMap.Text.Trim());
+            ServerConfig.SetSetting(server.ID, ServerConfig.SettingName.ServerPWD, textbox_EC_ServerPWD.Text.Trim());
             ServerConfig.SetSetting(server.ID, ServerConfig.SettingName.ServerGSLT, textbox_EC_ServerGSLT.Text.Trim());
             ServerConfig.SetSetting(server.ID, ServerConfig.SettingName.ServerParam, textbox_EC_ServerParam.Text.Trim());
 

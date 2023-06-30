@@ -19,7 +19,7 @@
         WindowStartupLocation="CenterScreen" Activated="Window_Activated">
     <mah:MetroWindow.RightWindowCommands>
         <mah:WindowCommands>
-            <Button x:Name="button_Website" Content="GAME模组中文网" Click="Button_Website_Click"/>
+            <Button x:Name="button_Website" Content="资源工坊" Click="Button_Website_Click"/>
             <Button x:Name="button_Discord" Content="QQ群" Click="Button_Discord_Click"/>
             <Button x:Name="button_Patreon" Content="汉化" Click="Button_Patreon_Click"/>
             <!--<Button x:Name="button_Settings" Content="Settings" Click="Button_Settings_Click"/>-->
@@ -168,8 +168,12 @@
                                 </StackPanel>
                             </StackPanel>
                             <StackPanel Margin="0,0,0,10">
-                                <Label Content="服务器启动地图"></Label>
+                                <Label Content="服务器地图/世界存档名称"></Label>
                                 <TextBox x:Name="textbox_EC_ServerMap" Height="23" Width="500" FontFamily="Consolas" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+                            </StackPanel>
+                            <StackPanel Margin="0,0,0,10">
+                                <Label Content="服务器密码(插件调用时可用)"></Label>
+                                <TextBox x:Name="textbox_EC_ServerPWD" Height="23" Width="500" FontFamily="Consolas" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
                             </StackPanel>
                             <StackPanel Margin="0,0,0,10">
                                 <Label Content="服务器登录验证码"></Label>
@@ -642,7 +646,7 @@
                         </MenuItem>
                     </MenuItem>
                     <MenuItem Header="帮助" Height="30">
-                        <MenuItem Header="GAME模组中文网" Click="Help_OnlineDocumentation_Click1">
+                        <MenuItem Header="资源工坊" Click="Help_OnlineDocumentation_Click1">
                             <MenuItem.Icon>
                                 <Image Source="/WindowsGSM;component/Images/aopk.png" Width="23" Margin="3"/>
                             </MenuItem.Icon>

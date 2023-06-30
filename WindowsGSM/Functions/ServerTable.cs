@@ -15,6 +15,7 @@ namespace WindowsGSM.Functions
         public string Port { get; set; }
         public string QueryPort { get; set; }
         public string Defaultmap { get; set; }
+        public string Password { get; set; }
         public string Maxplayers { get; set; }
         public string Uptime 
         { 
@@ -26,7 +27,7 @@ namespace WindowsGSM.Functions
                     {
                         var time = DateTime.Now - Process.GetProcessById(pid).StartTime;
                         int numberOfDay = (int)time.TotalDays;
-                        return $"{numberOfDay} Day{(numberOfDay > 1 ? "s" : string.Empty)}, {time.Hours:D2}:{time.Minutes:D2}";
+                        return $"{numberOfDay} 天{(numberOfDay > 1 ? "s" : string.Empty)}, {time.Hours:D2}:{time.Minutes:D2}";
                     }
                 }
                 catch { }

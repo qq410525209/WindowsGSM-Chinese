@@ -27,7 +27,7 @@ namespace WindowsGSM.Functions
                     {
                         var time = DateTime.Now - Process.GetProcessById(pid).StartTime;
                         int numberOfDay = (int)time.TotalDays;
-                        return $"{numberOfDay} 天{(numberOfDay > 1 ? "s" : string.Empty)}, {time.Hours:D2}:{time.Minutes:D2}";
+                        return $"{numberOfDay}天{(numberOfDay > 1 ? "秒" : string.Empty)}{time.Hours:D2}时{time.Minutes:D2}分";
                     }
                 }
                 catch { }

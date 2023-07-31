@@ -12,31 +12,57 @@ namespace WindowsGSM.Functions
     {
         public static bool? IsBepInExModExists(Functions.ServerTable server)
         {
-            if (server.Game != GameServer.VM.FullName)
+            if (server.Game != GameServer.VM.FullName && server.Game != GameServer.SOTF.FullName)
             {
-                // 如果不是英灵神殿 游戏，则不支持
+                // 如果不是英灵神殿或森林之子游戏，则不支持
                 return null;
             }
-
-            // 检查 英灵神殿 服务器中是否存在BepInEx核心插件文件
-            return File.Exists(Functions.ServerPath.GetServersServerFiles(server.ID, "BepInEx", "core", "BepInEx.dll"));
+            // 检查是否存在BepInEx核心插件文件
+            if (server.Game == GameServer.VM.FullName)
+            {
+                // 英灵神殿游戏检查BepInEx.dll
+                return File.Exists(Functions.ServerPath.GetServersServerFiles(server.ID, "BepInEx", "core", "BepInEx.dll"));
+            }
+            else if (server.Game == GameServer.SOTF.FullName)
+            {
+                // 森林之子游戏检查BepInEx.Core.dll
+                return File.Exists(Functions.ServerPath.GetServersServerFiles(server.ID, "BepInEx", "core", "BepInEx.Core.dll"));
+            }
+            // 不支持的游戏类型
+            return null;
         }
         public static async Task<bool> BepInExMod(Functions.ServerTable server)
         {
             try
             {
                 string basePath = Functions.ServerPath.GetServersServerFiles(server.ID);
-                string version = await GetBepInExModLatestVersion();
-                // 下载最新版本的BepInExPack_Valheim压缩包
-                string zipPath = Functions.ServerPath.GetServersServerFiles(server.ID, $"denikson-BepInExPack_Valheim-{version}.zip");
+                string version = await GetBepInExModLatestVersion(server);
+                string zipPath;
+                string downloadUrl;
+
+                if (server.Game == GameServer.VM.FullName)
+                {
+                    // 英灵神殿游戏使用 BepInExPack_Valheim
+                    zipPath = Functions.ServerPath.GetServersServerFiles(server.ID, $"denikson-BepInExPack_Valheim-{version}.zip");
+                    downloadUrl = $"https://thunderstore.io/package/download/denikson/BepInExPack_Valheim/{version}/";
+                }
+                else if (server.Game == GameServer.SOTF.FullName)
+                {
+                    // 森林之子游戏使用 BepInExPack_IL2CPP
+                    zipPath = Functions.ServerPath.GetServersServerFiles(server.ID, $"BepInEx-BepInExPack_IL2CPP-{version}.zip");
+                    downloadUrl = $"https://thunderstore.io/package/download/BepInEx/BepInExPack_IL2CPP/{version}/";
+                }
+                else
+                {
+                    // 不支持的游戏类型
+                    return false;
+                }
 
                 using (WebClient webClient = new WebClient())
                 {
-                    await webClient.DownloadFileTaskAsync($"https://thunderstore.io/package/download/denikson/BepInExPack_Valheim/{version}/", zipPath);
-
+                    await webClient.DownloadFileTaskAsync(downloadUrl, zipPath);
                 }
-
-                // 解压 BepInExPack_Valheim文件
+                // 解压 BepInExMod 压缩包
                 bool success = await Task.Run(() =>
                 {
                     try
@@ -45,10 +71,10 @@ namespace WindowsGSM.Functions
                         using (var a = new ZipArchive(f))
                         {
                             // 创建缺少的目录
-                            a.Entries.Where(o => o.FullName.StartsWith("BepInExPack_Valheim/") && o.Name == string.Empty && !Directory.Exists(Path.Combine(basePath, o.FullName.Replace("BepInExPack_Valheim/", "")))).ToList().ForEach(o => Directory.CreateDirectory(Path.Combine(basePath, o.FullName.Replace("BepInExPack_Valheim/", ""))));
+                            a.Entries.Where(o => o.FullName.StartsWith(GetModStartPath(server.Game)) && o.Name == string.Empty && !Directory.Exists(Path.Combine(basePath, o.FullName.Replace(GetModStartPath(server.Game), "")))).ToList().ForEach(o => Directory.CreateDirectory(Path.Combine(basePath, o.FullName.Replace(GetModStartPath(server.Game), ""))));
 
                             // 将文件解压至服务器目录中
-                            a.Entries.Where(o => o.FullName.StartsWith("BepInExPack_Valheim/") && o.Name != string.Empty).ToList().ForEach(e => e.ExtractToFile(Path.Combine(basePath, e.FullName.Replace("BepInExPack_Valheim/", "")), true));
+                            a.Entries.Where(o => o.FullName.StartsWith(GetModStartPath(server.Game)) && o.Name != string.Empty).ToList().ForEach(e => e.ExtractToFile(Path.Combine(basePath, e.FullName.Replace(GetModStartPath(server.Game), "")), true));
                         }
                         return true;
                     }
@@ -67,13 +93,42 @@ namespace WindowsGSM.Functions
                 return false; // 安装失败
             }
         }
-
-        private static async Task<string> GetBepInExModLatestVersion()
+        private static string GetModStartPath(string game)
         {
+            if (game == GameServer.VM.FullName)
+            {
+                // 英灵神殿游戏使用 BepInExPack_Valheim 的起始路径
+                return "BepInExPack_Valheim/";
+            }
+            else if (game == GameServer.SOTF.FullName)
+            {
+                // 森林之子游戏使用 BepInExPack_IL2CPP 的起始路径
+                return "BepInExPack/";
+            }
+
+            // 不支持的游戏类型
+            return string.Empty;
+        }
+        private static async Task<string> GetBepInExModLatestVersion(Functions.ServerTable server)
+        {
+            string url;
+            if (server.Game == GameServer.VM.FullName)
+            {
+                url = "https://thunderstore.io/api/experimental/package/denikson/BepInExPack_Valheim/";
+            }
+            else if (server.Game == GameServer.SOTF.FullName)
+            {
+                url = "https://thunderstore.io/api/experimental/package/BepInEx/BepInExPack_IL2CPP/";
+            }
+            else
+            {
+                // 不支持的游戏类型
+                return null;
+            }
             try
             {
                 // 访问 BepInEx 的最新版本
-                var webRequest = WebRequest.Create("https://valheim.thunderstore.io/api/experimental/package/denikson/BepInExPack_Valheim/") as HttpWebRequest;
+                var webRequest = WebRequest.Create(url) as HttpWebRequest;
                 webRequest.Method = "GET";
                 webRequest.UserAgent = "Anything";
                 webRequest.ServicePoint.Expect100Continue = false;
@@ -96,19 +151,6 @@ namespace WindowsGSM.Functions
                 return null; // 获取失败，返回 null
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
         public static bool? IsAMXModXAndMetaModPExists(Functions.ServerTable server)
         {
             dynamic gameServer = GameServer.Data.Class.Get(server.Game);

@@ -249,7 +249,10 @@
   <data name="森林 专用服务器" xml:space="preserve">
     <value>Images/Games/tf.png</value>
   </data>
-  <data name="未转变者 专用服务器" xml:space="preserve">
+	<data name="森林之子 专用服务器" xml:space="preserve">
+    <value>Images/Games/sotf.png</value>
+  </data>
+	<data name="未转变者 专用服务器" xml:space="preserve">
     <value>Images/Games/unt.png</value>
   </data>
   <data name="复古物语 专用服务器" xml:space="preserve">

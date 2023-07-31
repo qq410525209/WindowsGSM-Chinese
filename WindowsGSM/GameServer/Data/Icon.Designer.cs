@@ -331,6 +331,15 @@ namespace WindowsGSM.GameServer.Data {
         }
         
         /// <summary>
+        ///   查找类似 Images/Games/sotf.png 的本地化字符串。
+        /// </summary>
+        public static string 森林之子_专用服务器 {
+            get {
+                return ResourceManager.GetString("森林之子 专用服务器", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Images/Games/dmc.png 的本地化字符串。
         /// </summary>
         public static string 死亡竞赛经典版_专用服务器 {

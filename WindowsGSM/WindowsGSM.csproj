@@ -421,6 +421,7 @@
     <Compile Include="GameServer\SE.cs" />
     <Compile Include="GameServer\Engine\GoldSource.cs" />
     <Compile Include="GameServer\Engine\Source.cs" />
+    <Compile Include="GameServer\SOTF.cs" />
     <Compile Include="GameServer\SQ.cs" />
     <Compile Include="GameServer\PS.cs" />
     <Compile Include="GameServer\SW.cs" />
@@ -831,6 +832,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Tools\BepInEx.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Games\sotf.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" />

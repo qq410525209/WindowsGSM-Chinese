@@ -43,7 +43,7 @@ namespace WindowsGSM.GameServer
         public async void CreateServerCFG()
         {
             string configPath = Functions.ServerPath.GetServersServerFiles(_serverData.ServerID, @"Configs", "Network.eco");
-            if (await Functions.Github.DownloadGameServerConfig(configPath, _serverData.ServerGame))
+            if (await Functions.Github.DownloadGameServerConfig(configPath, "Eco Dedicated Server"))
             {
                 if (File.Exists(configPath))
                 {

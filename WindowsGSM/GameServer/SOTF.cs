@@ -30,7 +30,6 @@ namespace WindowsGSM.GameServer
         public string QueryPort = "27016";//查询端口
         public string BlobSyncPort = "9700";//BlobSync端口
         public string Defaultmap = "Normal";//默认地图
-        public string Password = "";//服务器密码
         public string Maxplayers = "8";//服务器人数
         public string Additional = $" -dedicatedserver.BlobSyncPort \"9700\" -dedicatedserver.SkipNetworkAccessibilityTest \"true\""; // 额外的服务器启动参数
         public string AppId = "2465200";//APPID
@@ -67,7 +66,6 @@ namespace WindowsGSM.GameServer
             //param += $" -dedicatedserver.BlobSyncPort \"9700\"";// 用于数据同步的端口，确保服务器之间的数据一致性
             param += $" -dedicatedserver.ServerName \"{_serverData.ServerName}\"";// 游戏服务器的名称
             param += $" -dedicatedserver.MaxPlayers \"{_serverData.ServerMaxPlayer}\"";// 服务器允许的最大玩家数
-            param += $" -dedicatedserver.Password \"{_serverData.ServerPWD}\"";// 加入服务器所需的密码
             param += $" -dedicatedserver.GameMode \"{_serverData.ServerMap}\"";// 服务器的游戏模式
             //param += $" -dedicatedserver.SkipNetworkAccessibilityTest \"true\"";//跳过网络可访问性测试
             //param += $" -dedicatedserver.LogFilesEnabled \"true\"";//开启日志写入

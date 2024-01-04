@@ -42,11 +42,11 @@ namespace WindowsGSM.GameServer
         {
             //Download SpaceEngineersDedicated-WindowsGSM.bat
             string batPath = Functions.ServerPath.GetServersServerFiles(_serverData.ServerID, @"DedicatedServer64\SpaceEngineersDedicated-WindowsGSM.bat");
-            await Functions.Github.DownloadGameServerConfig(batPath, _serverData.ServerGame);
+            await Functions.Github.DownloadGameServerConfig(batPath, "Space Engineers Dedicated Server");
 
             //Download world and extract
             string zipPath = Functions.ServerPath.GetServersServerFiles(_serverData.ServerID, @"AppData\Roaming\SpaceEngineersDedicated\Saves\world.zip");
-            if (await Functions.Github.DownloadGameServerConfig(zipPath, _serverData.ServerGame))
+            if (await Functions.Github.DownloadGameServerConfig(zipPath, "Space Engineers Dedicated Server"))
             {
                 await Task.Run(() =>
                 {
@@ -63,7 +63,7 @@ namespace WindowsGSM.GameServer
             }
 
             string configPath = Functions.ServerPath.GetServersServerFiles(_serverData.ServerID, @"AppData\Roaming\SpaceEngineersDedicated", "SpaceEngineers-Dedicated.cfg");
-            if (await Functions.Github.DownloadGameServerConfig(configPath, _serverData.ServerGame))
+            if (await Functions.Github.DownloadGameServerConfig(configPath, "Space Engineers Dedicated Server"))
             {
                 string configText = File.ReadAllText(configPath);
                 configText = configText.Replace("{{maxplayers}}", _serverData.ServerMaxPlayer);

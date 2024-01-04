@@ -35,7 +35,7 @@ namespace WindowsGSM.GameServer
         public async void CreateServerCFG()
         {
             string configPath = Functions.ServerPath.GetServersServerFiles(_serverData.ServerID, "dedicated.yaml");
-            if (await Functions.Github.DownloadGameServerConfig(configPath, _serverData.ServerGame))
+            if (await Functions.Github.DownloadGameServerConfig(configPath, "Empyrion - Galactic Survival Dedicated Server"))
             {
                 string configText = File.ReadAllText(configPath);
                 configText = configText.Replace("{{Srv_Port}}", _serverData.ServerPort);

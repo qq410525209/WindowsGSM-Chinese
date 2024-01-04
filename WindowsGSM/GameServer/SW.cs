@@ -33,7 +33,7 @@ namespace WindowsGSM.GameServer
         public async void CreateServerCFG()
         {
             string configPath = Functions.ServerPath.GetServersServerFiles(_serverData.ServerID, @"AppData\Roaming\Stormworks", "server_config.xml");
-            if (await Functions.Github.DownloadGameServerConfig(configPath, _serverData.ServerGame))
+            if (await Functions.Github.DownloadGameServerConfig(configPath, "Stormworks Dedicated Server"))
             {
                 string configText = File.ReadAllText(configPath);
                 configText = configText.Replace("{{maxplayers}}", _serverData.ServerMaxPlayer);

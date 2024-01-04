@@ -30,9 +30,8 @@ namespace WindowsGSM.GameServer
         public string Port = "2456";
         public string QueryPort = "2457";
         public string Defaultmap = "Dedicated";
-        public string Password = "123456";
         public string Maxplayers = "64";
-        public string Additional = $"-saveinterval 1800 -backupshort 7200 -backuplong 43200 -instanceid \"1\" -Public 1"; // 额外的服务器启动参数
+        public string Additional = $"-password \"123456\" -saveinterval 1800 -backupshort 7200 -backuplong 43200 -instanceid \"1\" -Public 1"; // 额外的服务器启动参数
         public string AppId = "896660";
 
         // 构造函数，需要传入服务器配置数据对象
@@ -44,7 +43,17 @@ namespace WindowsGSM.GameServer
         // - 在安装后为游戏服务器创建一个默认的 cfg
         public async void CreateServerCFG()
         {
-            // 不需要 cfg 文件
+            string configPath = Functions.ServerPath.GetServersServerFiles(_serverData.ServerID, "serverconfig.xml");
+            if (await Functions.Github.DownloadGameServerConfig(configPath, "7 Days to Die Dedicated Server"))
+            {
+                string configText = File.ReadAllText(configPath);
+                configText = configText.Replace("{{hostname}}", _serverData.ServerName);
+                configText = configText.Replace("{{rcon_password}}", _serverData.GetRCONPassword());
+                configText = configText.Replace("{{port}}", _serverData.ServerPort);
+                configText = configText.Replace("{{telnetPort}}", (int.Parse(_serverData.ServerPort) - int.Parse(Port) + 8081).ToString());
+                configText = configText.Replace("{{maxplayers}}", Maxplayers);
+                File.WriteAllText(configPath, configText);
+            }
         }
 
         // 启动服务器进程
@@ -58,7 +67,7 @@ namespace WindowsGSM.GameServer
                 Error = $"{Path.GetFileName(shipExePath)} 未找到 ({shipExePath})";
                 return null;
             }
-            string param = $"-nographics -batchmode -name \"{_serverData.ServerName}\" -port {_serverData.ServerPort} -world \"{_serverData.ServerMap}\" -password \"{_serverData.ServerPWD}\" -savedir {ServerPath.GetServersServerFiles(_serverData.ServerID) + "\\Saved"} {_serverData.ServerParam}" + (!AllowsEmbedConsole ? " -log" : string.Empty);
+            string param = $"-nographics -batchmode -name \"{_serverData.ServerName}\" -port {_serverData.ServerPort} -world \"{_serverData.ServerMap}\" -savedir {ServerPath.GetServersServerFiles(_serverData.ServerID) + "\\Saved"} {_serverData.ServerParam}" + (!AllowsEmbedConsole ? " -log" : string.Empty);
             Process p;
             if (!AllowsEmbedConsole)
             {

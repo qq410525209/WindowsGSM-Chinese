@@ -51,7 +51,7 @@ namespace WindowsGSM.GameServer
         {
             //Download server.properties
             string configPath = Functions.ServerPath.GetServersServerFiles(_serverData.ServerID, "server.properties");
-            if (await Functions.Github.DownloadGameServerConfig(configPath, FullName))
+            if (await Functions.Github.DownloadGameServerConfig(configPath, "Minecraft: Bedrock Edition Server"))
             {
                 string configText = File.ReadAllText(configPath);
                 configText = configText.Replace("{{server-name}}", _serverData.ServerName);

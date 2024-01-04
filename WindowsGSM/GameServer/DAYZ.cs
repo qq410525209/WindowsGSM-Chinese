@@ -48,7 +48,7 @@ namespace WindowsGSM.GameServer
         {
             //Download serverDZ.cfg
             string configPath = Functions.ServerPath.GetServersServerFiles(_serverData.ServerID, "serverDZ.cfg");
-            if (await Functions.Github.DownloadGameServerConfig(configPath, FullName))
+            if (await Functions.Github.DownloadGameServerConfig(configPath, "DayZ Dedicated Server"))
             {
                 string configText = File.ReadAllText(configPath);
                 configText = configText.Replace("{{hostname}}", _serverData.ServerName);

@@ -34,7 +34,7 @@ namespace WindowsGSM.GameServer
         public async void CreateServerCFG()
         {
             string configPath = Functions.ServerPath.GetServersServerFiles(_serverData.ServerID, @"PostScriptum\ServerConfig", "Server.cfg");
-            if (await Functions.Github.DownloadGameServerConfig(configPath, _serverData.ServerGame))
+            if (await Functions.Github.DownloadGameServerConfig(configPath, "Post Scriptum Dedicated Server"))
             {
                 if(File.Exists(configPath))
                 {
@@ -45,7 +45,7 @@ namespace WindowsGSM.GameServer
                 }
             }
             string mapRotationPath = Functions.ServerPath.GetServersServerFiles(_serverData.ServerID, @"PostScriptum\ServerConfig", "MapRotation.cfg");
-            if (await Functions.Github.DownloadGameServerConfig(mapRotationPath, _serverData.ServerGame))
+            if (await Functions.Github.DownloadGameServerConfig(mapRotationPath, "Post Scriptum Dedicated Server"))
             {
                 if (File.Exists(mapRotationPath))
                 {

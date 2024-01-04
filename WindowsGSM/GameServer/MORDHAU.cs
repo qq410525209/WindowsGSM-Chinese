@@ -51,7 +51,7 @@ namespace WindowsGSM.GameServer
             Directory.CreateDirectory(Path.GetDirectoryName(configPath));
 
             //Download Game.ini
-            if (await Functions.Github.DownloadGameServerConfig(configPath, FullName))
+            if (await Functions.Github.DownloadGameServerConfig(configPath, "Mordhau Dedicated Server"))
             {
                 string configText = File.ReadAllText(configPath);
                 configText = configText.Replace("{{hostname}}", _serverData.ServerName);

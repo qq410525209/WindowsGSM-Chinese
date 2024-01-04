@@ -38,7 +38,7 @@ namespace WindowsGSM.GameServer
         {
             //Create server.properties
             string configPath = Functions.ServerPath.GetServersServerFiles(_serverData.ServerID, "server.properties");
-            if (await Functions.Github.DownloadGameServerConfig(configPath, FullName))
+            if (await Functions.Github.DownloadGameServerConfig(configPath, "Minecraft: Java Edition Server"))
             {
                 string configText = File.ReadAllText(configPath);
                 configText = configText.Replace("{{serverPort}}", _serverData.ServerPort);

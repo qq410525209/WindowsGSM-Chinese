@@ -34,7 +34,7 @@ namespace WindowsGSM.GameServer
         public async void CreateServerCFG()
         {
             string configPath = Functions.ServerPath.GetServersServerFiles(_serverData.ServerID, @"Risk of Rain 2_Data\Config", "server.cfg");
-            if (await Functions.Github.DownloadGameServerConfig(configPath, _serverData.ServerGame))
+            if (await Functions.Github.DownloadGameServerConfig(configPath, "Risk of Rain 2 Dedicated Server"))
             {
                 if(File.Exists(configPath))
                 {

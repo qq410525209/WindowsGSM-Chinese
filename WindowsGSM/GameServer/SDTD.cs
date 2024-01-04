@@ -55,7 +55,7 @@ namespace WindowsGSM.GameServer
         {
             //Download serverconfig.xml
             string configPath = Functions.ServerPath.GetServersServerFiles(_serverData.ServerID, "serverconfig.xml");
-            if (await Functions.Github.DownloadGameServerConfig(configPath, FullName))
+            if (await Functions.Github.DownloadGameServerConfig(configPath, "7 Days to Die Dedicated Server"))
             {
                 string configText = File.ReadAllText(configPath);
                 configText = configText.Replace("{{hostname}}", _serverData.ServerName);

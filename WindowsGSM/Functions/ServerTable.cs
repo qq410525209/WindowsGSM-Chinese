@@ -15,7 +15,6 @@ namespace WindowsGSM.Functions
         public string Port { get; set; }
         public string QueryPort { get; set; }
         public string Defaultmap { get; set; }
-        public string Password { get; set; }
         public string Maxplayers { get; set; }
         public string Uptime 
         { 

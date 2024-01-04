@@ -44,7 +44,7 @@ namespace WindowsGSM.GameServer
         {
             //Download server.cfg
             string configPath = Functions.ServerPath.GetServersServerFiles(_serverData.ServerID, "server.cfg");
-            if (await Functions.Github.DownloadGameServerConfig(configPath, FullName))
+            if (await Functions.Github.DownloadGameServerConfig(configPath, "Rust Dedicated Server"))
             {
                 string configText = File.ReadAllText(configPath);
                 configText = configText.Replace("{{rcon_password}}", _serverData.GetRCONPassword());

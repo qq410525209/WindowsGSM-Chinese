@@ -34,7 +34,7 @@ namespace WindowsGSM.GameServer
         {
             //Download Engine.ini
             string configPath = Functions.ServerPath.GetServersServerFiles(_serverData.ServerID, @"ConanSandbox\Saved\Config\WindowsServer\Engine.ini");
-            if (await Functions.Github.DownloadGameServerConfig(configPath, FullName))
+            if (await Functions.Github.DownloadGameServerConfig(configPath, "Conan Exiles Dedicated Server"))
             {
                 string configText = File.ReadAllText(configPath);
                 configText = configText.Replace("{{ServerName}}", _serverData.ServerName);

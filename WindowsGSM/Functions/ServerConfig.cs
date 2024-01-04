@@ -16,7 +16,6 @@ namespace WindowsGSM.Functions
             public const string ServerQueryPort = "serverqueryport";
             public const string ServerMap = "servermap";
             public const string ServerMaxPlayer = "servermaxplayer";
-            public const string ServerPWD = "serverpwd";
             public const string ServerGSLT = "servergslt";
             public const string ServerParam = "serverparam";
             public const string AutoRestart = "autorestart";
@@ -48,7 +47,6 @@ namespace WindowsGSM.Functions
         public string ServerQueryPort;
         public string ServerMap;
         public string ServerMaxPlayer;
-        public string ServerPWD;
         public string ServerGSLT;
         public string ServerParam;
         public bool AutoRestart;
@@ -120,7 +118,6 @@ namespace WindowsGSM.Functions
                             case SettingName.ServerQueryPort: ServerQueryPort = keyvalue[1]; break;
                             case SettingName.ServerMap: ServerMap = keyvalue[1]; break;
                             case SettingName.ServerMaxPlayer: ServerMaxPlayer = keyvalue[1]; break;
-                            case SettingName.ServerPWD: ServerPWD = keyvalue[1]; break;
                             case SettingName.ServerGSLT: ServerGSLT = keyvalue[1]; break;
                             case SettingName.ServerParam: ServerParam = keyvalue[1]; break;
                             case SettingName.AutoRestart: AutoRestart = keyvalue[1] == "1"; break;
@@ -157,7 +154,6 @@ namespace WindowsGSM.Functions
             ServerQueryPort = (int.Parse(ServerPort) - int.Parse(gameServer.Port) + int.Parse(gameServer.QueryPort)).ToString(); // Magic
             ServerMap = gameServer.Defaultmap;
             ServerMaxPlayer = gameServer.Maxplayers;
-            ServerPWD = gameServer.Password;
             ServerGSLT = string.Empty;
             ServerParam = gameServer.Additional;
             EmbedConsole = false;
@@ -200,7 +196,6 @@ namespace WindowsGSM.Functions
                     textwriter.WriteLine($"{SettingName.ServerQueryPort}=\"{ServerQueryPort}\"");
                     textwriter.WriteLine($"{SettingName.ServerMap}=\"{ServerMap}\"");
                     textwriter.WriteLine($"{SettingName.ServerMaxPlayer}=\"{ServerMaxPlayer}\"");
-                    textwriter.WriteLine($"{SettingName.ServerPWD}=\"{ServerPWD}\"");
                     textwriter.WriteLine($"{SettingName.ServerGSLT}=\"{ServerGSLT}\"");
                     textwriter.WriteLine($"{SettingName.ServerParam}=\"{ServerParam}\"");
                     textwriter.WriteLine(string.Empty);

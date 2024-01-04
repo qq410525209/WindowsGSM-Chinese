@@ -38,7 +38,7 @@ namespace WindowsGSM.GameServer
         {
             //Download ServerSettings.cfg
             string configPath = Functions.ServerPath.GetServersServerFiles(_serverData.ServerID, "Configuration", "ServerSettings.cfg");
-            if (await Functions.Github.DownloadGameServerConfig(configPath, FullName))
+            if (await Functions.Github.DownloadGameServerConfig(configPath, "Reign Of Kings Dedicated Server"))
             {
                 string configText = File.ReadAllText(configPath);
                 configText = configText.Replace("{{ServerName}}", _serverData.ServerName);

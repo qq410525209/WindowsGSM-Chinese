@@ -35,7 +35,7 @@ namespace WindowsGSM.GameServer
         {
             //Download server.cfg
             string configPath = Functions.ServerPath.GetServersServerFiles(_serverData.ServerID, @"cfx-server-data-master\server.cfg");
-            if (await Functions.Github.DownloadGameServerConfig(configPath, FullName))
+            if (await Functions.Github.DownloadGameServerConfig(configPath, "Grand Theft Auto V Dedicated Server (FiveM)"))
             {
                 string configText = File.ReadAllText(configPath);
                 configText = configText.Replace("{{hostname}}", _serverData.ServerName);
@@ -48,7 +48,7 @@ namespace WindowsGSM.GameServer
 
             //Download sample logo
             string logoPath = Functions.ServerPath.GetServersServerFiles(_serverData.ServerID, @"cfx-server-data-master\myLogo.png");
-            await Functions.Github.DownloadGameServerConfig(logoPath, FullName);
+            await Functions.Github.DownloadGameServerConfig(logoPath, "Grand Theft Auto V Dedicated Server (FiveM)");
         }
 
         public async Task<Process> Start()

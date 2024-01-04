@@ -43,7 +43,7 @@ namespace WindowsGSM.GameServer
                 ("{{MaxClients}}", _serverData.ServerMaxPlayer)
             };
 
-            await Github.DownloadGameServerConfig(ServerPath.GetServersServerFiles(_serverData.ServerID, "data", "serverconfig.json"), FullName, replaceValues);
+            await Github.DownloadGameServerConfig(ServerPath.GetServersServerFiles(_serverData.ServerID, "data", "serverconfig.json"), "Vintage Story Dedicated Server", replaceValues);
         }
 
         public async Task<Process> Start()

@@ -43,17 +43,7 @@ namespace WindowsGSM.GameServer
         // - 在安装后为游戏服务器创建一个默认的 cfg
         public async void CreateServerCFG()
         {
-            string configPath = Functions.ServerPath.GetServersServerFiles(_serverData.ServerID, "serverconfig.xml");
-            if (await Functions.Github.DownloadGameServerConfig(configPath, "7 Days to Die Dedicated Server"))
-            {
-                string configText = File.ReadAllText(configPath);
-                configText = configText.Replace("{{hostname}}", _serverData.ServerName);
-                configText = configText.Replace("{{rcon_password}}", _serverData.GetRCONPassword());
-                configText = configText.Replace("{{port}}", _serverData.ServerPort);
-                configText = configText.Replace("{{telnetPort}}", (int.Parse(_serverData.ServerPort) - int.Parse(Port) + 8081).ToString());
-                configText = configText.Replace("{{maxplayers}}", Maxplayers);
-                File.WriteAllText(configPath, configText);
-            }
+
         }
 
         // 启动服务器进程

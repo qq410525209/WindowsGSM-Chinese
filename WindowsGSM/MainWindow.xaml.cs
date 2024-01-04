@@ -120,7 +120,7 @@ namespace WindowsGSM
             Deleting = 12
         }
 
-        public static readonly string WGSM_VERSION = "v" + string.Concat(System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString().Reverse().Skip(2).Reverse());
+        public static readonly string WGSM_VERSION = "v" + string.Concat(System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString().Reverse().Skip(0).Reverse());
         public static readonly int MAX_SERVER = 100;
         public static readonly string WGSM_PATH = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName);
         public static readonly string DEFAULT_THEME = "Cyan";

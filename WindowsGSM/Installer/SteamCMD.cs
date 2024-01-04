@@ -27,32 +27,73 @@ namespace WindowsGSM.Installer
             Directory.CreateDirectory(_installPath);
         }
 
+        //private static async Task<bool> Download()
+        //{
+        //    Directory.CreateDirectory(_installPath);
+        //    var exePath = Path.Combine(_installPath, _exeFile);
+        //    if (File.Exists(exePath)) { return true; }
+
+        //    try
+        //    {
+        //        var zipPath = Path.Combine(_installPath, "steamcmd.zip");
+        //        using (var webClient = new WebClient())
+        //        {
+        //            await webClient.DownloadFileTaskAsync("https://steamcdn-a.akamaihd.net/client/installer/steamcmd.zip", zipPath);
+        //        }
+
+        //        //Extract steamcmd.zip and delete the zip
+        //        await Task.Run(() => ZipFile.ExtractToDirectory(zipPath, _installPath));
+        //        await Task.Run(() => File.Delete(zipPath));
+
+        //        return true;
+        //    }
+        //    catch
+        //    {
+        //        return false;
+        //    }
+        //}
         private static async Task<bool> Download()
         {
             Directory.CreateDirectory(_installPath);
             var exePath = Path.Combine(_installPath, _exeFile);
             if (File.Exists(exePath)) { return true; }
-            
+
             try
             {
                 var zipPath = Path.Combine(_installPath, "steamcmd.zip");
+                bool downloadSuccess = false;
+
                 using (var webClient = new WebClient())
                 {
-                    await webClient.DownloadFileTaskAsync("https://steamcdn-a.akamaihd.net/client/installer/steamcmd.zip", zipPath);
+                    try
+                    {
+                        await webClient.DownloadFileTaskAsync("https://a.aopk.cn:444/steamcmd.zip", zipPath);
+                        downloadSuccess = true;
+                    }
+                    catch (Exception)
+                    {
+                        // If alternate download fails, attempt default URL
+                        await webClient.DownloadFileTaskAsync("https://steamcdn-a.akamaihd.net/client/installer/steamcmd.zip", zipPath);
+                        downloadSuccess = true;
+                    }
                 }
 
-                //Extract steamcmd.zip and delete the zip
-                await Task.Run(() => ZipFile.ExtractToDirectory(zipPath, _installPath));
-                await Task.Run(() => File.Delete(zipPath));
+                if (downloadSuccess)
+                {
+                    // Extract steamcmd.zip and delete the zip
+                    await Task.Run(() => ZipFile.ExtractToDirectory(zipPath, _installPath));
+                    await Task.Run(() => File.Delete(zipPath));
 
-                return true;
+                    return true;
+                }
             }
             catch
             {
                 return false;
             }
-        }
 
+            return false;
+        }
         // Old parameter script
         public void SetParameter(string installDir, string modName, string appId, bool validate, bool loginAnonymous = true)
         {

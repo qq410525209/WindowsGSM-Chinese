@@ -89,7 +89,7 @@ namespace WindowsGSM.GameServer
                 Notice = $"serverconfig.xml not found ({configPath})";
             }
 
-            string logFile = @"7DaysToDieServer_Data\output_log_dedi__" + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + ".txt";
+            string logFile = @"LOG\" + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + ".txt";
             string param = $"-logfile \"{Path.Combine(workingDir, logFile)}\" -quit -batchmode -nographics -configfile=serverconfig.xml -dedicated {_serverData.ServerParam}";
 
             WindowsFirewall firewall = new WindowsFirewall(exeName, exePath);

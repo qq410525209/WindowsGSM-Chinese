@@ -14,7 +14,7 @@ namespace WindowsGSM.GameServer
         public string Error;
         public string Notice;
 
-        public const string FullName = "Minecraft: Pocket Edition Server (PocketMine-MP)";
+        public const string FullName = "我的世界: 携带版服务器 (PocketMine-MP)";
         public string StartPath = @"bin\php\php.exe";
         public bool AllowsEmbedConsole = true;
         public int PortIncrements = 1;

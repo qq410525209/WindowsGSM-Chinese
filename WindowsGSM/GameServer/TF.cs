@@ -11,7 +11,7 @@ namespace WindowsGSM.GameServer
         public string Error;
         public string Notice;
 
-        public const string FullName = "The Forest Dedicated Server";
+        public const string FullName = "森林 专用服务器";
         public string StartPath = "TheForestDedicatedServer.exe";
         public bool AllowsEmbedConsole = true;
         public int PortIncrements = 2;

@@ -48,6 +48,7 @@ namespace WindowsGSM.GameServer.Data
                 case RCC.FullName: return new RCC(serverData);
                 case TFC.FullName: return new TFC(serverData);
                 case TF.FullName: return new TF(serverData);
+                case SOTF.FullName: return new SOTF(serverData);
                 case SQ.FullName: return new SQ(serverData);
                 case BT.FullName: return new BT(serverData);
                 case PS.FullName: return new PS(serverData);
@@ -55,6 +56,7 @@ namespace WindowsGSM.GameServer.Data
                 case ECO.FullName: return new ECO(serverData);
                 case VTS.FullName: return new VTS(serverData);
                 case SDK2013.FullName: return new SDK2013(serverData);
+                case VM.FullName: return new VM(serverData);
                 default: // Load Plugin
                 {
                     if (pluginList == null) { return null; }

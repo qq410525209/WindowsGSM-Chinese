@@ -12,7 +12,7 @@ namespace WindowsGSM.GameServer
         public string Error;
         public string Notice;
 
-        public const string FullName = "Risk of Rain 2 Dedicated Server";
+        public const string FullName = "雨中冒险2 专用服务器";
         public string StartPath = @"Risk of Rain 2.exe";
         public bool AllowsEmbedConsole = true;
         public int PortIncrements = 2;

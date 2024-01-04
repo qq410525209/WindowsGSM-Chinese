@@ -49,6 +49,7 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
     <NoWarn>1998;</NoWarn>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -420,12 +421,14 @@
     <Compile Include="GameServer\SE.cs" />
     <Compile Include="GameServer\Engine\GoldSource.cs" />
     <Compile Include="GameServer\Engine\Source.cs" />
+    <Compile Include="GameServer\SOTF.cs" />
     <Compile Include="GameServer\SQ.cs" />
     <Compile Include="GameServer\PS.cs" />
     <Compile Include="GameServer\SW.cs" />
     <Compile Include="GameServer\TF.cs" />
     <Compile Include="GameServer\TFC.cs" />
     <Compile Include="GameServer\UNT.cs" />
+    <Compile Include="GameServer\VM.cs" />
     <Compile Include="GameServer\VTS.cs" />
     <Compile Include="GameServer\ZPS.cs" />
     <Compile Include="Functions\GlobalServerList.cs" />
@@ -480,6 +483,7 @@
     <EmbeddedResource Include="GameServer\Data\Icon.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Icon.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -819,6 +823,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Plugins\User.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\aopk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Games\vm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Tools\BepInEx.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Games\sotf.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" />

@@ -11,7 +11,7 @@ namespace WindowsGSM.GameServer
         public string Error;
         public string Notice;
 
-        public const string FullName = "Unturned Dedicated Server";
+        public const string FullName = "未转变者 专用服务器";
         public string StartPath = "Unturned.exe";
         public bool AllowsEmbedConsole = true;
         public int PortIncrements = 2;

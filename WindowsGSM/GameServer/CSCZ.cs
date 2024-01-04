@@ -2,7 +2,7 @@
 {
     class CSCZ : Engine.GoldSource
     {
-        public const string FullName = "Counter-Strike: Condition Zero Dedicated Server";
+        public const string FullName = "反恐精英-零点行动 专用服务";
         public override string Defaultmap { get { return "de_dust2"; } }
         public override string Game { get { return "czero"; } }
         public override string AppId { get { return "80"; } }

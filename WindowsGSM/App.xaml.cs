@@ -56,7 +56,7 @@ namespace WindowsGSM
                     if (process.Id != Process.GetCurrentProcess().Id)
                     {
                         System.Media.SystemSounds.Beep.Play();
-                        MessageBox.Show("Another instance is already running", "WindowsGSM already running", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        MessageBox.Show("另一个程序已经在运行", "游戏服务管理器已经运行", MessageBoxButton.OK, MessageBoxImage.Warning);
                         SetForegroundWindow(process.MainWindowHandle);
                         Process.GetCurrentProcess().Kill();
                     }
@@ -70,10 +70,10 @@ namespace WindowsGSM
                 Directory.CreateDirectory(logPath);
 
                 string logFile = Path.Combine(logPath, $"CRASH_{DateTime.Now.ToString("yyyyMMdd")}.log");
-                File.AppendAllText(logFile, $"WindowsGSM v{version}\n\n" + args.ExceptionObject);
+                File.AppendAllText(logFile, $"游戏服务管理器 v{version}\n\n" + args.ExceptionObject);
 #if !DEBUG
                 string latestLogFile = Path.Combine(logPath, "latest_crash_wgsm_temp.log");
-                File.AppendAllText(latestLogFile, $"WindowsGSM v{version}\n\n" + args.ExceptionObject);
+                File.AppendAllText(latestLogFile, $"游戏服务管理器 v{version}\n\n" + args.ExceptionObject);
                 RegistryKey key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\WindowsGSM");
                 if (key != null && (key.GetValue("RestartOnCrash") ?? false).ToString() == "True")
                 {

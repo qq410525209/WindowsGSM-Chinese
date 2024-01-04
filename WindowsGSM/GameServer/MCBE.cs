@@ -30,7 +30,7 @@ namespace WindowsGSM.GameServer
         public string Error;
         public string Notice;
 
-        public const string FullName = "Minecraft: Bedrock Edition Server";
+        public const string FullName = "我的世界: Java版服务器";
         public string StartPath = "bedrock_server.exe";
         public bool AllowsEmbedConsole = true;
         public int PortIncrements = 2;

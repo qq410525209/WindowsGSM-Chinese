@@ -12,7 +12,7 @@ namespace WindowsGSM.GameServer
         public string Error;
         public string Notice;
 
-        public const string FullName = "Squad Dedicated Server";
+        public const string FullName = "战术小队 专用服务器";
         public string StartPath = @"SquadGame\Binaries\Win64\SquadGameServer.exe";
         public bool AllowsEmbedConsole = true;
         public int PortIncrements = 2;

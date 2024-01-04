@@ -21,7 +21,7 @@ namespace WindowsGSM.GameServer
         public string Error;
         public string Notice;
 
-        public const string FullName = "Eco Dedicated Server";
+        public const string FullName = "Eco 专用服务器";
         public string StartPath = @"EcoServer.exe";
         public bool AllowsEmbedConsole = true;
         public int PortIncrements = 2;

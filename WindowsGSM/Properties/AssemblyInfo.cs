@@ -7,10 +7,10 @@ using System.Windows;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("WindowsGSM")]
-[assembly: AssemblyDescription("A Game Server Manager works on Windows Platform")]
+[assembly: AssemblyTitle("游戏服务管理器")]
+[assembly: AssemblyDescription("一个运行在 Windows 平台上的游戏服务器管理器")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("TatLead")]
+[assembly: AssemblyCompany("资源工坊https://www.aopk.cn")]
 [assembly: AssemblyProduct("WindowsGSM")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
@@ -51,7 +51,7 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.23.1.0")]
-[assembly: AssemblyFileVersion("1.23.1.0")]
-[assembly: NeutralResourcesLanguage("en")]
+[assembly: AssemblyVersion("1.23.2.0")]
+[assembly: AssemblyFileVersion("1.23.2.0")]
+[assembly: NeutralResourcesLanguage("zh")]
 

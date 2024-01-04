@@ -2,7 +2,7 @@
 {
     class TF2 : Engine.Source
     {
-        public const string FullName = "Team Fortress 2 Dedicated Server";
+        public const string FullName = "军团要塞2 专用服务器";
         public override string Defaultmap { get { return "cp_badlands"; } }
         public override string Game { get { return "tf"; } }
         public override string AppId { get { return "232250"; } }

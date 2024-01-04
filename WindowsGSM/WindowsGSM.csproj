@@ -395,6 +395,7 @@
     <Compile Include="GameServer\HLOF.cs" />
     <Compile Include="GameServer\INSS.cs" />
     <Compile Include="GameServer\ECO.cs" />
+    <Compile Include="GameServer\MOE.cs" />
     <Compile Include="GameServer\ONSET.cs" />
     <Compile Include="GameServer\ROR2.cs" />
     <Compile Include="GameServer\Query\A2S.cs" />
@@ -835,6 +836,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Games\sotf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Games\moe.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" />

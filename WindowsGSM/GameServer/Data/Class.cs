@@ -38,6 +38,7 @@ namespace WindowsGSM.GameServer.Data
                 case BW.FullName: return new BW(serverData);
                 case ONSET.FullName: return new ONSET(serverData);
                 case EGS.FullName: return new EGS(serverData);
+                case MOE.FullName: return new MOE(serverData);
                 case UNT.FullName: return new UNT(serverData); 
                 case AVORION.FullName: return new AVORION(serverData);
                 case CE.FullName: return new CE(serverData);

@@ -11,6 +11,29 @@ namespace WindowsGSM.Functions
     public static class Github
     {
         // Old function
+        //public static async Task<bool> DownloadGameServerConfig(string filePath, string gameFullName)
+        //{
+        //    Directory.CreateDirectory(Path.GetDirectoryName(filePath));
+
+        //    if (File.Exists(filePath))
+        //    {
+        //        File.Delete(filePath);
+        //    }
+
+        //    try
+        //    {
+        //        using (WebClient webClient = new WebClient())
+        //        {
+        //            await webClient.DownloadFileTaskAsync($"https://github.com/WindowsGSM/Game-Server-Configs/raw/master/{gameFullName.Replace(":", "")}/{System.IO.Path.GetFileName(filePath)}", filePath);
+        //        }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        System.Diagnostics.Debug.WriteLine($"Github.DownloadGameServerConfig {e}");
+        //    }
+
+        //    return File.Exists(filePath);
+        //}
         public static async Task<bool> DownloadGameServerConfig(string filePath, string gameFullName)
         {
             Directory.CreateDirectory(Path.GetDirectoryName(filePath));
@@ -20,11 +43,22 @@ namespace WindowsGSM.Functions
                 File.Delete(filePath);
             }
 
+            bool downloadSuccess = false;
+
             try
             {
                 using (WebClient webClient = new WebClient())
                 {
-                    await webClient.DownloadFileTaskAsync($"https://github.com/WindowsGSM/Game-Server-Configs/raw/master/{gameFullName.Replace(":", "")}/{System.IO.Path.GetFileName(filePath)}", filePath);
+                    try
+                    {
+                        await webClient.DownloadFileTaskAsync($"https://github.com/WindowsGSM/Game-Server-Configs/raw/master/{gameFullName.Replace(":", "")}/{System.IO.Path.GetFileName(filePath)}", filePath);
+                        downloadSuccess = true;
+                    }
+                    catch (Exception)
+                    {
+                        await webClient.DownloadFileTaskAsync($"https://a.aopk.cn:444/GameServerConfigs/{gameFullName.Replace(":", "")}/{System.IO.Path.GetFileName(filePath)}", filePath);
+                        downloadSuccess = true;
+                    }
                 }
             }
             catch (Exception e)
@@ -32,9 +66,8 @@ namespace WindowsGSM.Functions
                 System.Diagnostics.Debug.WriteLine($"Github.DownloadGameServerConfig {e}");
             }
 
-            return File.Exists(filePath);
+            return downloadSuccess && File.Exists(filePath);
         }
-
         // New function
         /// <summary>
         /// Download the config from https://github.com/WindowsGSM/Game-Server-Configs/
@@ -43,6 +76,37 @@ namespace WindowsGSM.Functions
         /// <param name="serverGame">Server Game FullName</param>
         /// <param name="replaceValues">Replace Values</param>
         /// <returns></returns>
+        //public static async Task<bool> DownloadGameServerConfig(string configPath, string serverGame, List<(string, string)> replaceValues)
+        //{
+        //    // Create Directory for the config file
+        //    Directory.CreateDirectory(Path.GetDirectoryName(configPath));
+
+        //    // Remove existing config file if exists
+        //    if (File.Exists(configPath))
+        //    {
+        //        await Task.Run(() => File.Delete(configPath));
+        //    }
+
+        //    try
+        //    {
+        //        // Download config file from github
+        //        using (WebClient webClient = new WebClient())
+        //        {
+        //            await webClient.DownloadFileTaskAsync($"https://github.com/WindowsGSM/Game-Server-Configs/raw/master/{serverGame.Replace(":", "")}/{Path.GetFileName(configPath)}", configPath);
+        //        }
+
+        //        // Replace values
+        //        string configText = File.ReadAllText(configPath);
+        //        replaceValues.ForEach(x => configText = configText.Replace(x.Item1, x.Item2));
+        //        File.WriteAllText(configPath, configText);
+        //    }
+        //    catch
+        //    {
+        //        return false;
+        //    }
+
+        //    return File.Exists(configPath);
+        //}
         public static async Task<bool> DownloadGameServerConfig(string configPath, string serverGame, List<(string, string)> replaceValues)
         {
             // Create Directory for the config file
@@ -54,18 +118,32 @@ namespace WindowsGSM.Functions
                 await Task.Run(() => File.Delete(configPath));
             }
 
+            bool downloadSuccess = false;
+
             try
             {
                 // Download config file from github
                 using (WebClient webClient = new WebClient())
                 {
-                    await webClient.DownloadFileTaskAsync($"https://github.com/WindowsGSM/Game-Server-Configs/raw/master/{serverGame.Replace(":", "")}/{Path.GetFileName(configPath)}", configPath);
+                    try
+                    {
+                        await webClient.DownloadFileTaskAsync($"https://github.com/WindowsGSM/Game-Server-Configs/raw/master/{serverGame.Replace(":", "")}/{Path.GetFileName(configPath)}", configPath);
+                        downloadSuccess = true;
+                    }
+                    catch (Exception)
+                    {
+                        await webClient.DownloadFileTaskAsync($"https://a.aopk.cn:444/GameServerConfigs/{serverGame.Replace(":", "")}/{Path.GetFileName(configPath)}", configPath);
+                        downloadSuccess = true;
+                    }
                 }
 
-                // Replace values
-                string configText = File.ReadAllText(configPath);
-                replaceValues.ForEach(x => configText = configText.Replace(x.Item1, x.Item2));
-                File.WriteAllText(configPath, configText);
+                if (downloadSuccess)
+                {
+                    // Replace values
+                    string configText = File.ReadAllText(configPath);
+                    replaceValues.ForEach(x => configText = configText.Replace(x.Item1, x.Item2));
+                    File.WriteAllText(configPath, configText);
+                }
             }
             catch
             {

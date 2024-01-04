@@ -26,7 +26,7 @@ namespace WindowsGSM.GameServer
         public string Error;
         public string Notice;
 
-        public const string FullName = "Mordhau Dedicated Server";
+        public const string FullName = "雷霆一击 专用服务器";
         public string StartPath = @"Mordhau\Binaries\Win64\MordhauServer-Win64-Shipping.exe";
         public bool AllowsEmbedConsole = true;
         public int PortIncrements = 2;

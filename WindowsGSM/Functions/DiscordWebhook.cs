@@ -33,7 +33,7 @@ namespace WindowsGSM.Functions
             string avatarUrl = GetAvatarUrl();
             string json = @"
             {
-                ""username"": ""WindowsGSM"",
+                ""username"": ""游戏服务管理器"",
                 ""avatar_url"": """ + avatarUrl  + @""",
                 ""content"": """ + HttpUtility.JavaScriptStringEncode(_customMessage) + @""",
                 ""embeds"": [
@@ -91,7 +91,7 @@ namespace WindowsGSM.Functions
 
         private static string GetColor(string serverStatus)
         {
-            if (serverStatus.Contains("Started"))
+            if (serverStatus.Contains("启动"))
             {
                 return "65280"; //Green
             }
@@ -113,7 +113,7 @@ namespace WindowsGSM.Functions
 
         private static string GetStatusWithEmoji(string serverStatus)
         {
-            if (serverStatus.Contains("Started"))
+            if (serverStatus.Contains("启动"))
             {
                 return ":green_circle: " + serverStatus;
             }
@@ -136,7 +136,7 @@ namespace WindowsGSM.Functions
         private static string GetThumbnail(string serverStatus)
         {
             string url = "https://github.com/WindowsGSM/Discord-Alert-Icons/raw/master/";
-            if (serverStatus.Contains("Started"))
+            if (serverStatus.Contains("启动"))
             {
                 return $"{url}Started.png";
             }
@@ -195,7 +195,7 @@ namespace WindowsGSM.Functions
             {
                 JObject jObject = new JObject
                 {
-                    { "username", "WindowsGSM - Error Feed" },
+                    { "username", "游戏服务管理器 - Error Feed" },
                     { "avatar_url", "https://github.com/WindowsGSM/WindowsGSM/raw/master/WindowsGSM/Images/WindowsGSM.png" },
                     { "content",  $"```php\n{errorLog}```" }
                 };

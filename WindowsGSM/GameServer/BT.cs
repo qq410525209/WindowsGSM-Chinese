@@ -14,7 +14,7 @@ namespace WindowsGSM.GameServer
         public string Error;
         public string Notice;
 
-        public const string FullName = "Barotrauma Dedicated Server";
+        public const string FullName = "潜渊症 专用服务器";
         public string StartPath = "DedicatedServer.exe";
         public bool AllowsEmbedConsole = false;
         public int PortIncrements = 2;

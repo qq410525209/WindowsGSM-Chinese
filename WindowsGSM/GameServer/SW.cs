@@ -11,7 +11,7 @@ namespace WindowsGSM.GameServer
         public string Error;
         public string Notice;
 
-        public const string FullName = "Stormworks Dedicated Server";
+        public const string FullName = "风暴工程 专用服务器";
         public string StartPath = "server.exe";
         public bool AllowsEmbedConsole = false;
         public int PortIncrements = 3;

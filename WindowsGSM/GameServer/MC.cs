@@ -17,7 +17,7 @@ namespace WindowsGSM.GameServer
         public string Error;
         public string Notice;
 
-        public const string FullName = "Minecraft: Java Edition Server";
+        public const string FullName = "我的世界: 基岩版服务器";
         public string StartPath = string.Empty;
         public bool AllowsEmbedConsole = true;
         public int PortIncrements = 1;
@@ -157,10 +157,10 @@ namespace WindowsGSM.GameServer
             if (!JavaHelper.IsJREInstalled())
             {
                 //Java
-                result = MessageBox.Show("Java is not installed\n\nWould you like to install?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                result = MessageBox.Show("Java 未安装\n\n您要安装吗？", "确认", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (result != MessageBoxResult.Yes)
                 {
-                    Error = "Java is not installed";
+                    Error = "未安装 Java";
                     return null;
                 }
 

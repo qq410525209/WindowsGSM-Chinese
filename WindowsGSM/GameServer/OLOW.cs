@@ -21,7 +21,7 @@ namespace WindowsGSM.GameServer
         public string Error;
         public string Notice;
 
-        public const string FullName = "Outlaws of the Old West Dedicated Server";
+        public const string FullName = "西部狂徒 专用服务器";
         public string StartPath = @"Outlaws\Binaries\Win64\OutlawsServer-Win64-Shipping.exe";
         public bool AllowsEmbedConsole = true;
         public int PortIncrements = 2;

@@ -142,7 +142,7 @@ namespace WindowsGSM.Functions
                 case 23: return "Undefined 23";
                 case 24: return "DDR3";
                 case 25: return "Undefined 25";
-                default: return "Unknown";
+                default: return "未知";
             }
         }
     }

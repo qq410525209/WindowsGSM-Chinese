@@ -24,7 +24,7 @@ namespace WindowsGSM.GameServer
         public string Error;
         public string Notice;
 
-        public const string FullName = "DayZ Dedicated Server";
+        public const string FullName = "僵尸末日 专用服务器";
         public string StartPath = "DayZServer_x64.exe";
         public bool AllowsEmbedConsole = false;
         public int PortIncrements = 2;

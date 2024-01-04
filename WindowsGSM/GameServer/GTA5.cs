@@ -14,7 +14,7 @@ namespace WindowsGSM.GameServer
         public string Error;
         public string Notice;
 
-        public const string FullName = "Grand Theft Auto V Dedicated Server (FiveM)";
+        public const string FullName = "侠盗猎车手V 专用服务器";
         public string StartPath = @"server\FXServer.exe";
         public bool AllowsEmbedConsole = true;
         public int PortIncrements = 1;

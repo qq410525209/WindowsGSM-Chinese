@@ -11,7 +11,7 @@ namespace WindowsGSM.GameServer
         public string Error;
         public string Notice;
 
-        public const string FullName = "Heat Dedicated Server";
+        public const string FullName = "热能标记 专用服务器";
         public string StartPath = "Heat.exe";
         public bool AllowsEmbedConsole = false;
         public int PortIncrements = 1;

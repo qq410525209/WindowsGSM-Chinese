@@ -15,7 +15,7 @@ namespace WindowsGSM.GameServer
         public string Error;
         public string Notice;
 
-        public const string FullName = "Reign Of Kings Dedicated Server";
+        public const string FullName = "君临天下 专用服务器";
         public string StartPath = "ROK.exe";
         public bool AllowsEmbedConsole = false;
         public int PortIncrements = 1;

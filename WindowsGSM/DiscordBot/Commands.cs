@@ -60,8 +60,8 @@ namespace WindowsGSM.DiscordBot
                         {
                             await message.Channel.SendMessageAsync(
                                 serverIds.Contains("0") ?
-                                "You have full permission.\nCommands: `check`, `list`, `start`, `stop`, `restart`, `send`, `backup`, `update`, `stats`" :
-                                $"You have permission on servers (`{string.Join(",", serverIds.ToArray())}`)\nCommands: `check`, `start`, `stop`, `restart`, `send`, `backup`, `update`, `stats`");
+                                "你有完整的权限.\nCommands: `check`, `list`, `start`, `stop`, `restart`, `send`, `backup`, `update`, `stats`" :
+                                $"您有服务器权限 (`{string.Join(",", serverIds.ToArray())}`)\nCommands: `check`, `start`, `stop`, `restart`, `send`, `backup`, `update`, `stats`");
                             break;
                         }
 
@@ -84,7 +84,7 @@ namespace WindowsGSM.DiscordBot
                         }
                         else
                         {
-                            await message.Channel.SendMessageAsync("You don't have permission to access.");
+                            await message.Channel.SendMessageAsync("您无权访问.");
                         }
                         break;
                     default: await SendHelpEmbed(message); break;
@@ -113,8 +113,8 @@ namespace WindowsGSM.DiscordBot
 
                 var embed = new EmbedBuilder { Color = Color.Teal };
                 embed.AddField("ID", ids, inline: true);
-                embed.AddField("Status", status, inline: true);
-                embed.AddField("Server Name", servers, inline: true);
+                embed.AddField("状态", status, inline: true);
+                embed.AddField("服务器名称", servers, inline: true);
 
                 await message.Channel.SendMessageAsync(embed: embed.Build());
             });
@@ -134,22 +134,22 @@ namespace WindowsGSM.DiscordBot
                         if (serverStatus == MainWindow.ServerStatus.Stopped)
                         {
                             bool started = await WindowsGSM.StartServerById(args[1], message.Author.Id.ToString(), message.Author.Username);
-                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) {(started ? "Started" : "Fail to Start")}.");
+                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) {(started ? "启动" : "无法启动")}.");
                         }
                         else if (serverStatus == MainWindow.ServerStatus.Started)
                         {
-                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) already Started.");
+                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) 已经启动.");
                         }
                         else
                         {
-                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) currently in {serverStatus.ToString()} state, not able to start.");
+                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) 当前处于 {serverStatus.ToString()} 状态，无法启动.");
                         }
 
                         await SendServerEmbed(message, Color.Green, args[1], WindowsGSM.GetServerStatus(args[1]).ToString(), WindowsGSM.GetServerName(args[1]));
                     }
                     else
                     {
-                        await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) does not exists.");
+                        await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) 不存在.");
                     }
                 });
             }
@@ -173,22 +173,22 @@ namespace WindowsGSM.DiscordBot
                         if (serverStatus == MainWindow.ServerStatus.Started)
                         {
                             bool started = await WindowsGSM.StopServerById(args[1], message.Author.Id.ToString(), message.Author.Username);
-                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) {(started ? "Stopped" : "Fail to Stop")}.");
+                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) {(started ? "停止" : "停止失败")}.");
                         }
                         else if (serverStatus == MainWindow.ServerStatus.Stopped)
                         {
-                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) already Stopped.");
+                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) 已经停止.");
                         }
                         else
                         {
-                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) currently in {serverStatus.ToString()} state, not able to stop.");
+                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) 当前处于 {serverStatus.ToString()} 状态，无法停止.");
                         }
 
                         await SendServerEmbed(message, Color.Orange, args[1], WindowsGSM.GetServerStatus(args[1]).ToString(), WindowsGSM.GetServerName(args[1]));
                     }
                     else
                     {
-                        await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) does not exists.");
+                        await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) 不存在.");
                     }
                 });
             }
@@ -212,18 +212,18 @@ namespace WindowsGSM.DiscordBot
                         if (serverStatus == MainWindow.ServerStatus.Started)
                         {
                             bool started = await WindowsGSM.RestartServerById(args[1], message.Author.Id.ToString(), message.Author.Username);
-                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) {(started ? "Restarted" : "Fail to Restart")}.");
+                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) {(started ? "重新启动" : "无法重新启动")}.");
                         }
                         else
                         {
-                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) currently in {serverStatus.ToString()} state, not able to restart.");
+                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) 目前处于 {serverStatus.ToString()} 状态, 无法重新启动.");
                         }
 
                         await SendServerEmbed(message, Color.Blue, args[1], WindowsGSM.GetServerStatus(args[1]).ToString(), WindowsGSM.GetServerName(args[1]));
                     }
                     else
                     {
-                        await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) does not exists.");
+                        await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) 不存在.");
                     }
                 });
             }
@@ -248,16 +248,16 @@ namespace WindowsGSM.DiscordBot
                         {
                             string sendCommand = command.Substring(args[1].Length + 6);
                             bool sent = await WindowsGSM.SendCommandById(args[1], sendCommand, message.Author.Id.ToString(), message.Author.Username);
-                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) {(sent ? "Command sent" : "Fail to send command")}. | `{sendCommand}`");
+                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) {(sent ? "Command sent" : "命令发送失败")}. | `{sendCommand}`");
                         }
                         else
                         {
-                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) currently in {serverStatus.ToString()} state, not able to send command.");
+                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) 目前处于 {serverStatus.ToString()} 状态,无法发送命令.");
                         }
                     }
                     else
                     {
-                        await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) does not exists.");
+                        await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) 不存在.");
                     }
                 });
             }
@@ -280,22 +280,22 @@ namespace WindowsGSM.DiscordBot
                         MainWindow.ServerStatus serverStatus = WindowsGSM.GetServerStatus(args[1]);
                         if (serverStatus == MainWindow.ServerStatus.Stopped)
                         {
-                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) Backup started - this may take some time.");
+                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) 备份启动 - 这需要一些时间.");
                             bool backuped = await WindowsGSM.BackupServerById(args[1], message.Author.Id.ToString(), message.Author.Username);
-                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) {(backuped ? "Backup Complete" : "Fail to Backup")}.");
+                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) {(backuped ? "备份完成" : "备份失败")}.");
                         }
                         else if (serverStatus == MainWindow.ServerStatus.Backuping)
                         {
-                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) already Backuping.");
+                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) 已经备份.");
                         }
                         else
                         {
-                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) currently in {serverStatus.ToString()} state, not able to backup.");
+                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) 目前处于 {serverStatus.ToString()} 状态, 无法备份.");
                         }
                     }
                     else
                     {
-                        await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) does not exists.");
+                        await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) 不存在.");
                     }
                 });
             }
@@ -318,22 +318,22 @@ namespace WindowsGSM.DiscordBot
                         MainWindow.ServerStatus serverStatus = WindowsGSM.GetServerStatus(args[1]);
                         if (serverStatus == MainWindow.ServerStatus.Stopped)
                         {
-                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) Update started - this may take some time.");
+                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) 更新启动 - 这需要一些时间.");
                             bool updated = await WindowsGSM.UpdateServerById(args[1], message.Author.Id.ToString(), message.Author.Username);
-                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) {(updated ? "Updated" : "Fail to Update")}.");
+                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) {(updated ? "更新" : "更新失败")}.");
                         }
                         else if (serverStatus == MainWindow.ServerStatus.Updating)
                         {
-                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) already Updating.");
+                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) 已经更新.");
                         }
                         else
                         {
-                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) currently in {serverStatus} state, not able to update.");
+                            await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) 目前处于 {serverStatus} 状态, 无法更新.");
                         }
                     }
                     else
                     {
-                        await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) does not exists.");
+                        await message.Channel.SendMessageAsync($"Server (ID: {args[1]}) 不存在.");
                     }
                 });
             }
@@ -357,8 +357,8 @@ namespace WindowsGSM.DiscordBot
         {
             var embed = new EmbedBuilder { Color = color };
             embed.AddField("ID", serverId, inline: true);
-            embed.AddField("Status", serverStatus, inline: true);
-            embed.AddField("Server Name", serverName, inline: true);
+            embed.AddField("状态", serverStatus, inline: true);
+            embed.AddField("服务器名称", serverName, inline: true);
 
             await message.Channel.SendMessageAsync(embed: embed.Build());
         }
@@ -367,13 +367,13 @@ namespace WindowsGSM.DiscordBot
         {
             var embed = new EmbedBuilder
             {
-                Title = "Available Commands:",
+                Title = "可用命令:",
                 Color = Color.Teal
             };
 
             string prefix = Configs.GetBotPrefix();
             embed.AddField("Command", $"{prefix}wgsm check\n{prefix}wgsm list\n{prefix}wgsm start <SERVERID>\n{prefix}wgsm stop <SERVERID>\n{prefix}wgsm restart <SERVERID>\n{prefix}wgsm update <SERVERID>\n{prefix}wgsm send <SERVERID> <COMMAND>\n{prefix}wgsm backup <SERVERID>\n{prefix}wgsm stats", inline: true);
-            embed.AddField("Usage", "Check permission\nPrint server list with id, status and name\nStart a server remotely by serverId\nStop a server remotely by serverId\nRestart a server remotely by serverId\nSend a command to server console\nBackup a server remotely by serverId\nUpdate a server remotely by serverId", inline: true);
+            embed.AddField("Usage", "检查权限\n打印服务器列表，包括 id、状态和名称\n通过serverId远程启动服务器\n通过serverId远程停止服务器\n通过serverId远程重启服务器\n向服务器控制台发送命令\n通过serverId远程备份服务器\n通过serverId远程更新服务器", inline: true);
 
             await message.Channel.SendMessageAsync(embed: embed.Build());
         }
@@ -419,23 +419,23 @@ namespace WindowsGSM.DiscordBot
         {
             var embed = new EmbedBuilder
             {
-                Title = ":small_orange_diamond: System Metrics",
-                Description = $"Server name: {Environment.MachineName}",
+                Title = ":small_orange_diamond: 系统信息",
+                Description = $"服务器名称: {Environment.MachineName}",
                 Color = Color.Blue
             };
 
             embed.AddField("CPU", GetProgressBar(await Task.Run(() => system.GetCPUUsage())), true);
             double ramUsage = await Task.Run(() => system.GetRAMUsage());
-            embed.AddField("Memory: " + SystemMetrics.GetMemoryRatioString(ramUsage, system.RAMTotalSize), GetProgressBar(ramUsage), true);
+            embed.AddField("内存: " + SystemMetrics.GetMemoryRatioString(ramUsage, system.RAMTotalSize), GetProgressBar(ramUsage), true);
             double diskUsage = await Task.Run(() => system.GetDiskUsage());
-            embed.AddField("Disk: " + SystemMetrics.GetDiskRatioString(diskUsage, system.DiskTotalSize), GetProgressBar(diskUsage), true);
+            embed.AddField("磁盘: " + SystemMetrics.GetDiskRatioString(diskUsage, system.DiskTotalSize), GetProgressBar(diskUsage), true);
 
             (int serverCount, int startedCount, int activePlayers) = await GetGameServerDashBoardDetails();
-            embed.AddField($"Servers: {serverCount}/{MainWindow.MAX_SERVER}", GetProgressBar(serverCount * 100 / MainWindow.MAX_SERVER), true);
-            embed.AddField($"Online: {startedCount}/{serverCount}", GetProgressBar((serverCount == 0) ? 0 : startedCount * 100 / serverCount), true);
-            embed.AddField("Active Players", GetActivePlayersString(activePlayers), true);
+            embed.AddField($"服务器: {serverCount}/{MainWindow.MAX_SERVER}", GetProgressBar(serverCount * 100 / MainWindow.MAX_SERVER), true);
+            embed.AddField($"在线: {startedCount}/{serverCount}", GetProgressBar((serverCount == 0) ? 0 : startedCount * 100 / serverCount), true);
+            embed.AddField("活跃玩家", GetActivePlayersString(activePlayers), true);
 
-            embed.WithFooter(new EmbedFooterBuilder().WithIconUrl("https://github.com/WindowsGSM/WindowsGSM/raw/master/WindowsGSM/Images/WindowsGSM.png").WithText($"WindowsGSM {MainWindow.WGSM_VERSION} | System Metrics"));
+            embed.WithFooter(new EmbedFooterBuilder().WithIconUrl("https://github.com/WindowsGSM/WindowsGSM/raw/master/WindowsGSM/Images/WindowsGSM.png").WithText($"WindowsGSM {MainWindow.WGSM_VERSION} | 系统信息"));
             embed.WithCurrentTimestamp();
 
             return embed;

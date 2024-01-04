@@ -250,6 +250,15 @@ namespace WindowsGSM.GameServer.Data {
         }
         
         /// <summary>
+        ///   查找类似 Images/Games/moe.png 的本地化字符串。
+        /// </summary>
+        public static string 帝国神话_专用服务器 {
+            get {
+                return ResourceManager.GetString("帝国神话 专用服务器", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Images/Games/egs.png 的本地化字符串。
         /// </summary>
         public static string 帝国霸业_银河生存_专用服务器 {

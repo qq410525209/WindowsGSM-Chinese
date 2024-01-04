@@ -168,6 +168,9 @@
   <data name="帝国霸业-银河生存 专用服务器" xml:space="preserve">
     <value>Images/Games/egs.png</value>
   </data>
+  <data name="帝国神话 专用服务器" xml:space="preserve">
+    <value>Images/Games/moe.png</value>
+  </data>
   <data name="盖瑞模组 专用服务器" xml:space="preserve">
     <value>Images/Games/gmod.png</value>
   </data>

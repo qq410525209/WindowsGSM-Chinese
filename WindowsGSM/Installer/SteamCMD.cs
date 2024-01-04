@@ -501,12 +501,12 @@ namespace WindowsGSM.Installer
 
                 using (TextWriter textwriter = new StreamWriter(_userDataPath))
                 {
-                    textwriter.WriteLine("// For security and compatibility reasons, WindowsGSM suggests you to create a new steam account.");
-                    textwriter.WriteLine("// More info: (https://docs.windowsgsm.com/installer/steamcmd)");
+                    textwriter.WriteLine("// 为了安全和兼容性原因，WindowsGSM建议您创建一个新的Steam帐户。");
+                    textwriter.WriteLine("// 更多信息：(https://docs.windowsgsm.com/installer/steamcmd)");
                     textwriter.WriteLine("// ");
-                    textwriter.WriteLine("// Username and password - No Steam Guard             (Supported + Auto update supported) (Recommended)");
-                    textwriter.WriteLine("// Username and password - Steam Guard via Email      (Supported + Auto update supported)");
-                    textwriter.WriteLine("// Username and password - Steam Guard via Smartphone (Supported + Auto update NOT supported)");
+                    textwriter.WriteLine("// 用户名和密码 - 无需Steam令牌（支持 + 自动更新支持）（推荐）");
+                    textwriter.WriteLine("// 用户名和密码 - 通过电子邮件使用Steam 令牌（支持 + 自动更新支持）");
+                    textwriter.WriteLine("// 用户名和密码 - 通过智能手机使用Steam 令牌（支持 + 自动更新不支持）");
                     textwriter.WriteLine("// ");
                     textwriter.WriteLine("steamUser=\"\"");
                     textwriter.WriteLine("steamPass=\"\"");

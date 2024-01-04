@@ -173,7 +173,7 @@
                             </StackPanel>
                        
                             <StackPanel Margin="0,0,0,10">
-                                <Label Content="Steam登录验证码"></Label>
+                                <Label Content="Steam登录令牌"></Label>
                                 <TextBox x:Name="textbox_EC_ServerGSLT" Height="23" Width="500" FontFamily="Consolas" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
                             </StackPanel>
                             <StackPanel>

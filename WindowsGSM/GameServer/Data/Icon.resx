@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+	<data name="幻兽帕鲁 专用服务器" xml:space="preserve">
+    <value>Images/Games/pw.png</value>
+  </data>
   <data name="七日杀 专用服务器" xml:space="preserve">
     <value>Images/Games/7dtd.png</value>
   </data>

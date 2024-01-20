@@ -58,6 +58,7 @@ namespace WindowsGSM.GameServer.Data
                 case VTS.FullName: return new VTS(serverData);
                 case SDK2013.FullName: return new SDK2013(serverData);
                 case VM.FullName: return new VM(serverData);
+                case PW.FullName: return new PW(serverData);
                 default: // Load Plugin
                 {
                     if (pluginList == null) { return null; }

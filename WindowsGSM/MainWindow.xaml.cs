@@ -3078,10 +3078,10 @@ namespace WindowsGSM
 
         private void ComboBox_Themes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            using (var key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\WindowsGSM", true))
-            {
-                key?.SetValue(RegistryKeyName.DonorColor, comboBox_Themes.SelectedItem.ToString());
-            }
+            //using (var key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\WindowsGSM", true))
+            //{
+            //    key?.SetValue(RegistryKeyName.DonorColor, comboBox_Themes.SelectedItem.ToString());
+            //}
 
             //Set theme
             ThemeManager.Current.ChangeTheme(this, $"{(MahAppSwitch_DarkTheme.IsOn ? "Dark" : "Light")}.{comboBox_Themes.SelectedItem}");
@@ -3107,7 +3107,8 @@ namespace WindowsGSM
         {
             ProgressDialogController controller = await this.ShowProgressAsync("检查更新...", "请稍等...");
             controller.SetIndeterminate();
-            string latestVersion = await GetLatestVersion();
+            //string latestVersion = await GetLatestVersion();
+            string latestVersion = WGSM_VERSION;
             await controller.CloseAsync();
 
             if (string.IsNullOrEmpty(latestVersion))
@@ -4073,6 +4074,11 @@ namespace WindowsGSM
             Button_AutoScroll.Content = Button_AutoScroll.Content.ToString() == "✔️ 自动滚动" ? "❌ 自动滚动" : "✔️ 自动滚动";
             _serverMetadata[int.Parse(server.ID)].AutoScroll = Button_AutoScroll.Content.ToString().Contains("✔️");
             ServerConfig.SetSetting(server.ID, ServerConfig.SettingName.AutoScroll, GetServerMetadata(server.ID).AutoScroll ? "1" : "0");
+        }
+
+        private void DonorConnect_IsCheckedChanged(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

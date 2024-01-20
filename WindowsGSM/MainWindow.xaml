@@ -94,7 +94,7 @@
                         <mah:ToggleSwitch x:Name="MahAppSwitch_StartOnBoot" Header="开机自启" Margin="20,0,0,15" Toggled="StartOnLogin_IsCheckedChanged"/>
                         <mah:ToggleSwitch x:Name="MahAppSwitch_RestartOnCrash" Header="崩溃自启" Margin="20,0,0,15" Toggled="RestartOnCrash_IsCheckedChanged"/>
                         <mah:ToggleSwitch x:Name="MahAppSwitch_SendStatistics" Header="发送统计" Margin="20,0,0,15" Toggled="SendStatistics_IsCheckedChanged"/>
-                        <mah:ToggleSwitch x:Name="MahAppSwitch_DonorConnect" Header="主题激活(已解)" Margin="20,0,0,15" Toggled="DonorConnect_IsCheckedChanged"/>
+                        <mah:ToggleSwitch x:Name="MahAppSwitch_DonorConnect" Header="主题激活" Margin="20,0,0,15" Toggled="DonorConnect_IsCheckedChanged"/>
                         <DockPanel Margin="20,0,20,20">
                             <Label Content="主题选择" FontSize="13.5" Padding="0" DockPanel.Dock="Top"></Label>
                             <ComboBox x:Name="comboBox_Themes" Margin="0,5,0,0" Height="25" DockPanel.Dock="Top" SelectionChanged="ComboBox_Themes_SelectionChanged" IsEnabled="True"></ComboBox>

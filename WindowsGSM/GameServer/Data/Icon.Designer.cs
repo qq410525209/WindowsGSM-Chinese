@@ -268,6 +268,15 @@ namespace WindowsGSM.GameServer.Data {
         }
         
         /// <summary>
+        ///   查找类似 Images/Games/pw.png 的本地化字符串。
+        /// </summary>
+        public static string 幻兽帕鲁_专用服务器 {
+            get {
+                return ResourceManager.GetString("幻兽帕鲁 专用服务器", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Images/Games/mc.png 的本地化字符串。
         /// </summary>
         public static string 我的世界__Java版服务器 {

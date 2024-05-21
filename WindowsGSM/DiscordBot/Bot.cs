@@ -137,7 +137,7 @@ namespace WindowsGSM.DiscordBot
 
 		public string GetInviteLink()
 		{
-			return (_client == null || _client.CurrentUser == null) ? string.Empty : $"https://discordapp.com/api/oauth2/authorize?client_id={_client.CurrentUser.Id}&permissions=67497024&scope=bot";
+			return (_client == null || _client.CurrentUser == null) ? string.Empty : $"https://relay2.csgoze520.com/api/oauth2/authorize?client_id={_client.CurrentUser.Id}&permissions=67497024&scope=bot";
 		}
 	}
 }

@@ -2869,17 +2869,17 @@ namespace WindowsGSM
         #region Top Bar Button
         private void Button_Website_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://www.aopk.cn/");
+            Process.Start("https://www.baidu.com/");
         }
 
         private void Button_Discord_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://jq.qq.com/?_wv=1027&k=pGLX3k5N");
+            Process.Start("http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=M6kvfls8gmVV_wENfrr6Wnptxwekv1IN&authKey=dejMJ4eb2SPrJJ%2B%2B%2BPoVlTIi%2BbcUQrbWT5%2BnQ9D79KidGfkZL7m5Z3QDHLAENlvC&noverify=0&group_code=313236398");
         }
 
         private void Button_Patreon_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://www.aopk.cn/author/1");
+            Process.Start("https://www.baidu.com/");
         }
 
         private void Button_Settings_Click(object sender, RoutedEventArgs e)
@@ -3091,7 +3091,7 @@ namespace WindowsGSM
         #region Menu - Help
         private void Help_OnlineDocumentation_Click1(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://www.aopk.cn");
+            Process.Start("https://www.baidu.com/");
         }
         private void Help_OnlineDocumentation_Click(object sender, RoutedEventArgs e)
         {
@@ -3225,16 +3225,16 @@ namespace WindowsGSM
         {
             var settings = new MetroDialogSettings
             {
-                AffirmativeButtonText = "资源工坊",
+                AffirmativeButtonText = "游戏列表",
                 NegativeButtonText = "关闭",
                 DefaultButtonFocus = MessageDialogResult.Negative
             };
 
-            var result = await this.ShowMessageAsync("关于 WindowsGSM", $"产品:\t\tWindowsGSM\n版本:\t\t{WGSM_VERSION.Substring(1)}\n原作者:\t\tTatLead\n中文翻译:\t七夜\n\n如果您喜欢WindowsGSM的中文翻译，请考虑点击下面按钮进入网站成为会员赞助我！", MessageDialogStyle.AffirmativeAndNegative, settings);
+            var result = await this.ShowMessageAsync("关于 WindowsGSM", $"产品:\t\tWindowsGSM\n版本:\t\t{WGSM_VERSION.Substring(1)}\n原作者:\t\tTatLead\n中文翻译:\t七夜\n\n如果您喜欢WindowsGSM的中文翻译", MessageDialogStyle.AffirmativeAndNegative, settings);
 
             if (result == MessageDialogResult.Affirmative)
             {
-                Process.Start("https://www.aopk.cn");
+                Process.Start("https://www.baidu.com/");
             }
         }
         #endregion

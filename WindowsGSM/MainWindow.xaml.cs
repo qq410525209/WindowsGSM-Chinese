@@ -3704,7 +3704,7 @@ namespace WindowsGSM
             {
                 switch_DiscordBot.IsEnabled = false;
                 button_DiscordBotInvite.IsEnabled = switch_DiscordBot.IsOn = await g_DiscordBot.Start();
-                DiscordBotLog("Discord 机器人 " + (switch_DiscordBot.IsOn ? "启动." : "启动失败. 原因：机器人密钥无效."));
+                DiscordBotLog("Discord 机器人 " + (switch_DiscordBot.IsOn ? "启动." : "启动失败. 原因：机器人密钥无效.."));
                 switch_DiscordBot.IsEnabled = true;
             }
             else
